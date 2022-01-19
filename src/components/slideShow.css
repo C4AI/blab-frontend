@@ -1,0 +1,65 @@
+.App-logo {
+    position: absolute;
+    height: auto;
+    min-height: 100%;
+    width: 100%;
+    margin: 0;
+    pointer-events: none;
+}
+
+.wrap {
+    position: absolute;
+    /* display: flex; */
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    color: rgba(255, 255, 255, 0.9);
+    justify-content: center;
+    width: 100%;
+    z-index: 1;
+}
+  
+.wrap p {
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: bold;
+    /* margin: 0; */
+    margin-top: 50px;
+    padding-bottom: 1rem;
+    letter-spacing: .25rem;
+}
+  
+.wrap hr {
+    color: '#FFF'; 
+    width: 12%;
+    padding: 0;
+}
+
+.wrap h2 {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 4rem;
+    /* font: inherit; */
+    vertical-align: baseline;
+}
+
+.App-header .dot-box {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+  
+.App-header .dot-box .dot {
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+}
+  
+  
