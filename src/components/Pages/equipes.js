@@ -3,10 +3,10 @@ import { wrap } from "popmotion";
 import {motion, 
         AnimatePresence, 
         useViewportScroll } from "framer-motion";
-import image_1 from '../images/image_1.jpg'
-import image_2 from '../images/image_2.jpg'
-import image_3 from '../images/image_3.jpg'
-import "./slideShow.css"
+import image_1 from '../../images/image_1.jpg'
+import image_2 from '../../images/image_2.jpg'
+import image_3 from '../../images/image_3.jpg'
+import "./inicial.css"
 
 const images = [
     image_1, 
@@ -14,7 +14,7 @@ const images = [
     image_3
 ];
 
-export const Slideshow = () => {
+export const Equipes = () => {
     const [page, setPage] = useState(0);
     const imageIndex = wrap(0, images.length, page);
     const {scrollY} = useViewportScroll();
@@ -52,7 +52,7 @@ export const Slideshow = () => {
                     Blue Amazonia Project
                 </p>
                 <hr/>
-                <h2>BLAB</h2>
+                <h2>EQUIPES</h2>
                 {/* <div className="dot-box">
                     <span className="dot"></span>
                     <span className="dot"></span>

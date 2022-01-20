@@ -1,11 +1,19 @@
+//React
 import React, { useState } from 'react';
-import { Slideshow } from "./components/slideShow"
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+//Páginas
+import { Inicial } from "./components/Pages/inicial";
+import { Servicos } from "./components/Pages/servicos";
+import { Equipes } from "./components/Pages/equipes";
+
+//Componentes
 import Sidebar from "./components/Sidebar"
 import Footer from "./components/Footer";
 import './App.css';
 
+//Outros
 import { motion } from "framer-motion";
-
 import {
   CssBaseline,
   AppBar,
@@ -18,7 +26,6 @@ import {
   withStyles, 
   Tooltip
 } from '@material-ui/core'
-
 import MenuIcon from '@material-ui/icons/Menu';
 import Zoom from '@material-ui/core/Zoom';
 
@@ -109,7 +116,13 @@ function App() {
           </AppBar>
           <Sidebar open={open} handleDrawerClose={handleDrawerClose} />  
         </Box>
-        <Slideshow/>
+        <Router>
+          <Switch>
+            <Route exact path='/' component={Inicial}/>
+            <Route exact path='/servicos' exact component={Servicos}/>
+            <Route exact path='/equipes' component={Equipes}/>
+          </Switch>
+        </Router>
       </div>
       <div className="App-body">
 

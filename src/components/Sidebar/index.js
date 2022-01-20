@@ -7,9 +7,10 @@ import SidebarLink from './SidebarLink';
 const Sidebar = ({ open, handleDrawerClose }) => {
 
   const links = [
-    {label: "Sobre", href: "#"},
-    {label: "Contato", href: "#"},
-    {label: "Equipe", href: "#"}
+    {label: "Início", href: "/"},
+    {label: "Serviços", href: "servicos"},
+    {label: "Equipes", href: "equipes"},
+    {label: "Wiki", href: ""}
   ]
 
   return (
