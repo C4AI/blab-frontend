@@ -1,6 +1,6 @@
 //React
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 //Páginas
 import { Inicial } from "./components/Pages/inicial";
@@ -117,11 +117,11 @@ function App() {
           <Sidebar open={open} handleDrawerClose={handleDrawerClose} />  
         </Box>
         <Router>
-          <Switch>
-            <Route exact path='/' component={Inicial}/>
-            <Route exact path='/servicos' exact component={Servicos}/>
-            <Route exact path='/equipes' component={Equipes}/>
-          </Switch>
+          <Routes>
+            <Route exact path='/' element={<Inicial/>}/>
+            <Route exact path='/servicos' element={<Servicos/>}/>
+            <Route exact path='/equipes' element={<Equipes/>}/>
+          </Routes>
         </Router>
       </div>
       <div className="App-body">
