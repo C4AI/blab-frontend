@@ -1,0 +1,13 @@
+.App-body {
+  background-color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: calc(10px + 2vmin);
+  color: black;
+  top: 0;
+  left: 1em;
+  margin: 0;
+}

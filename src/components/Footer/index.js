@@ -6,6 +6,7 @@ import LinkedInIcon from "@material-ui/icons/LinkedIn"
 import YouTubeIcon from "@material-ui/icons/YouTube"
 import TwitterIcon from "@material-ui/icons/Twitter"
 
+import "./Footer.css"
 import useStyle from "./styles"
 
 import logo_usp from '../../images/logo_usp.png';
