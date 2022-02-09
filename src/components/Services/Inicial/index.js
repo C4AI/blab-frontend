@@ -1,16 +1,55 @@
-import {motion, 
-        useViewportScroll } from "framer-motion";
-import "./inicial.css"
+import React from "react";
 
-export const Inicial = () => {
-    const {scrollY} = useViewportScroll();
+import { Button, Grid } from "@material-ui/core";
+import SmartToyIcon from "@mui/icons-material/SmartToy";
+import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
+
+import { motion } from "framer-motion";
+
+import "./inicial.css"
+import style from "./style.js";
+
+export const Inicial = ({ setService }) => {
+    const classes = style();
+
+    const handleClick = event => {
+        setService(event.currentTarget.id);
+    }
+
     return (
-        <motion.div className="title" style={{y: scrollY}}>
-            <p>
-                Blue Amazonia Project
-            </p>
-            <hr/>
-            <h2>BLAB</h2>
-        </motion.div>
-    )
+        <div className="inicial">
+            <motion.div className="title">
+                <p>
+                    Blue Amazonia Project
+                </p>
+                <hr/>
+                <h2>BLAB</h2>
+            </motion.div>
+            <div className="button-wrapper">
+                <Grid
+                    container
+                    direction="row"
+                    justifyContent="center"
+                    alignItems="center"
+                >
+                    <Button 
+                        id="chatbot"
+                        className={classes.button}
+                        startIcon={<SmartToyIcon style={{fontSize: 30}}/>}
+                        onClick={handleClick}
+                    >
+                        ChatBot
+                    </Button>
+                    <Button
+                        id="wiki"
+                        className={classes.button}
+                        startIcon={<LibraryBooksIcon style={{fontSize: 30}}/>}
+                        onClick={handleClick}
+                    >
+                        Wiki
+                    </Button>
+                </Grid>
+            </div>
+        </div>
+    );
 }

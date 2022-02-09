@@ -21,7 +21,7 @@ const Footer = () => {
     <footer className={classes.background}>
       <Divider />
       <Box padding={5}>
-        <Grid container justify="space-evenly">
+        <Grid container justifyContent="space-evenly">
           <Grid item>
             <span>&copy; C4AI - Center for Artificial Intelligence 2021</span>
           </Grid>

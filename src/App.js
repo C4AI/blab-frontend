@@ -1,7 +1,7 @@
 import Body from "./components/Body"
 import Footer from "./components/Footer";
 
-import { CssBaseline } from "@material-ui/core"
+import CssBaseline from "@material-ui/core/CssBaseline"
 import "./App.css"
 
 function App() {
