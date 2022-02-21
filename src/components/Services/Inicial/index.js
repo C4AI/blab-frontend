@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 import { Button, Grid } from "@material-ui/core";
 import SmartToyIcon from "@mui/icons-material/SmartToy";
@@ -50,4 +51,8 @@ export const Inicial = ({ setService }) => {
       </div>
     </div>
   );
+};
+
+Inicial.propTypes = {
+    setService: PropTypes.func.isRequired
 };

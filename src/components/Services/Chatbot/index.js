@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 import { IconButton } from "@material-ui/core";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
@@ -8,7 +9,7 @@ import style from "./style.js";
 
 export const Chatbot = ({ setService }) => {
   const classes = style();
-  const handleClick = (event) => {
+  const handleClick = () => {
     setService("inicial");
   };
 
@@ -27,4 +28,8 @@ export const Chatbot = ({ setService }) => {
       </div>
     </div>
   );
+};
+
+Chatbot.propTypes = {
+    setService: PropTypes.func.isRequired
 };
