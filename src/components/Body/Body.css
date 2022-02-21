@@ -9,10 +9,10 @@
 }
 
 .background {
-    position: absolute;
-    height: auto;
-    min-height: 100%;
-    width: 100%;
-    margin: 0;
-    pointer-events: none;
+  position: absolute;
+  height: auto;
+  min-height: 100%;
+  width: 100%;
+  margin: 0;
+  pointer-events: none;
 }
