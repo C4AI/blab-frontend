@@ -7,10 +7,10 @@ import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import "./chatbot.css";
 import style from "./style.js";
 
-export const Chatbot = ({ setService }) => {
+export const ChatBot = ({ setService }) => {
   const classes = style();
   const handleClick = () => {
-    setService("inicial");
+    setService("Inicial");
   };
 
   return (
@@ -30,6 +30,6 @@ export const Chatbot = ({ setService }) => {
   );
 };
 
-Chatbot.propTypes = {
+ChatBot.propTypes = {
     setService: PropTypes.func.isRequired
 };

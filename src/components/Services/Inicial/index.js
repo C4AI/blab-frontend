@@ -1,22 +1,16 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import { Button, Grid } from "@material-ui/core";
-import SmartToyIcon from "@mui/icons-material/SmartToy";
-import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
-
+import ServicesList from "../../../ServicesList";
+import { CardService } from "./CardService";
+import { Grid } from "@mui/material";
 import { motion } from "framer-motion";
 
-import "./inicial.css";
-import style from "./style.js";
+import makeStyles from "./styles";
+import "./inicial.css"
 
 export const Inicial = ({ setService }) => {
-  const classes = style();
-
-  const handleClick = (event) => {
-    setService(event.currentTarget.id);
-  };
-
+  const classes = makeStyles();
   return (
     <div className="inicial">
       <motion.div className="title">
@@ -24,31 +18,21 @@ export const Inicial = ({ setService }) => {
         <hr />
         <h2>BLAB</h2>
       </motion.div>
-      <div className="button-wrapper">
-        <Grid
-          container
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Button
-            id="chatbot"
-            className={classes.button}
-            startIcon={<SmartToyIcon style={{ fontSize: 30 }} />}
-            onClick={handleClick}
-          >
-            ChatBot
-          </Button>
-          <Button
-            id="wiki"
-            className={classes.button}
-            startIcon={<LibraryBooksIcon style={{ fontSize: 30 }} />}
-            onClick={handleClick}
-          >
-            Wiki
-          </Button>
-        </Grid>
-      </div>
+      <Grid container className={classes.grid}>
+      {
+        ServicesList.map(
+            info => {
+                return info.active === true ?
+                (<CardService
+                    setService={setService}
+                    info={info}
+                 />
+                )
+                :
+                <></>
+        })
+      }
+      </Grid>
     </div>
   );
 };

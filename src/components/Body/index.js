@@ -2,20 +2,20 @@ import React, { useState } from "react";
 
 import { Background } from "../Background";
 import { Inicial } from "../Services/Inicial";
-import { Chatbot } from "../Services/Chatbot";
+import { ChatBot } from "../Services/ChatBot";
 
 import "./Body.css";
 
 function Body() {
-  const [service, setService] = useState("inicial");
+  const [service, setService] = useState("Inicial");
 
   function serviceSwitch(service) {
     switch (service) {
-      case "inicial":
+      case "Inicial":
         return <Inicial setService={setService} />;
-      case "chatbot":
-        return <Chatbot setService={setService} />;
-      case "wiki":
+      case "ChatBot":
+        return <ChatBot setService={setService}/>;
+      case "Wiki":
         return <></>;
       default:
         return <></>;
