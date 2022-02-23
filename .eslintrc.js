@@ -13,4 +13,7 @@ module.exports = {
   },
   plugins: ["react"],
   rules: {},
+  globals: {
+    require: true,
+  }
 };
