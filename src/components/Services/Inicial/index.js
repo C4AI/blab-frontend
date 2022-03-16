@@ -14,7 +14,7 @@ export const Inicial = ({ setService }) => {
   return (
     <div className="inicial">
       <motion.div className="title">
-        <p>Blue Amazonia Project</p>
+        <p>Blue Amazon Brain</p>
         <hr />
         <h2>BLAB</h2>
       </motion.div>
