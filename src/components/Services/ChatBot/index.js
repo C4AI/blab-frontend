@@ -90,45 +90,45 @@ export const ChatBot = ({ setService }) => {
     });
 
   return (
-    <Suspense fallback={<div>Loading... / Carregando...</div>}>
-      <ThemeProvider theme={theme}>
-        <div className="chatbot">
-          <div className="back-button">
-            <IconButton className={classes.button} onClick={handleClick}>
-              <KeyboardBackspaceIcon style={{ fontSize: 50 }} />
-            </IconButton>
-          </div>
-        <Container component="main" maxWidth="xs">
-          {["rooms", "bots"].includes(mode) ? (
-            !conversation ? (
-              !conversationId ? (
-                <Lobby
-                  onCreateConversation={enterConversation}
-                  onJoinConversation={enterConversation}
-                  mode={mode}
-                  bots={bots}
-                />
+    <div className="chatbot">
+      <div className="back-button">
+        <IconButton className={classes.button} onClick={handleClick}>
+          <KeyboardBackspaceIcon style={{ fontSize: 50 }} />
+        </IconButton>
+      </div>
+      <Suspense fallback={<div>Loading... / Carregando...</div>}>
+        <ThemeProvider theme={theme}>
+          <Container component="main" maxWidth="xs">
+            {["rooms", "bots"].includes(mode) ? (
+              !conversation ? (
+                !conversationId ? (
+                  <Lobby
+                    onCreateConversation={enterConversation}
+                    onJoinConversation={enterConversation}
+                    mode={mode}
+                    bots={bots}
+                  />
+                ) : (
+                  <div>
+                    {/* this is rendered when the user was 
+                    previously in a conversation, but the
+                    conversation data hasn't been loaded yet */}
+                  </div>
+                )
               ) : (
-                <div>
-                  {/* this is rendered when the user was 
-                  previously in a conversation, but the
-                  conversation data hasn't been loaded yet */}
-                </div>
+                <Chat conversation={conversation} onLeave={onLeave} />
               )
             ) : (
-              <Chat conversation={conversation} onLeave={onLeave} />
-            )
-          ) : (
-            <p>
-              INVALID MODE. PLEASE SET THE ENVIRONMENT VALUE{" "}
-              <code>REACT_APP_CHAT_MODE</code> TO <i>rooms</i> OR <i>bots</i> AND
-              TRY AGAIN.
-            </p>
-          )}
-        </Container>
-        </div>
-      </ThemeProvider>
-    </Suspense>
+              <p>
+                INVALID MODE. PLEASE SET THE ENVIRONMENT VALUE{" "}
+                <code>REACT_APP_CHAT_MODE</code> TO <i>rooms</i> OR <i>bots</i> AND
+                TRY AGAIN.
+              </p>
+            )}
+          </Container>
+        </ThemeProvider>
+      </Suspense>
+    </div>
   );
 };
 

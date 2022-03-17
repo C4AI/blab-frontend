@@ -3,7 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useTheme } from "@emotion/react";
 import { Tooltip } from "@mui/material";
-import i18n from "../i18n";
+import i18n from "../../../../i18n";
 import QuotedMessage from "./QuotedMessage";
 import { Message, MessageConditions } from "./data-structures";
 import { Participant } from "../Lobby/data-structures";

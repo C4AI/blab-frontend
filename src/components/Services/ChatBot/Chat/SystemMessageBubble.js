@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { Tooltip } from "@mui/material";
 import Chip from "@mui/material/Chip";
 import { Trans } from "react-i18next";
-import i18n from "../i18n";
+import i18n from "../../../../i18n";
 import { Message } from "./data-structures";
 import { Participant } from "../Lobby/data-structures";
 
