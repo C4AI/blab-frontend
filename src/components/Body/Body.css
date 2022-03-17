@@ -1,13 +1,18 @@
 .App-body {
+  position: relative;
   background-color: #fff;
   min-height: 100vh;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
   font-size: calc(10px + 2vmin);
-  color: black;
-  top: 0;
-  left: 1em;
+  overflow: hidden;
+}
+
+.background {
+  position: absolute;
+  height: auto;
+  min-height: 100%;
+  width: 100%;
   margin: 0;
+  pointer-events: none;
 }

@@ -1,27 +1,26 @@
-import React from 'react';
+import React from "react";
 
-import { Box, Button, Divider, Grid, IconButton } from '@material-ui/core';
-import FacebookIcon from "@material-ui/icons/Facebook"
-import LinkedInIcon from "@material-ui/icons/LinkedIn"
-import YouTubeIcon from "@material-ui/icons/YouTube"
-import TwitterIcon from "@material-ui/icons/Twitter"
+import { Box, Button, Divider, Grid, IconButton } from "@material-ui/core";
+import FacebookIcon from "@material-ui/icons/Facebook";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import YouTubeIcon from "@material-ui/icons/YouTube";
+import TwitterIcon from "@material-ui/icons/Twitter";
 
-import "./Footer.css"
-import useStyle from "./styles"
+import "./Footer.css";
+import useStyle from "./styles";
 
-import logo_usp from '../../images/logo_usp.png';
-import logo_ibm from '../../images/logo_ibm.png';
-import logo_fapesp from '../../images/logo_fapesp.png';
+import logo_usp from "../../images/logo_usp.png";
+import logo_ibm from "../../images/logo_ibm.png";
+import logo_fapesp from "../../images/logo_fapesp.png";
 
 const Footer = () => {
-
-  const classes = useStyle()
+  const classes = useStyle();
 
   return (
     <footer className={classes.background}>
       <Divider />
       <Box padding={5}>
-        <Grid container justify="space-evenly">
+        <Grid container justifyContent="space-evenly">
           <Grid item>
             <span>&copy; C4AI - Center for Artificial Intelligence 2021</span>
           </Grid>
@@ -46,12 +45,18 @@ const Footer = () => {
         </Grid>
       </Box>
       <Box marginBottom={2}>
-        <Button href="https://www5.usp.br/"><img src={logo_usp} height="65" alt="USP" /></Button>
-        <Button href="https://www.ibm.com/br-pt"><img src={logo_ibm} height="65" alt="IBM" /></Button>
-        <Button href="https://fapesp.br/"><img src={logo_fapesp} height="65" alt="FAPESP" /></Button>
+        <Button href="https://www5.usp.br/">
+          <img src={logo_usp} height="65" alt="USP" />
+        </Button>
+        <Button href="https://www.ibm.com/br-pt">
+          <img src={logo_ibm} height="65" alt="IBM" />
+        </Button>
+        <Button href="https://fapesp.br/">
+          <img src={logo_fapesp} height="65" alt="FAPESP" />
+        </Button>
       </Box>
     </footer>
   );
-}
+};
 
 export default Footer;
