@@ -97,6 +97,7 @@ const MessageInputArea = forwardRef((
       minRows={4}
       label={<Trans i18nKey="typeMessage">Type a message</Trans>}
       variant="outlined"
+      sx={{ bgcolor: "white" }}
       onChange={(e) => setTypedText(e.target.value)}
       onKeyPress={(e) => {
         if (e.key === "Enter" && !e.shiftKey) {

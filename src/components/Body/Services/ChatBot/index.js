@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { createTheme, ThemeProvider } from "@mui/material";
 import { Container } from "@mui/material";
-import { IconButton } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 
 import Lobby from "./Lobby/Lobby";
@@ -91,14 +91,14 @@ export const ChatBot = ({ setService }) => {
 
   return (
     <div className="chatbot">
-      <div className="back-button">
-        <IconButton className={classes.button} onClick={handleClick}>
-          <KeyboardBackspaceIcon style={{ fontSize: 50 }} />
-        </IconButton>
+      <div align="left">
+        <Button className={classes.button} onClick={handleClick}
+          startIcon={<KeyboardBackspaceIcon style={{ fontSize: 50 }} />}
+        />
       </div>
       <Suspense fallback={<div>Loading... / Carregando...</div>}>
         <ThemeProvider theme={theme}>
-          <Container component="main" maxWidth="xs">
+          <Container component="main" maxWidth="xs" sx={{ position: "relative" }}>
             {["rooms", "bots"].includes(mode) ? (
               !conversation ? (
                 !conversationId ? (

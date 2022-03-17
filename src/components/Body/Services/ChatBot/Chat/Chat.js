@@ -157,7 +157,7 @@ export default function Chat({ conversation, onLeave }) {
 
   useEffect(() => {
     setTimeout(
-      () => messageListEndRef.current?.scrollIntoView({ behavior: "smooth" }),
+      () => messageListEndRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" }),
       100
     );
   }, [oldMessages, messages, pendingMessages]);

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import ServicesList from "../../../ServicesList";
+import ServicesList from "../../../../ServicesList";
 import { CardService } from "./CardService";
 import { Grid } from "@mui/material";
 import { motion } from "framer-motion";

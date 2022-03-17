@@ -35,7 +35,7 @@ export const CardService = ({ setService, info }) => {
                     <CardMedia
                         component = "img"
                         height = "90px"
-                        image = {require("../../../images/" + info.image)}
+                        image = {require("../../../../images/" + info.image)}
                         alt = {info.imageAlt}
                         />
                         <CardContent>

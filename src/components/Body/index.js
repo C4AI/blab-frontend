@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-import { Background } from "../Background";
-import { Inicial } from "../Services/Inicial";
-import { ChatBot } from "../Services/ChatBot";
+import { Background } from "./Background";
+import { Inicial } from "./Services/Inicial";
+import { ChatBot } from "./Services/ChatBot";
 
 import "./Body.css";
 
