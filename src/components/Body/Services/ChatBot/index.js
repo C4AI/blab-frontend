@@ -98,7 +98,7 @@ export const ChatBot = ({ setService }) => {
       </div>
       <Suspense fallback={<div>Loading... / Carregando...</div>}>
         <ThemeProvider theme={theme}>
-          <Container component="main" maxWidth="xs" sx={{ position: "relative" }}>
+            <Container component="main" maxWidth="xs" sx={{ position: "relative", minWidth: "40vw" }}>
             {["rooms", "bots"].includes(mode) ? (
               !conversation ? (
                 !conversationId ? (

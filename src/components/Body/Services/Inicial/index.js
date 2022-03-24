@@ -22,14 +22,13 @@ export const Inicial = ({ setService }) => {
       {
         ServicesList.map(
             info => {
-                return info.active === true ?
+                return info.active === true &&
                 (<CardService
+                    key={info.name}
                     setService={setService}
                     info={info}
                  />
                 )
-                :
-                <></>
         })
       }
       </Grid>

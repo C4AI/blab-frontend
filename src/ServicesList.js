@@ -55,22 +55,6 @@ const ServicesList = [
         image: "exemplo.png",
         imageAlt: "*",
     },
-    {
-        name: "*",
-        title: "*",
-        text: "Um * serviço de exemplo",
-        active: false,
-        image: "exemplo.png",
-        imageAlt: "*",
-    },
-    {
-        name: "*",
-        title: "*",
-        text: "Um * serviço de exemplo",
-        active: false,
-        image: "exemplo.png",
-        imageAlt: "*",
-    },
 ]
 
 export default ServicesList
