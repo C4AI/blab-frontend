@@ -12,14 +12,18 @@ import { Participant } from "../Lobby/data-structures";
 /**
  * Display a row correspondent to a message
  * (including blank space, quote button, etc.).
+ *
+ * @category Services
+ * @subcategory ChatBot
+ * @component
  */
-export default function MessageRow({
+const MessageRow = ({
   message,
   myParticipantId,
   participants,
   handleQuote,
   quotedMessage = null,
-}) {
+}) => {
   const replyBtn =
     message["type"] !== MessageTypes.SYSTEM ? (
       <div className="reply-btn">
@@ -76,3 +80,5 @@ MessageRow.propTypes = {
   /** the message quoted by this message */
   quotedMessage: PropTypes.instanceOf(Message),
 };
+
+export default MessageRow;

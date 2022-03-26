@@ -5,12 +5,16 @@ import PropTypes from "prop-types";
 
 /**
  * Display a row containing a selectable conversation.
+ *
+ * @category Services
+ * @subcategory ChatBot
+ * @component
  */
-export default function ConversationRow({
+const ConversationRow = ({
   conversation,
   isSelected,
   handleSelect,
-}) {
+}) => {
   return (
     <ListItemButton selected={isSelected} onClick={() => handleSelect(true)}>
       <Radio
@@ -25,7 +29,6 @@ export default function ConversationRow({
 ConversationRow.propTypes = {
   /** conversation to be displayed */
   conversation: PropTypes.shape({
-    /** conversation name */
     name: PropTypes.string.isRequired,
   }).isRequired,
 
@@ -38,3 +41,5 @@ ConversationRow.propTypes = {
    */
   handleSelect: PropTypes.func,
 };
+
+export default ConversationRow;

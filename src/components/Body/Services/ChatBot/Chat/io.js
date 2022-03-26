@@ -20,6 +20,9 @@ axiosRetry(axios, { retries: 0, retryDelay: axiosRetry.exponentialDelay });
 /**
  * Provides methods to send/receive messages and other information
  * to/from the server.
+ *
+ * @category Services
+ * @subcategory ChatBot
  */
 class MessageIO {
   /** URL of the web socket server */
@@ -85,7 +88,7 @@ class MessageIO {
    *
    * This method tries to reconnect after 500 ms.
    *
-   * @param {import("websocket").ICloseEvent} event the close event
+   * @param {ICloseEvent} event the close event
    */
   #onClose() {
     if (this.intentionallyClosed) return;
@@ -97,7 +100,7 @@ class MessageIO {
 
   /**
    * Called when an event is received by the web socket.
-   * @param {import("websocket").IMessageEvent} event the receive event
+   * @param {IMessageEvent} event the receive event
    *
    * This method calls the callback functions for the corresponding
    * event types. If one of the events corresponds to a message that
@@ -216,6 +219,9 @@ class MessageIO {
 
   /**
    * Close the connection.
+   *
+   * @category Services
+   * @subcategory ChatBot
    */
   close() {
     this.intentionallyClosed = true;

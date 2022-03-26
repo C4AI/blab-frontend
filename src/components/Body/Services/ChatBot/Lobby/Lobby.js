@@ -7,14 +7,20 @@ import PropTypes from "prop-types";
 import LobbyIO from "./io.js";
 import BotSelector from "./BotSelector";
 
-/** Display a chat lobby, with the existing conversations
- * and an option to create a new one. */
-export default function Lobby({
+/** 
+  * Display a chat lobby, with the existing conversations
+  * and an option to create a new one.
+  *
+  * @category Services
+  * @subcategory ChatBot
+  * @component
+  */
+const Lobby = ({
   onJoinConversation,
   onCreateConversation,
   mode,
   bots,
-}) {
+}) => {
   const [conversations, setConversations] = useState([]);
 
   const [selectedId, setSelectedId] = useState(null);
@@ -181,3 +187,5 @@ Lobby.propTypes = {
    */
   bots: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 };
+
+export default Lobby;

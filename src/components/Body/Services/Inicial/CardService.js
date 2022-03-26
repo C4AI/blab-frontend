@@ -4,6 +4,11 @@ import PropTypes from 'prop-types';
 import { Grid, Card, CardContent, CardMedia, CardActionArea, Typography } from '@mui/material';
 import makeStyles from "./styles";
 
+/*
+ *  Card template. Draws picture and text information from an "info" prop.
+ *
+ *  @component
+*/
 export const CardService = ({ setService, info }) => {
     const classes = makeStyles();
     const [state, setState] = useState({

@@ -9,7 +9,16 @@ import { motion } from "framer-motion";
 import makeStyles from "./styles";
 import "./inicial.css"
 
-export const Inicial = ({ setService }) => {
+/**
+ *  Website services index. Contains clickable cards that redirect
+ *  to the other BlAB services. Card data is loaded from the
+ *  ServicesList javascript file.
+ *
+ *  @category Services
+ *  @subcategory Inicial
+ *  @component
+ */
+const Inicial = ({ setService }) => {
   const classes = makeStyles();
   return (
     <div className="inicial">
@@ -37,5 +46,8 @@ export const Inicial = ({ setService }) => {
 };
 
 Inicial.propTypes = {
+    /** Setter for the website Body's service variable. */
     setService: PropTypes.func.isRequired
 };
+
+export default Inicial;

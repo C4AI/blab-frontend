@@ -5,15 +5,21 @@ import { List } from "@mui/material";
 import ConversationRow from "./ConversationRow";
 import NewConversation from "./NewConversation";
 
-/** Display a list of existing conversations and an option
- * to create a new one. */
-export default function ConversationList({
+/** 
+  * Display a list of existing conversations and an option
+  * to create a new one. 
+  *
+  * @category Services
+  * @subcategory ChatBot
+  * @component
+  */
+const ConversationList = ({
   conversations,
   selectedId,
   idForNewConversation,
   handleSelectionChange,
   handleConversationNameChange,
-}) {
+}) => {
   return (
     <List component="nav">
       {conversations.map((conversation) => {
@@ -41,14 +47,12 @@ export default function ConversationList({
     </List>
   );
 }
+
 ConversationList.propTypes = {
   /** existing conversations */
   conversations: PropTypes.arrayOf(
     PropTypes.shape({
-      /** conversation id */
       id: PropTypes.string.isRequired,
-
-      /** conversation name */
       name: PropTypes.string.isRequired,
     })
   ),
@@ -70,3 +74,5 @@ ConversationList.propTypes = {
    */
   handleConversationNameChange: PropTypes.func.isRequired,
 };
+
+export default ConversationList;

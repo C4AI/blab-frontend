@@ -2,49 +2,23 @@ import React from "react";
 
 import PropTypes from "prop-types";
 import { useTheme } from "@emotion/react";
-import { Tooltip } from "@mui/material";
-import i18n from "../../../../../i18n";
 import QuotedMessage from "./QuotedMessage";
 import { Message, MessageConditions } from "./data-structures";
 import { Participant } from "../Lobby/data-structures";
-
-/**
- * Display a timestamp on the bottom-right corner.
- */
-function BottomRightTimestamp({ time }) {
-  const t = new Date(time);
-  const timeStr = Intl.DateTimeFormat(i18n.language, {
-    timeStyle: "short",
-  }).format(t);
-  const fullTimeStr = Intl.DateTimeFormat(i18n.language, {
-    timeStyle: "medium",
-    dateStyle: "long",
-  }).format(t);
-  return (
-    <div className="timestamp">
-      {/* invisible element to make room for the timestamp if needed */}
-      <div className="timestamp-invisible-space">{timeStr}</div>
-
-      {/* visible timestamp (bottom-right corner) */}
-      <Tooltip title={fullTimeStr}>
-        <div className="timestamp-visible">{timeStr}</div>
-      </Tooltip>
-    </div>
-  );
-}
-BottomRightTimestamp.propTypes = {
-  /** the time to display */
-  time: PropTypes.instanceOf(Date).isRequired,
-};
+import BottomRightTimestamp from "./BottomRightTimestamp";
 
 /**
  * Display a bubble with the contents of a message.
+ *
+ * @category Services
+ * @subcategory ChatBot
+ * @component
  */
-export default function MessageBubble({
+const MessageBubble = ({
   message,
   participants,
   quotedMessage = null,
-}) {
+}) => {
   const theme = useTheme();
   const received = message.condition === MessageConditions.RECEIVED;
   const s = {
@@ -86,3 +60,5 @@ MessageBubble.propTypes = {
   /** the quoted message, if any */
   quotedMessage: PropTypes.instanceOf(Message),
 };
+
+export default MessageBubble;

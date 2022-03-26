@@ -22,7 +22,17 @@ const theme = createTheme({
   },
 });
 
-export const ChatBot = ({ setService }) => {
+/**
+ *  ChatBot service. Currently displays a lobby
+ *  where they can create and enter conversations with bots.
+ *  If a conversation was previously open, it will skip the lobby
+ *  and head straight for the chat room.
+ *
+ *  @category Services
+ *  @subcategory ChatBot
+ *  @component
+ */
+const ChatBot = ({ setService }) => {
   const classes = style();
   const handleClick = () => {
     setService("Inicial");
@@ -133,5 +143,8 @@ export const ChatBot = ({ setService }) => {
 };
 
 ChatBot.propTypes = {
+  /** Setter for the website Body's service variable. */
     setService: PropTypes.func.isRequired
 };
+
+export default ChatBot;

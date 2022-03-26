@@ -13,8 +13,13 @@ import { Message } from "./data-structures";
 import { Conversation, Participant } from "../Lobby/data-structures";
 import ChatHeader from "./ChatHeader";
 
-/** Display the chat area, with header, message history and input fields.*/
-export default function Chat({ conversation, onLeave }) {
+/** Displays the chat area, with conversation header, message history and input fields.
+  * 
+  * @category Services
+  * @subcategory ChatBot
+  * @component
+  * */
+const Chat = ({ conversation, onLeave }) => {
   const insertMessage = useCallback(
     (messages, newMessage) => {
       if (
@@ -255,3 +260,5 @@ Chat.propTypes = {
   /** function called when user leaves the conversation */
   onLeave: PropTypes.func.isRequired,
 };
+
+export default Chat;

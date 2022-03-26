@@ -10,12 +10,16 @@ import { Participant } from "../Lobby/data-structures";
 
 /**
  * Display a system message.
+ *
+ * @category Services
+ * @subcategory ChatBot
+ * @component
  */
-export default function SystemMessageBubble({
+const SystemMessageBubble = ({
   message,
   participants,
   myParticipantId,
-}) {
+}) => {
   let text = "";
   const participantId = message.additionalMetadata["participant_id"];
   const name = participantId ? participants[participantId].name : null;
@@ -75,3 +79,5 @@ SystemMessageBubble.propTypes = {
    *  (used to display messages, e.g. "you left" rather than "Name left") */
   myParticipantId: PropTypes.string.isRequired,
 };
+
+export default SystemMessageBubble;

@@ -6,13 +6,17 @@ import PropTypes from "prop-types";
 import ChatRightMenu from "./ChatRightMenu";
 
 /**
- * Display the conversation header, with title and participants.
+ * Conversation header, with title and participants.
+ *
+ * @category Services
+ * @subcategory ChatBot
+ * @component
  */
-export default function ChatHeader({
+const ChatHeader = ({
   conversationName,
   participants,
   onTrigger,
-}) {
+}) => {
   return (
     <Card className="chat-header">
       <CardHeader
@@ -42,3 +46,5 @@ ChatHeader.propTypes = {
    */
   onTrigger: PropTypes.func,
 };
+
+export default ChatHeader;

@@ -3,13 +3,21 @@
  *
  * @property {String} BOT bot participant
  * @property {String} HUMAN human participant
+ *
+ * @category Services
+ * @subcategory ChatBot
  */
 export const ParticipantTypes = Object.freeze({
   BOT: "B",
   HUMAN: "H",
 });
 
-/** Represents a conversation participant */
+/** 
+  * Represents a conversation participant 
+  *
+  * @category Services
+  * @subcategory ChatBot
+  * */
 export class Participant {
   /**
    * Create an instance.
@@ -37,7 +45,12 @@ export class Participant {
   }
 }
 
-/** Represents a conversation and its participants. */
+/**
+  * Represents a conversation and its participants. 
+  *
+  * @category Services
+  * @subcategory ChatBot
+  */
 export class Conversation {
   /**
    * Create an instance.

@@ -13,6 +13,12 @@ import logo_usp from "../../images/logo_usp.png";
 import logo_ibm from "../../images/logo_ibm.png";
 import logo_fapesp from "../../images/logo_fapesp.png";
 
+/**
+ * Global website footer.
+ *
+ * @category Basic
+ * @component
+ */
 const Footer = () => {
   const classes = useStyle();
 

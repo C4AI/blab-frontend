@@ -27,11 +27,13 @@ only a single conversation. Hence, some limitations are expected:
  * @param {Object} conversation conversation data
  */
 
-export default class LobbyIO {
-  /**
-   * Provides methods to get the list of conversations and join/create a conversation.
-
-   */
+/**
+ * Provides methods to get the list of conversations and join/create a conversation.
+ *
+ * @category Services
+ * @subcategory ChatBot
+ */
+class LobbyIO {
   constructor() {
     this.timeoutIds = [];
     this.intentionallyClosed = false;
@@ -46,6 +48,9 @@ export default class LobbyIO {
    * @param {conversationListCallback} callback function called when the conversation list is refreshed
    * @param {errorCallback} failCallback function called if the request fails (after retries, if any)
    * @param {number} retries number of retries if the request fails with 5XX
+   *
+   * @category Services
+   * @subcategory ChatBot
    */
   getConversations(callback, failCallback, interval, retries = Infinity) {
     axios
@@ -74,6 +79,9 @@ export default class LobbyIO {
    * @param {function(Array<string>)} callback
    *   the function to be called when the list of bots is retrieved
    * @param {number} limit the maximum number of bots to fetch
+   *
+   * @category Services
+   * @subcategory ChatBot
    */
   getBots(callback, limit = 100) {
     let url = `/api/chat/bots/`;
@@ -107,6 +115,9 @@ export default class LobbyIO {
    *      passed in the first argument)
    * @param {errorCallback} failCallback function to call if the
    *      conversation creation fails (error is passed in the first argument)
+   *
+   * @category Services
+   * @subcategory ChatBot
    */
   createConversation(nickname, conversationName, bots, callback, failCallback) {
     axios
@@ -128,6 +139,9 @@ export default class LobbyIO {
    *      passed in the first argument)
    * @param {errorCallback} failCallback function to call if the
    *      conversation joining fails (error is passed in the first argument)
+   *
+   * @category Services
+   * @subcategory ChatBot
    */
   joinConversation(nickname, conversationId, callback, failCallback) {
     axios
@@ -138,9 +152,15 @@ export default class LobbyIO {
       .catch((e) => failCallback && failCallback(e));
   }
 
-  /** stop all connections */
+  /** stop all connections 
+    *
+    * @category Services
+    * @subcategory ChatBot
+    */
   close() {
     this.intentionallyClosed = true;
     for (const t of this.timeoutIds) clearTimeout(t);
   }
 }
+
+export default LobbyIO;

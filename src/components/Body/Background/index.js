@@ -11,6 +11,12 @@ import image_3 from "../../../images/image_3.jpg";
 
 const images = [image_1, image_2, image_3];
 
+/**
+ *  Website background containing animated image slideshow.
+ *
+ *  @category Basic
+ *  @component
+ */
 function Background() {
   const [page, setPage] = useState(0);
   const imageIndex = wrap(0, images.length, page);
@@ -37,4 +43,4 @@ function Background() {
   );
 }
 
-export { Background };
+export default Background;

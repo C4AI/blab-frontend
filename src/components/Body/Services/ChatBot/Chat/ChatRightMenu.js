@@ -20,11 +20,14 @@ import { Trans } from "react-i18next";
 import PropTypes from "prop-types";
 
 /**
- * Display the top-right corner menu in a conversation.
- *
+ * Displays the top-right corner menu in a conversation.
  * Currently, it only has one option ("leave").
+ *
+ * @category Services
+ * @subcategory ChatBot
+ * @component
  */
-export default function ChatRightMenu({ onTrigger }) {
+const ChatRightMenu = ({ onTrigger }) => {
   const [menuAnchor, setMenuAnchor] = useState(null);
 
   const [changeNameIsOpen, setChangeNameIsOpen] = useState(false);
@@ -118,3 +121,5 @@ ChatRightMenu.propTypes = {
    */
   onTrigger: PropTypes.func,
 };
+
+export default ChatRightMenu;

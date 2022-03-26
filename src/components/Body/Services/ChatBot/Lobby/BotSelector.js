@@ -17,8 +17,12 @@ import { Trans } from "react-i18next";
 /**
  * Display a selector that allows the user to choose
  * one or more bots.
+ *
+ * @category Services
+ * @subcategory ChatBot
+ * @component
  */
-export default function BotSelector({ bots, onChangeSelection }) {
+const BotSelector = ({ bots, onChangeSelection }) => {
   const [selectedBots, setSelectedBots] = useState([]);
 
   useEffect(() => {
@@ -62,3 +66,5 @@ BotSelector.propTypes = {
    */
   onChangeSelection: PropTypes.func,
 };
+
+export default BotSelector;

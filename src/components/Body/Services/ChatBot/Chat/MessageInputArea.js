@@ -18,7 +18,9 @@ import AttachFileIcon from "@mui/icons-material/AttachFile";
 /**
  * Display elements where the user can insert a message and send it.
  *
- * @type React.FC<MessageInputAreaPropTypes>
+ * @category Services
+ * @subcategory ChatBot
+ * @component React.FC<MessageInputAreaPropTypes>
  */
 const MessageInputArea = forwardRef((
   { onSendMessage, limits = {} },
@@ -26,7 +28,11 @@ const MessageInputArea = forwardRef((
 ) => {
   const textFieldRef = useRef(null);
   useImperativeHandle(ref, () => ({
-    /** Focus the text field */
+    /** Focus the text field 
+     *
+     * @category Services
+     * @subcategory ChatBot
+     */
     focus() {
       textFieldRef.current.focus();
     },
@@ -59,7 +65,6 @@ const MessageInputArea = forwardRef((
    * If there is a message (typed, attachment inserted, etc.),
    * collect its data in  a {@link Message} instance, call
    * the callback function and clear the fields.
-   * @returns
    */
   function sendMessage() {
     const message = collectMessage();

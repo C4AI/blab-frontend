@@ -10,12 +10,16 @@ import { Participant } from "../Lobby/data-structures";
 
 /**
  * Display a quoted message.
+ *
+ * @category Services
+ * @subcategory ChatBot
+ * @component
  */
-export default function QuotedMessage({
+const QuotedMessage = ({
   message,
   participants,
   handleRemoveQuote = null,
-}) {
+}) => {
   if (!message) return null;
   return (
     <div className="quoted-message">
@@ -59,3 +63,5 @@ QuotedMessage.propTypes = {
    */
   handleRemoveQuote: PropTypes.func,
 };
+
+export default QuotedMessage;
