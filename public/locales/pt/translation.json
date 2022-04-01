@@ -19,5 +19,6 @@
   "sendMessage": "Enviar mensagem",
   "insertAttachment": "Anexar arquivo",
   "insertMedia": "Inserir mídia",
-  "recordVoice": "Gravar voz"
+  "recordVoice": "Gravar voz",
+  "loadingReporter": "Carregando os tweets de BLAB Repórter..."
 }

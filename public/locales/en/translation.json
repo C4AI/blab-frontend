@@ -19,5 +19,6 @@
   "sendMessage": "Send message",
   "insertAttachment": "Attach file",
   "insertMedia": "Insert media",
-  "recordVoice": "Record voice"
+  "recordVoice": "Record voice",
+  "loadingReporter": "Loading tweets by BLAB Reporter..."
 }

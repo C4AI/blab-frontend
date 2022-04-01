@@ -8,7 +8,7 @@ const ServicesList = [
         imageAlt: "Ilustração de um robô de conversa",
     },
     {
-        name: "RoboJornalista",
+        name: "Reporter",
         title: "Robô jornalista",
         text: "Um robô que gera notícias sobre a Amazônia Azul",
         active: true,

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Background from "./Background";
 import Inicial from "./Services/Inicial";
 import ChatBot from "./Services/ChatBot";
+import Reporter from "./Services/Reporter";
 
 import "./Body.css";
 
@@ -37,6 +38,8 @@ function Body() {
         return <Inicial setService={setService} />;
       case "ChatBot":
         return <ChatBot setService={setService}/>;
+      case "Reporter":
+        return <Reporter setService={setService}/>;
       case "Wiki":
         return <></>;
       default:
