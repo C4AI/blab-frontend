@@ -1,0 +1,23 @@
+{
+  "welcomeMessage": "Bem-vindo(a) ao BLAB. Qual é o seu nome?",
+  "newConversation": "Nova:",
+  "newConversationName": "Nome da conversa",
+  "yourName": "Nome",
+  "joinConversation": "Entrar na conversa",
+  "startConversation": "Iniciar conversa",
+  "createConversation": "Criar conversa",
+  "createdConversation": "Conversa criada",
+  "joinedConversation": "<0>{{name}}</0> entrou na conversa",
+  "youJoinedConversation": "Você entrou na conversa",
+  "leftConversation": "<0>{{name}}</0> saiu da conversa",
+  "youLeftConversation": "Você saiu da conversa",
+  "typeMessage": "Digite uma mensagem",
+  "leaveConversation": "Sair",
+  "senderYou": "Você",
+  "changeParticipantName": "Alterar meu nome",
+  "inviteBots": "Convidar bots",
+  "sendMessage": "Enviar mensagem",
+  "insertAttachment": "Anexar arquivo",
+  "insertMedia": "Inserir mídia",
+  "recordVoice": "Gravar voz"
+}
