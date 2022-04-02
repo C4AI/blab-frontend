@@ -11,7 +11,7 @@ import { Trans } from "react-i18next";
 const BLABReporter = () => {
   const loadingMsg = (
     <Trans i18nKey="loadingReporter">Loading tweets by BLAB Reporter</Trans>
-  );
+  )
   return (
     <TwitterBot
       id="blab-reporter-twitter-timeline"

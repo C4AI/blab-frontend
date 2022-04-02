@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 
 import { Button } from "@material-ui/core";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+import { Container } from "@mui/material";
 
 import "./Reporter.css";
 import style from "./style.js";
-import BLABReporter from "./TwitterBots/BlabReporterTwitterBot";
+import BLABReporter from "./BlabReporterTwitterBot";
 import { useTranslation } from "react-i18next";
 
 /**
@@ -31,7 +32,9 @@ const Reporter = ({setService}) => {
           startIcon={<KeyboardBackspaceIcon style={{ fontSize: 50 }} />}
         />
       </div>
-      <BLABReporter />
+      <Container component="main" maxWidth="xs" sx={{ position: "relative", minWidth: "40vw" }}>
+        <BLABReporter />
+      </Container>
     </div>
   );
 };
