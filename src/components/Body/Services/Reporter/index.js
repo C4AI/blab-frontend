@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import { Button } from "@material-ui/core";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
@@ -18,7 +18,7 @@ import { useTranslation } from "react-i18next";
  *  @subcategory Reporter
  *  @component
  */
-const Reporter = ({setService}) => {
+const Reporter = ({ setService }) => {
   const classes = style();
   const handleClick = () => {
     setService("Inicial");
@@ -28,11 +28,17 @@ const Reporter = ({setService}) => {
   return (
     <div className="reporter">
       <div align="left">
-        <Button className={classes.button} onClick={handleClick}
+        <Button
+          className={classes.button}
+          onClick={handleClick}
           startIcon={<KeyboardBackspaceIcon style={{ fontSize: 50 }} />}
         />
       </div>
-      <Container component="main" maxWidth="xs" sx={{ position: "relative", minWidth: "40vw" }}>
+      <Container
+        component="main"
+        maxWidth="xs"
+        sx={{ position: "relative", minWidth: "40vw" }}
+      >
         <BLABReporter />
       </Container>
     </div>
@@ -41,7 +47,7 @@ const Reporter = ({setService}) => {
 
 Reporter.propTypes = {
   /** Setter for the website Body's service variable. */
-  setService: PropTypes.func.isRequired
+  setService: PropTypes.func.isRequired,
 };
 
 export default Reporter;

@@ -12,11 +12,7 @@ import ChatRightMenu from "./ChatRightMenu";
  * @subcategory ChatBot
  * @component
  */
-const ChatHeader = ({
-  conversationName,
-  participants,
-  onTrigger,
-}) => {
+const ChatHeader = ({ conversationName, participants, onTrigger }) => {
   return (
     <Card className="chat-header">
       <CardHeader
@@ -27,7 +23,7 @@ const ChatHeader = ({
       />
     </Card>
   );
-}
+};
 
 ChatHeader.propTypes = {
   /** title of the conversation */

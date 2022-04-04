@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Suspense } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import { createTheme, ThemeProvider } from "@mui/material";
 import { Container } from "@mui/material";
@@ -102,13 +102,19 @@ const ChatBot = ({ setService }) => {
   return (
     <div className="chatbot">
       <div align="left">
-        <Button className={classes.button} onClick={handleClick}
+        <Button
+          className={classes.button}
+          onClick={handleClick}
           startIcon={<KeyboardBackspaceIcon style={{ fontSize: 50 }} />}
         />
       </div>
       <Suspense fallback={<div>Loading... / Carregando...</div>}>
         <ThemeProvider theme={theme}>
-            <Container component="main" maxWidth="xs" sx={{ position: "relative", minWidth: "40vw" }}>
+          <Container
+            component="main"
+            maxWidth="xs"
+            sx={{ position: "relative", minWidth: "40vw" }}
+          >
             {["rooms", "bots"].includes(mode) ? (
               !conversation ? (
                 !conversationId ? (
@@ -131,8 +137,8 @@ const ChatBot = ({ setService }) => {
             ) : (
               <p>
                 INVALID MODE. PLEASE SET THE ENVIRONMENT VALUE{" "}
-                <code>REACT_APP_CHAT_MODE</code> TO <i>rooms</i> OR <i>bots</i> AND
-                TRY AGAIN.
+                <code>REACT_APP_CHAT_MODE</code> TO <i>rooms</i> OR <i>bots</i>{" "}
+                AND TRY AGAIN.
               </p>
             )}
           </Container>
@@ -144,7 +150,7 @@ const ChatBot = ({ setService }) => {
 
 ChatBot.propTypes = {
   /** Setter for the website Body's service variable. */
-    setService: PropTypes.func.isRequired
+  setService: PropTypes.func.isRequired,
 };
 
 export default ChatBot;

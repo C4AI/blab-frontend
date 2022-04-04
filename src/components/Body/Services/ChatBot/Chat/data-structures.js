@@ -1,18 +1,18 @@
 /**
-  * Represents message types.
-  *
-  * @property {String} TEXT text message (has only text)
-  * @property {String} MEDIA image/audio/video message
-  *  (media + optional caption)
-  * @property {String} VOICE voice message (only media)
-  * @property {String} ATTACHMENT attachment message
-  *  (file + optional caption)
-  * @property {String} SYSTEM system message
-  *  (has `event`, may have `additional_metadata`)
-  *
-  * @category Services
-  * @subcategory ChatBot
-  */
+ * Represents message types.
+ *
+ * @property {String} TEXT text message (has only text)
+ * @property {String} MEDIA image/audio/video message
+ *  (media + optional caption)
+ * @property {String} VOICE voice message (only media)
+ * @property {String} ATTACHMENT attachment message
+ *  (file + optional caption)
+ * @property {String} SYSTEM system message
+ *  (has `event`, may have `additional_metadata`)
+ *
+ * @category Services
+ * @subcategory ChatBot
+ */
 export const MessageTypes = Object.freeze({
   TEXT: "T",
   MEDIA: "M",
@@ -22,16 +22,16 @@ export const MessageTypes = Object.freeze({
 });
 
 /**
-  * Represent message direction and status.
-  *
-  * @property {String} SENDING pending message
-  * @property {String} SENT sent message (confirmed by server)
-  * @property {String} RECEIVED received message
-  * @property {String} SYSTEM system message
-    *
-  * @category Services
-  * @subcategory ChatBot
-  */
+ * Represent message direction and status.
+ *
+ * @property {String} SENDING pending message
+ * @property {String} SENT sent message (confirmed by server)
+ * @property {String} RECEIVED received message
+ * @property {String} SYSTEM system message
+ *
+ * @category Services
+ * @subcategory ChatBot
+ */
 export const MessageConditions = Object.freeze({
   SENDING: "sending",
   SENT: "sent",
@@ -41,7 +41,7 @@ export const MessageConditions = Object.freeze({
 
 /**
  * Represents a message.
- * 
+ *
  * @category Services
  * @subcategory ChatBot
  */

@@ -5,14 +5,14 @@ import { List } from "@mui/material";
 import ConversationRow from "./ConversationRow";
 import NewConversation from "./NewConversation";
 
-/** 
-  * Display a list of existing conversations and an option
-  * to create a new one. 
-  *
-  * @category Services
-  * @subcategory ChatBot
-  * @component
-  */
+/**
+ * Display a list of existing conversations and an option
+ * to create a new one.
+ *
+ * @category Services
+ * @subcategory ChatBot
+ * @component
+ */
 const ConversationList = ({
   conversations,
   selectedId,
@@ -46,7 +46,7 @@ const ConversationList = ({
       />
     </List>
   );
-}
+};
 
 ConversationList.propTypes = {
   /** existing conversations */

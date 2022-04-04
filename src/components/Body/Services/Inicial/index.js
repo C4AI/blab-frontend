@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import ServicesList from "../../../../ServicesList";
 import { CardService } from "./CardService";
@@ -7,7 +7,7 @@ import { Grid } from "@mui/material";
 import { motion } from "framer-motion";
 
 import makeStyles from "./styles";
-import "./inicial.css"
+import "./inicial.css";
 
 /**
  *  Website services index. Contains clickable cards that redirect
@@ -28,26 +28,25 @@ const Inicial = ({ setService }) => {
         <h2>BLAB</h2>
       </motion.div>
       <Grid container className={classes.grid}>
-      {
-        ServicesList.map(
-            info => {
-                return info.active === true &&
-                (<CardService
-                    key={info.name}
-                    setService={setService}
-                    info={info}
-                 />
-                )
-        })
-      }
+        {ServicesList.map((info) => {
+          return (
+            info.active === true && (
+              <CardService
+                key={info.name}
+                setService={setService}
+                info={info}
+              />
+            )
+          );
+        })}
       </Grid>
     </div>
   );
 };
 
 Inicial.propTypes = {
-    /** Setter for the website Body's service variable. */
-    setService: PropTypes.func.isRequired
+  /** Setter for the website Body's service variable. */
+  setService: PropTypes.func.isRequired,
 };
 
 export default Inicial;

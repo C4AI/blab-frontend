@@ -14,11 +14,7 @@ import BottomRightTimestamp from "./BottomRightTimestamp";
  * @subcategory ChatBot
  * @component
  */
-const MessageBubble = ({
-  message,
-  participants,
-  quotedMessage = null,
-}) => {
+const MessageBubble = ({ message, participants, quotedMessage = null }) => {
   const theme = useTheme();
   const received = message.condition === MessageConditions.RECEIVED;
   const s = {
@@ -47,7 +43,7 @@ const MessageBubble = ({
       <BottomRightTimestamp time={message.time} />
     </div>
   );
-}
+};
 
 MessageBubble.propTypes = {
   /** the message to be displayed */

@@ -4,17 +4,13 @@ import { ListItemButton, ListItemText, Radio, TextField } from "@mui/material";
 import PropTypes from "prop-types";
 import { Trans } from "react-i18next";
 
-/** Display a row containing a selectable option to create a new conversation. 
-  *
-  * @category Services
-  * @subcategory ChatBot
-  * @component
-  */
-const NewConversation = ({
-  isSelected,
-  handleSelect,
-  handleNameChange,
-}) => {
+/** Display a row containing a selectable option to create a new conversation.
+ *
+ * @category Services
+ * @subcategory ChatBot
+ * @component
+ */
+const NewConversation = ({ isSelected, handleSelect, handleNameChange }) => {
   return (
     <ListItemButton selected={isSelected} onClick={() => handleSelect(true)}>
       <Radio
@@ -32,7 +28,7 @@ const NewConversation = ({
       ) : null}
     </ListItemButton>
   );
-}
+};
 
 NewConversation.propTypes = {
   /** whether the conversation is selected */

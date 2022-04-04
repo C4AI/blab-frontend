@@ -14,11 +14,11 @@ import { Conversation, Participant } from "../Lobby/data-structures";
 import ChatHeader from "./ChatHeader";
 
 /** Displays the chat area, with conversation header, message history and input fields.
-  * 
-  * @category Services
-  * @subcategory ChatBot
-  * @component
-  * */
+ *
+ * @category Services
+ * @subcategory ChatBot
+ * @component
+ * */
 const Chat = ({ conversation, onLeave }) => {
   const insertMessage = useCallback(
     (messages, newMessage) => {
@@ -162,7 +162,11 @@ const Chat = ({ conversation, onLeave }) => {
 
   useEffect(() => {
     setTimeout(
-      () => messageListEndRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" }),
+      () =>
+        messageListEndRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+        }),
       100
     );
   }, [oldMessages, messages, pendingMessages]);
@@ -251,7 +255,7 @@ const Chat = ({ conversation, onLeave }) => {
       />
     </div>
   );
-}
+};
 
 Chat.propTypes = {
   /** conversation */

@@ -7,20 +7,15 @@ import PropTypes from "prop-types";
 import LobbyIO from "./io.js";
 import BotSelector from "./BotSelector";
 
-/** 
-  * Display a chat lobby, with the existing conversations
-  * and an option to create a new one.
-  *
-  * @category Services
-  * @subcategory ChatBot
-  * @component
-  */
-const Lobby = ({
-  onJoinConversation,
-  onCreateConversation,
-  mode,
-  bots,
-}) => {
+/**
+ * Display a chat lobby, with the existing conversations
+ * and an option to create a new one.
+ *
+ * @category Services
+ * @subcategory ChatBot
+ * @component
+ */
+const Lobby = ({ onJoinConversation, onCreateConversation, mode, bots }) => {
   const [conversations, setConversations] = useState([]);
 
   const [selectedId, setSelectedId] = useState(null);
@@ -161,7 +156,7 @@ const Lobby = ({
       </div>
     </Box>
   );
-}
+};
 
 Lobby.propTypes = {
   /** function to be called when the user joins a conversation

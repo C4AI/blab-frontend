@@ -56,7 +56,7 @@ const BotSelector = ({ bots, onChangeSelection }) => {
       </Select>
     </FormControl>
   );
-}
+};
 BotSelector.propTypes = {
   /** list of available bots */
   bots: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,

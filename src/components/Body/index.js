@@ -9,14 +9,14 @@ import "./Body.css";
 
 /**
  *  Global website body.
- *  
+ *
  *  @category Basic
  *  @component
  */
 function Body() {
   const serviceArray = useState("Inicial");
 
-  /** 
+  /**
    *  State variable that determines current service being displayed.
    *
    *  @constant
@@ -37,9 +37,9 @@ function Body() {
       case "Inicial":
         return <Inicial setService={setService} />;
       case "ChatBot":
-        return <ChatBot setService={setService}/>;
+        return <ChatBot setService={setService} />;
       case "Reporter":
-        return <Reporter setService={setService}/>;
+        return <Reporter setService={setService} />;
       case "Wiki":
         return <></>;
       default:

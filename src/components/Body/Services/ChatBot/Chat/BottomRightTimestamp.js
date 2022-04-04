@@ -31,11 +31,10 @@ const BottomRightTimestamp = ({ time }) => {
       </Tooltip>
     </div>
   );
-}
+};
 BottomRightTimestamp.propTypes = {
   /** the time to display */
   time: PropTypes.instanceOf(Date).isRequired,
 };
 
 export default BottomRightTimestamp;
-
