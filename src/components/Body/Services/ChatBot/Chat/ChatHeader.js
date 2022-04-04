@@ -4,6 +4,7 @@ import { Card, CardHeader } from "@mui/material";
 import PropTypes from "prop-types";
 
 import ChatRightMenu from "./ChatRightMenu";
+import "../chatbot.css";
 
 /**
  * Conversation header, with title and participants.
@@ -14,9 +15,9 @@ import ChatRightMenu from "./ChatRightMenu";
  */
 const ChatHeader = ({ conversationName, participants, onTrigger }) => {
   return (
-    <Card className="chat-header">
+    <Card className="chat-header-card">
       <CardHeader
-        className="chat-header"
+        className="chat-header-card-header"
         subheader={conversationName}
         title={participants.map((p) => p.name).join(", ")}
         action={<ChatRightMenu onTrigger={onTrigger} />}

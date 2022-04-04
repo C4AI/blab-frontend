@@ -1,6 +1,7 @@
 import React from "react";
 import TwitterBot from "./TwitterBot";
 import { Trans } from "react-i18next";
+import "./Reporter.css";
 
 /** Display the latest tweets made by BLAB Reporter.
  *

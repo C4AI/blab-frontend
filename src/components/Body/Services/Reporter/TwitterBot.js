@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import { TwitterFollowButton } from "react-twitter-embed";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
 
+import "./Reporter.css";
+
 /** Display the latest tweets made by a Twitter account.
  *
  * @category Services
@@ -14,8 +16,12 @@ const TwitterBot = ({ username, loadingMessage = "" }) => {
   return (
     <>
       <Suspense fallback={<div>{loadingMessage}</div>}>
-        <TwitterFollowButton screenName={username} />
+        <TwitterFollowButton
+          className="twitter-follow-button"
+          screenName={username} 
+        />
         <TwitterTimelineEmbed
+          className="twitter-timeline"
           sourceType="profile"
           screenName={username}
           options={{ height: 400 }}

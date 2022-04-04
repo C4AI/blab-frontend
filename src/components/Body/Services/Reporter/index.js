@@ -6,7 +6,6 @@ import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { Container } from "@mui/material";
 
 import "./Reporter.css";
-import style from "./style.js";
 import BLABReporter from "./BlabReporterTwitterBot";
 import { useTranslation } from "react-i18next";
 
@@ -19,7 +18,6 @@ import { useTranslation } from "react-i18next";
  *  @component
  */
 const Reporter = ({ setService }) => {
-  const classes = style();
   const handleClick = () => {
     setService("Inicial");
   };
@@ -27,18 +25,19 @@ const Reporter = ({ setService }) => {
   useTranslation();
   return (
     <div className="reporter">
-      <div align="left">
-        <Button
-          className={classes.button}
-          onClick={handleClick}
-          startIcon={<KeyboardBackspaceIcon style={{ fontSize: 50 }} />}
-        />
-      </div>
       <Container
+        className="reporter-container"
         component="main"
         maxWidth="xs"
-        sx={{ position: "relative", minWidth: "40vw" }}
       >
+        <div className="reporter-container-header">
+          <div className="reporter-return-button">
+            <Button
+              onClick={handleClick}
+              startIcon={<KeyboardBackspaceIcon style={{ fontSize: 50 }} />}
+            />
+          </div>
+        </div>
         <BLABReporter />
       </Container>
     </div>

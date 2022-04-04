@@ -13,7 +13,6 @@ import { useTranslation } from "react-i18next";
 import LobbyIO from "./Lobby/io";
 
 import "./chatbot.css";
-import style from "./style.js";
 
 const theme = createTheme({
   palette: {
@@ -33,7 +32,7 @@ const theme = createTheme({
  *  @component
  */
 const ChatBot = ({ setService }) => {
-  const classes = style();
+
   const handleClick = () => {
     setService("Inicial");
   };
@@ -101,20 +100,22 @@ const ChatBot = ({ setService }) => {
 
   return (
     <div className="chatbot">
-      <div align="left">
-        <Button
-          className={classes.button}
-          onClick={handleClick}
-          startIcon={<KeyboardBackspaceIcon style={{ fontSize: 50 }} />}
-        />
-      </div>
-      <Suspense fallback={<div>Loading... / Carregando...</div>}>
-        <ThemeProvider theme={theme}>
-          <Container
-            component="main"
-            maxWidth="xs"
-            sx={{ position: "relative", minWidth: "40vw" }}
-          >
+      <Container
+        className="chatbot-container"
+        component="main"
+        maxWidth="xs"
+        sx={{ position: "relative", minWidth: "40vw" }}
+      >
+        <div className="chatbot-container-header">
+          <div className="chatbot-return-button">
+            <Button
+              onClick={handleClick}
+              startIcon={<KeyboardBackspaceIcon style={{ fontSize: 50 }} />}
+            />
+          </div>
+        </div>
+        <Suspense fallback={<div>Loading... / Carregando...</div>}>
+          <ThemeProvider theme={theme}>
             {["rooms", "bots"].includes(mode) ? (
               !conversation ? (
                 !conversationId ? (
@@ -141,9 +142,9 @@ const ChatBot = ({ setService }) => {
                 AND TRY AGAIN.
               </p>
             )}
-          </Container>
-        </ThemeProvider>
-      </Suspense>
+          </ThemeProvider>
+        </Suspense>
+      </Container>
     </div>
   );
 };

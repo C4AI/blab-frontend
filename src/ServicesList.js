@@ -5,7 +5,9 @@ const ServicesList = [
   {
     name: "ChatBot",
     title: <Trans i18nKey="chatBotTitle">ChatBot</Trans>,
-    text: <Trans i18nKey="chatBotText">A ChatBot specialized in Blue Amazon</Trans>,
+    text: (
+      <Trans i18nKey="chatBotText">A ChatBot specialized in Blue Amazon</Trans>
+    ),
     active: true,
     image: "Chatbot.jpg",
     imageAlt: "Ilustração de um robô de conversa",
@@ -13,7 +15,11 @@ const ServicesList = [
   {
     name: "Reporter",
     title: <Trans i18nKey="reporterTitle">Journalist Robot</Trans>,
-    text: <Trans i18nKey="reporterText">A robot that generates news on the Blue Amazon</Trans>,
+    text: (
+      <Trans i18nKey="reporterText">
+        A robot that generates news on the Blue Amazon
+      </Trans>
+    ),
     active: true,
     image: "RoboJornalista.jpeg",
     imageAlt: "Ilustração de um robô jornalista",

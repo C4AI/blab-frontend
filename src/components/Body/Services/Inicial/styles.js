@@ -16,6 +16,7 @@ export default makeStyles({
     boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
     backdropFilter: "blur(2.6px)",
     border: "1px solid rgba(255, 255, 255, 0.14)",
+    marginBottom: "80px"
   },
   cardAction: {
     display: "block",
