@@ -20,5 +20,11 @@
   "insertAttachment": "Attach file",
   "insertMedia": "Insert media",
   "recordVoice": "Record voice",
-  "loadingReporter": "Loading tweets by BLAB Reporter..."
+  "loadingReporter": "Loading tweets by BLAB Reporter...",
+  "chatBotTitle": "ChatBot",
+  "chatBotText": "A ChatBot specialized in Blue Amazon",
+  "reporterTitle": "Journalist Robot",
+  "reporterText": "A robot that generates news on the Blue Amazon",
+  "wikiTitle": "Wiki",
+  "wikiText": "A wiki focused on the Blue Amazon"
 }

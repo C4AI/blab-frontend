@@ -20,5 +20,11 @@
   "insertAttachment": "Anexar arquivo",
   "insertMedia": "Inserir mídia",
   "recordVoice": "Gravar voz",
-  "loadingReporter": "Carregando os tweets de BLAB Repórter..."
+  "loadingReporter": "Carregando os tweets de BLAB Repórter...",
+  "chatBotTitle": "ChatBot",
+  "chatBotText": "Um Chabot especializado em Amazônia Azul",
+  "reporterTitle": "Robô Jornalista",
+  "reporterText": "Um robô que gera notícias sobre a Amazônia Azul",
+  "wikiTitle": "Wiki",
+  "wikiText": "Uma wiki especializada em temas da Amazônia Azul"
 }
