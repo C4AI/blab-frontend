@@ -6,7 +6,6 @@ import { CardService } from "./CardService";
 import { Grid } from "@mui/material";
 import { motion } from "framer-motion";
 
-import makeStyles from "./styles";
 import "./inicial.css";
 
 /**
@@ -19,7 +18,6 @@ import "./inicial.css";
  *  @component
  */
 const Inicial = ({ setService }) => {
-  const classes = makeStyles();
   return (
     <div className="inicial">
       <motion.div className="title">
@@ -27,7 +25,7 @@ const Inicial = ({ setService }) => {
         <hr />
         <h2>BLAB</h2>
       </motion.div>
-      <Grid container className={classes.grid}>
+      <Grid container className="grid">
         {ServicesList.map((info) => {
           return (
             info.active === true && (

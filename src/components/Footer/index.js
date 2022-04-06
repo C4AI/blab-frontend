@@ -7,7 +7,6 @@ import YouTubeIcon from "@material-ui/icons/YouTube";
 import TwitterIcon from "@material-ui/icons/Twitter";
 
 import "./Footer.css";
-import useStyle from "./styles";
 
 import logo_usp from "../../images/logo_usp.png";
 import logo_ibm from "../../images/logo_ibm.png";
@@ -20,10 +19,8 @@ import logo_fapesp from "../../images/logo_fapesp.png";
  * @component
  */
 const Footer = () => {
-  const classes = useStyle();
-
   return (
-    <footer className={classes.background}>
+    <footer className="footer">
       <Divider />
       <Box padding={5}>
         <Grid container justifyContent="space-evenly">
@@ -32,16 +29,16 @@ const Footer = () => {
           </Grid>
           <Grid item>
             <IconButton href="https://www.facebook.com/groups/C4AI.USP">
-              <FacebookIcon className={classes.icon} fontSize="large" />
+              <FacebookIcon className="footer.icon" fontSize="large" />
             </IconButton>
             <IconButton href="https://www.linkedin.com/groups/8980226/">
-              <LinkedInIcon className={classes.icon} fontSize="large" />
+              <LinkedInIcon className="footer.icon" fontSize="large" />
             </IconButton>
             <IconButton href="https://www.youtube.com/channel/UCBg_eunUlxU5b95vyg_mxww">
-              <YouTubeIcon className={classes.icon} fontSize="large" />
+              <YouTubeIcon className="footer.icon" fontSize="large" />
             </IconButton>
             <IconButton href="https://twitter.com/C4AI1">
-              <TwitterIcon className={classes.icon} fontSize="large" />
+              <TwitterIcon className="footer.icon" fontSize="large" />
             </IconButton>
           </Grid>
           <Grid item>

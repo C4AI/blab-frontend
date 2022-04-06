@@ -38,3 +38,29 @@
   font-size: 4rem;
   vertical-align: baseline;
 }
+
+.grid {
+    max-width: 40%;
+    min-width: 600px;
+    width: 70%;
+    min-height: 40vh;
+    background-color: transparent;
+    margin: auto;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2.6px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    margin-bottom: 80px;
+}
+
+.root {
+  transition: transform 0.15s ease-in-out;
+}
+
+.cardhovered {
+    transform: scale3d(1.05, 1.05, 1);
+}

@@ -9,7 +9,6 @@ import {
   CardActionArea,
   Typography,
 } from "@mui/material";
-import makeStyles from "./styles";
 
 /*
  *  Card template. Draws picture and text information from an "info" prop.
@@ -17,7 +16,6 @@ import makeStyles from "./styles";
  *  @component
  */
 export const CardService = ({ setService, info }) => {
-  const classes = makeStyles();
   const [state, setState] = useState({
     raised: false,
     shadow: 1,
@@ -31,8 +29,8 @@ export const CardService = ({ setService, info }) => {
     <Grid item xs={6} sx={{ marginTop: "30px" }}>
       <div id={info.name} onClick={handleClick}>
         <Card
-          className={classes.root}
-          classes={{ root: state.raised ? classes.cardHovered : "" }}
+          className="root"
+          classes={{ root: state.raised ? "cardhovered" : "" }}
           onMouseOver={() => setState({ raised: true, shadow: 3 })}
           onMouseOut={() => setState({ raised: false, shadow: 1 })}
           raised={state.raised}
