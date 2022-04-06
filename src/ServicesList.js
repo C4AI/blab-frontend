@@ -10,7 +10,7 @@ const ServicesList = [
     ),
     active: true,
     image: "Chatbot.jpg",
-    imageAlt: "Ilustração de um robô de conversa",
+    imageAlt: <Trans i18nKey="chatBotImageAlt">Illustration of chatbot</Trans>,
   },
   {
     name: "Reporter",
@@ -22,7 +22,7 @@ const ServicesList = [
     ),
     active: true,
     image: "RoboJornalista.jpeg",
-    imageAlt: "Ilustração de um robô jornalista",
+    imageAlt: <Trans i18nKey="reporterImageAlt">Illustration of a journalist bot</Trans>,
   },
   {
     name: "Wiki",
@@ -30,39 +30,7 @@ const ServicesList = [
     text: <Trans i18nKey="wikiText">A wiki focused on the Blue Amazon</Trans>,
     active: true,
     image: "Wiki.png",
-    imageAlt: "Ilustração de um Wiki",
-  },
-  {
-    name: "4",
-    title: "4",
-    text: "Um quarto serviço de exemplo",
-    active: false,
-    image: "exemplo.png",
-    imageAlt: "*",
-  },
-  {
-    name: "5",
-    title: "5",
-    text: "Um quinto serviço de exemplo",
-    active: false,
-    image: "exemplo.png",
-    imageAlt: "*",
-  },
-  {
-    name: "6",
-    title: "6",
-    text: "Um sexto serviço de exemplo",
-    active: false,
-    image: "exemplo.png",
-    imageAlt: "*",
-  },
-  {
-    name: "*",
-    title: "*",
-    text: "Um * serviço de exemplo",
-    active: false,
-    image: "exemplo.png",
-    imageAlt: "*",
+    imageAlt: <Trans i18nKey="wikiImageAlt">Illustration of a wiki</Trans>,
   },
 ];
 

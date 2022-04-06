@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import Background from "./Background";
-import Inicial from "./Services/Inicial";
+import Initial from "./Services/Initial";
 import ChatBot from "./Services/ChatBot";
 import Reporter from "./Services/Reporter";
 
@@ -14,7 +14,7 @@ import "./Body.css";
  *  @component
  */
 function Body() {
-  const serviceArray = useState("Inicial");
+  const serviceArray = useState("Initial");
 
   /**
    *  State variable that determines current service being displayed.
@@ -34,8 +34,8 @@ function Body() {
 
   function serviceSwitch(service) {
     switch (service) {
-      case "Inicial":
-        return <Inicial setService={setService} />;
+      case "Initial":
+        return <Initial setService={setService} />;
       case "ChatBot":
         return <ChatBot setService={setService} />;
       case "Reporter":

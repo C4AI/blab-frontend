@@ -19,7 +19,7 @@ import { useTranslation } from "react-i18next";
  */
 const Reporter = ({ setService }) => {
   const handleClick = () => {
-    setService("Inicial");
+    setService("Initial");
   };
 
   useTranslation();

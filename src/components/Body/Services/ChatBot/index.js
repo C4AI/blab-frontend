@@ -34,7 +34,7 @@ const theme = createTheme({
 const ChatBot = ({ setService }) => {
 
   const handleClick = () => {
-    setService("Inicial");
+    setService("Initial");
   };
 
   const { i18n } = useTranslation();

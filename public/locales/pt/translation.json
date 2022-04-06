@@ -23,8 +23,11 @@
   "loadingReporter": "Carregando os tweets de BLAB Repórter...",
   "chatBotTitle": "ChatBot",
   "chatBotText": "Um Chabot especializado em Amazônia Azul",
+  "chatBotImageAlt": "Ilustração de um robô de conversa",
   "reporterTitle": "Robô Jornalista",
   "reporterText": "Um robô que gera notícias sobre a Amazônia Azul",
+  "reporterImageAlt": "Ilustração de um robô jornalista",
   "wikiTitle": "Wiki",
-  "wikiText": "Uma wiki especializada em temas da Amazônia Azul"
+  "wikiText": "Uma wiki especializada em temas da Amazônia Azul",
+  "wikiImageAlt": "Ilustração de um Wiki"
 }

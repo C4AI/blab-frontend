@@ -6,7 +6,7 @@ import { CardService } from "./CardService";
 import { Grid } from "@mui/material";
 import { motion } from "framer-motion";
 
-import "./inicial.css";
+import "./initial.css";
 
 /**
  *  Website services index. Contains clickable cards that redirect
@@ -14,12 +14,12 @@ import "./inicial.css";
  *  ServicesList javascript file.
  *
  *  @category Services
- *  @subcategory Inicial
+ *  @subcategory Initial
  *  @component
  */
-const Inicial = ({ setService }) => {
+const Initial = ({ setService }) => {
   return (
-    <div className="inicial">
+    <div className="initial">
       <motion.div className="title">
         <p>Blue Amazon Brain</p>
         <hr />
@@ -42,9 +42,9 @@ const Inicial = ({ setService }) => {
   );
 };
 
-Inicial.propTypes = {
+Initial.propTypes = {
   /** Setter for the website Body's service variable. */
   setService: PropTypes.func.isRequired,
 };
 
-export default Inicial;
+export default Initial;
