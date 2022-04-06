@@ -4,6 +4,7 @@ import Background from "./Background";
 import Initial from "./Services/Initial";
 import ChatBot from "./Services/ChatBot";
 import Reporter from "./Services/Reporter";
+import Wiki from "./Services/Wiki";
 
 import "./Body.css";
 
@@ -41,7 +42,7 @@ function Body() {
       case "Reporter":
         return <Reporter setService={setService} />;
       case "Wiki":
-        return <></>;
+        return <Wiki setService={setService} />;
       default:
         return <></>;
     }
