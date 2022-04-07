@@ -25,7 +25,17 @@ const Initial = ({ setService }) => {
         <hr />
         <h2>BLAB</h2>
       </motion.div>
-      <Grid container className="grid">
+      <Grid container className="grid"
+        sx={{
+          width: {
+            xs: "80vw", //mobile
+            sm: "90vw", //tablet and above
+          },
+          maxWidth: {
+            sm: "750px" //tablet and above
+          }
+        }}
+      >
         {ServicesList.map((info) => {
           return (
             info.active === true && (

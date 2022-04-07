@@ -26,7 +26,7 @@ export const CardService = ({ setService, info }) => {
   };
 
   return (
-    <Grid item xs={6} sx={{ marginTop: "30px" }}>
+    <Grid item xs={10} sm={6} sx={ { margin: "1em auto" } }>
       <div id={info.name} onClick={handleClick}>
         <Card
           className="root"
@@ -38,8 +38,13 @@ export const CardService = ({ setService, info }) => {
           sx={{
             width: "250px",
             height: "220px",
-            margin: "1em 1em",
             borderRadius: 5,
+            margin: "auto",
+            display: "flex",
+            flexDirection: {
+              xs: "row", //mobile
+              sm: "column", //tablet and above
+            },
           }}
         >
           <CardActionArea>
