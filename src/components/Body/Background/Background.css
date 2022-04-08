@@ -3,4 +3,6 @@
   min-height: 100%;
   width: 100%;
   pointer-events: none;
+  background-position: center center;
+  background-size: cover;
 }
