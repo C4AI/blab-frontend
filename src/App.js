@@ -1,11 +1,12 @@
 import React from "react";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
+import { withTranslation } from "react-i18next";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
 import "./App.css";
 
-function App() {
+const App = withTranslation()(() => {
   return (
     <div className="App">
       <CssBaseline />
@@ -13,6 +14,6 @@ function App() {
       <Footer />
     </div>
   );
-}
+});
 
 export default App;
