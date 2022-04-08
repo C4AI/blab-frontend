@@ -9,6 +9,27 @@ import {
   CardActionArea,
   Typography,
 } from "@mui/material";
+import { createTheme } from '@material-ui/core/styles';
+
+/*
+ *
+ *  @category Services
+ *  @subcategory Initial
+ *  @component
+ */
+const theme = createTheme({
+  breakpoints: {
+    values: {
+      xxs: 0,
+      xs: 400,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+    },
+    keys:["xxs", "xs", "sm", "md", "lg", "xl"]
+  },
+});
 
 /*
  *  Card template. Draws picture and text information from an "info" prop.
@@ -26,7 +47,7 @@ export const CardService = ({ setService, info }) => {
   };
 
   return (
-    <Grid item xs={10} sm={6} sx={ { margin: "1em auto" } }>
+    <Grid item sx={ { margin: "1em auto" } }>
       <div id={info.name} onClick={handleClick}>
         <Card
           className="root"
@@ -36,8 +57,14 @@ export const CardService = ({ setService, info }) => {
           raised={state.raised}
           zdepth={state.shadow}
           sx={{
-            width: "250px",
-            height: "220px",
+            width: {
+              xs: "80vw",
+              sm: "250px",
+            },
+            height: {
+              xs: "130px",
+              sm: "220px"
+            },
             borderRadius: 5,
             margin: "auto",
             display: "flex",
@@ -47,14 +74,40 @@ export const CardService = ({ setService, info }) => {
             },
           }}
         >
-          <CardActionArea>
+          <CardActionArea
+            sx={{
+                display: "flex",
+                flexDirection: {
+                  xs: "row", //mobile
+                  sm: "column", //tablet and above
+                }
+            }}
+          >
             <CardMedia
+              theme={theme}
+              sx={{
+                width: {
+                  xxs: "",
+                  xs: "30%",  //mobile
+                  sm: "100%", //tablet and above
+                },
+                height: {
+                  xxs: "",
+                  xs: "100%", //mobile
+                  sm: "90px", //tablet and above
+                },
+              }}
               component="img"
-              height="90px"
               image={require("../../../../images/" + info.image)}
               alt={info.imageAlt}
             />
-            <CardContent>
+            <CardContent
+              sx={{
+                height: {
+                  sm: "130px",
+                }
+              }}
+            >
               <Typography gutterBottom variant="h5" component="div">
                 {info.title}
               </Typography>

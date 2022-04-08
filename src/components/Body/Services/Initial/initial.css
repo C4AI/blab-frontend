@@ -16,29 +16,6 @@
   z-index: 1;
 }
 
-.title p {
-  text-transform: uppercase;
-  font-size: 1rem;
-  font-weight: bold;
-  margin-top: 50px;
-  padding-bottom: 1rem;
-  letter-spacing: 0.25rem;
-}
-
-.title hr {
-  color: "#FFF";
-  width: 12%;
-  padding: 0;
-}
-
-.title h2 {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 4rem;
-  vertical-align: baseline;
-}
-
 .grid {
     background-color: transparent;
     margin: auto;

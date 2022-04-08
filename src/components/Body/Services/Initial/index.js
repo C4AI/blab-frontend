@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 
 import ServicesList from "../../../../ServicesList";
 import { CardService } from "./CardService";
-import { Grid } from "@mui/material";
-import { motion } from "framer-motion";
+import { Container, Grid, Typography, Divider } from "@mui/material";
 
 import "./initial.css";
 
@@ -20,17 +19,42 @@ import "./initial.css";
 const Initial = ({ setService }) => {
   return (
     <div className="initial">
-      <motion.div className="title">
-        <p>Blue Amazon Brain</p>
-        <hr />
-        <h2>BLAB</h2>
-      </motion.div>
+      <Container className="title">
+        <Typography variant="h6" 
+          sx={{
+            textTransform: "uppercase",
+            fontSize: "1rem",
+            fontWeight: "bold",
+            marginTop: {
+              xs: "25px", //mobile
+              sm: "50px"  //tablet and above
+            },
+            paddingBottom: {
+              xs: "0.5rem",
+              sm: "1rem",
+            },
+            letterSpacing: "0.25rem"
+          }}
+        >
+          Blue Amazon Brain
+        </Typography>
+        <Divider
+          sx={{
+            backgroundColor: "white",
+            width: "180px",
+            margin: "auto"
+          }}
+        />
+        <Typography variant="h2"
+          sx={{
+          }}
+        >
+          BLAB
+        </Typography>
+      </Container>
       <Grid container className="grid"
         sx={{
-          width: {
-            xs: "80vw", //mobile
-            sm: "90vw", //tablet and above
-          },
+          width: "90vw",
           maxWidth: {
             sm: "750px" //tablet and above
           }
