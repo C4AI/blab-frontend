@@ -3,7 +3,7 @@
   height: 100vh;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .chat-wrapper {
@@ -34,7 +34,7 @@
 
 .message-row {
   clear: both;
-  margin: 0.1rem;
+  margin: 0.75rem;
   display: flex;
 }
 
@@ -88,7 +88,7 @@
 
 .message-bubble .timestamp-invisible-space,
 .message-bubble .timestamp-visible {
-  font-size: 80%;
+  font-size: 70%;
 }
 
 .message-bubble .timestamp-visible {
@@ -101,7 +101,7 @@
 
 .message-sender {
   font-weight: bold;
-  font-size: 80%;
+  font-size: 70%;
   margin-bottom: 0.3em;
   opacity: 70%;
   color: black;
@@ -132,7 +132,7 @@
   display: flex;
   background-color: rgba(255, 255, 255, 0.7);
   color: black;
-  font-size: 90%;
+  font-size: 80%;
 }
 
 .message-row .quoted-message {
