@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chat/MessageBubble.js</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./build/entry.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css"
+    />
+    <link type="text/css" rel="stylesheet" href="styles/app.min.css" />
+    <link type="text/css" rel="stylesheet" href="styles/iframe.css" />
+    <link type="text/css" rel="stylesheet" href="" />
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+
+  <body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+
+    <div class="top-nav">
+      <div class="inner">
+        <a
+          id="hamburger"
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+          <a href="index.html">
+            <h1 class="navbar-item">My React components</h1>
+          </a>
+        </div>
+        <div class="menu">
+          <div class="navigation">
+            <a href="index.html" class="link"> Documentation </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <div class="sidebar" id="sidebarNav">
+        <nav>
+          <h2><a href="index.html">Documentation</a></h2>
+          <div class="category">
+            <h3>Classes</h3>
+            <ul>
+              <li><a href="Conversation.html">Conversation</a></li>
+              <li><a href="Message.html">Message</a></li>
+              <li><a href="MessageIO.html">MessageIO</a></li>
+              <li><a href="module.exports_module.exports.html">exports</a></li>
+              <li><a href="Participant.html">Participant</a></li>
+            </ul>
+            <h3>Components</h3>
+            <ul>
+              <li><a href="MessageInputArea.html">MessageInputArea</a></li>
+            </ul>
+            <h3>Global</h3>
+            <ul>
+              <li>
+                <a href="global.html#BottomRightTimestamp"
+                  >BottomRightTimestamp</a
+                >
+              </li>
+              <li><a href="global.html#close">close</a></li>
+              <li>
+                <a href="global.html#createConversation">createConversation</a>
+              </li>
+              <li><a href="global.html#focus">focus</a></li>
+              <li><a href="global.html#getBots">getBots</a></li>
+              <li>
+                <a href="global.html#getConversations">getConversations</a>
+              </li>
+              <li><a href="global.html#id">id</a></li>
+              <li>
+                <a href="global.html#joinConversation">joinConversation</a>
+              </li>
+              <li>
+                <a href="global.html#MessageConditions">MessageConditions</a>
+              </li>
+              <li><a href="global.html#MessageTypes">MessageTypes</a></li>
+              <li><a href="global.html#name">name</a></li>
+              <li>
+                <a href="global.html#ParticipantTypes">ParticipantTypes</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="core" id="main-content-wrapper">
+        <div class="content">
+          <header class="page-title">
+            <p>Source</p>
+            <h1>Chat/MessageBubble.js</h1>
+          </header>
+
+          <section>
+            <article>
+              <pre
+                class="prettyprint source linenums"
+              ><code>import React from "react";
+
+import PropTypes from "prop-types";
+import { useTheme } from "@emotion/react";
+import { Tooltip } from "@mui/material";
+import i18n from "../../../../../i18n";
+import QuotedMessage from "./QuotedMessage";
+import { Message, MessageConditions } from "./data-structures";
+import { Participant } from "../Lobby/data-structures";
+
+/**
+ * Display a timestamp on the bottom-right corner.
+ */
+function BottomRightTimestamp({ time }) {
+  const t = new Date(time);
+  const timeStr = Intl.DateTimeFormat(i18n.language, {
+    timeStyle: "short",
+  }).format(t);
+  const fullTimeStr = Intl.DateTimeFormat(i18n.language, {
+    timeStyle: "medium",
+    dateStyle: "long",
+  }).format(t);
+  return (
+    &lt;div className="timestamp">
+      {/* invisible element to make room for the timestamp if needed */}
+      &lt;div className="timestamp-invisible-space">{timeStr}&lt;/div>
+
+      {/* visible timestamp (bottom-right corner) */}
+      &lt;Tooltip title={fullTimeStr}>
+        &lt;div className="timestamp-visible">{timeStr}&lt;/div>
+      &lt;/Tooltip>
+    &lt;/div>
+  );
+}
+BottomRightTimestamp.propTypes = {
+  /** the time to display */
+  time: PropTypes.instanceOf(Date).isRequired,
+};
+
+/**
+ * Display a bubble with the contents of a message.
+ */
+export default function MessageBubble({
+  message,
+  participants,
+  quotedMessage = null,
+}) {
+  const theme = useTheme();
+  const received = message.condition === MessageConditions.RECEIVED;
+  const s = {
+    backgroundColor: received
+      ? theme.palette.secondary.light
+      : theme.palette.primary.dark,
+    color: received ? "black" : "white",
+  };
+
+  return (
+    &lt;div data-msg-id={"msg_" + message.id} className="message-bubble" style={s}>
+      {/* sender (only if it is someone else) */}
+      {received &amp;&amp; (
+        &lt;div className="message-sender">
+          {participants[message.senderId].name}
+        &lt;/div>
+      )}
+
+      {/* quoted message */}
+      &lt;QuotedMessage message={quotedMessage} participants={participants} />
+
+      {/* message text */}
+      {message.text &amp;&amp; &lt;div className="message-text">{message.text}&lt;/div>}
+
+      {/* timestamp */}
+      &lt;BottomRightTimestamp time={message.time} />
+    &lt;/div>
+  );
+}
+
+MessageBubble.propTypes = {
+  /** the message to be displayed */
+  message: PropTypes.instanceOf(Message).isRequired,
+
+  /** conversation participants (id -> Participant) */
+  participants: PropTypes.objectOf(PropTypes.instanceOf(Participant).isRequired)
+    .isRequired,
+
+  /** the quoted message, if any */
+  quotedMessage: PropTypes.instanceOf(Message),
+};
+</code></pre>
+            </article>
+          </section>
+        </div>
+
+        <footer class="footer">
+          <div class="content has-text-centered">
+            <p>
+              Documentation generated by
+              <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a>
+            </p>
+            <p class="sidebar-created-by">
+              <a
+                href="https://github.com/SoftwareBrothers/better-docs"
+                target="_blank"
+                >BetterDocs theme</a
+              >
+              provided with <i class="fas fa-heart"></i> by
+              <a href="http://softwarebrothers.co" target="_blank"
+                >SoftwareBrothers - JavaScript Development Agency</a
+              >
+            </p>
+          </div>
+        </footer>
+      </div>
+      <div id="side-nav" class="side-nav"></div>
+    </div>
+    <script src="scripts/app.min.js"></script>
+    <script>
+      PR.prettyPrint();
+    </script>
+    <script src="scripts/linenumber.js"></script>
+  </body>
+</html>

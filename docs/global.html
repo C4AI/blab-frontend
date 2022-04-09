@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Global</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./build/entry.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css"
+    />
+    <link type="text/css" rel="stylesheet" href="styles/app.min.css" />
+    <link type="text/css" rel="stylesheet" href="styles/iframe.css" />
+    <link type="text/css" rel="stylesheet" href="" />
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+
+  <body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+
+    <div class="top-nav">
+      <div class="inner">
+        <a
+          id="hamburger"
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+          <a href="index.html">
+            <h1 class="navbar-item">My React components</h1>
+          </a>
+        </div>
+        <div class="menu">
+          <div class="navigation">
+            <a href="index.html" class="link"> Documentation </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <div class="sidebar" id="sidebarNav">
+        <nav>
+          <h2><a href="index.html">Documentation</a></h2>
+          <div class="category">
+            <h3><a href="global.html">Global</a></h3>
+          </div>
+          <div class="category">
+            <h2>Basic</h2>
+            <h3>Components</h3>
+            <ul>
+              <li><a href="Background.html">Background</a></li>
+              <li><a href="Body.html">Body</a></li>
+              <li><a href="Footer.html">Footer</a></li>
+            </ul>
+          </div>
+          <div class="category">
+            <h2>Services</h2>
+            <h3>Classes / ChatBot</h3>
+            <ul>
+              <li><a href="Conversation.html">Conversation</a></li>
+              <li><a href="LobbyIO.html">LobbyIO</a></li>
+              <li><a href="Message.html">Message</a></li>
+              <li><a href="MessageIO.html">MessageIO</a></li>
+              <li><a href="Participant.html">Participant</a></li>
+            </ul>
+            <h3>Components / Reporter</h3>
+            <ul>
+              <li><a href="BLABReporter.html">BLABReporter</a></li>
+              <li><a href="Reporter.html">Reporter</a></li>
+              <li><a href="TwitterBot.html">TwitterBot</a></li>
+            </ul>
+            <h3>Components / ChatBot</h3>
+            <ul>
+              <li><a href="BotSelector.html">BotSelector</a></li>
+              <li>
+                <a href="BottomRightTimestamp.html">BottomRightTimestamp</a>
+              </li>
+              <li><a href="Chat.html">Chat</a></li>
+              <li><a href="ChatBot.html">ChatBot</a></li>
+              <li><a href="ChatHeader.html">ChatHeader</a></li>
+              <li><a href="ChatRightMenu.html">ChatRightMenu</a></li>
+              <li><a href="ConversationList.html">ConversationList</a></li>
+              <li><a href="ConversationRow.html">ConversationRow</a></li>
+              <li><a href="Lobby.html">Lobby</a></li>
+              <li><a href="MessageBubble.html">MessageBubble</a></li>
+              <li><a href="MessageInputArea.html">MessageInputArea</a></li>
+              <li><a href="MessageRow.html">MessageRow</a></li>
+              <li><a href="NewConversation.html">NewConversation</a></li>
+              <li><a href="QuotedMessage.html">QuotedMessage</a></li>
+              <li>
+                <a href="SystemMessageBubble.html">SystemMessageBubble</a>
+              </li>
+            </ul>
+            <h3>Components / Initial</h3>
+            <ul>
+              <li><a href="Initial.html">Initial</a></li>
+            </ul>
+            <h3>Components / Wiki</h3>
+            <ul>
+              <li><a href="Wiki.html">Wiki</a></li>
+            </ul>
+            <h3>Global</h3>
+            <ul>
+              <li><a href="global.html#focus">focus</a></li>
+              <li>
+                <a href="global.html#MessageConditions">MessageConditions</a>
+              </li>
+              <li><a href="global.html#MessageTypes">MessageTypes</a></li>
+              <li>
+                <a href="global.html#ParticipantTypes">ParticipantTypes</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="core" id="main-content-wrapper">
+        <div class="content">
+          <header class="page-title">
+            <p></p>
+            <h1>Global</h1>
+          </header>
+
+          <section>
+            <header>
+              <h2></h2>
+            </header>
+
+            <article>
+              <div class="container-overview">
+                <dl class="details"></dl>
+              </div>
+
+              <div class="vertical-section">
+                <h1>Members</h1>
+                <div class="members">
+                  <div class="member">
+                    <h4 class="name" id="MessageConditions">
+                      <a class="href-link" href="#MessageConditions">#</a>
+
+                      <span class="tag">constant</span>
+
+                      <span class="code-name"> MessageConditions </span>
+                    </h4>
+
+                    <div class="description">
+                      <p>Represent message direction and status.</p>
+                    </div>
+
+                    <h5 class="subsection-title">Properties:</h5>
+
+                    <div class="table-container">
+                      <table class="props table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>SENDING</code></td>
+
+                            <td class="type">
+                              <code class="param-type">String</code>
+                            </td>
+
+                            <td class="description last">
+                              <p>pending message</p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>SENT</code></td>
+
+                            <td class="type">
+                              <code class="param-type">String</code>
+                            </td>
+
+                            <td class="description last">
+                              <p>sent message (confirmed by server)</p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>RECEIVED</code></td>
+
+                            <td class="type">
+                              <code class="param-type">String</code>
+                            </td>
+
+                            <td class="description last">
+                              <p>received message</p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>SYSTEM</code></td>
+
+                            <td class="type">
+                              <code class="param-type">String</code>
+                            </td>
+
+                            <td class="description last">
+                              <p>system message</p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="Body_Services_ChatBot_Chat_data-structures.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a
+                            href="Body_Services_ChatBot_Chat_data-structures.js.html"
+                            >Body/Services/ChatBot/Chat/data-structures.js</a
+                          >,
+                          <a
+                            href="Body_Services_ChatBot_Chat_data-structures.js.html#line35"
+                            >line 35</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+                  </div>
+
+                  <div class="member">
+                    <h4 class="name" id="MessageTypes">
+                      <a class="href-link" href="#MessageTypes">#</a>
+
+                      <span class="tag">constant</span>
+
+                      <span class="code-name"> MessageTypes </span>
+                    </h4>
+
+                    <div class="description">
+                      <p>Represents message types.</p>
+                    </div>
+
+                    <h5 class="subsection-title">Properties:</h5>
+
+                    <div class="table-container">
+                      <table class="props table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>TEXT</code></td>
+
+                            <td class="type">
+                              <code class="param-type">String</code>
+                            </td>
+
+                            <td class="description last">
+                              <p>text message (has only text)</p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>MEDIA</code></td>
+
+                            <td class="type">
+                              <code class="param-type">String</code>
+                            </td>
+
+                            <td class="description last">
+                              <p>
+                                image/audio/video message (media + optional
+                                caption)
+                              </p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>VOICE</code></td>
+
+                            <td class="type">
+                              <code class="param-type">String</code>
+                            </td>
+
+                            <td class="description last">
+                              <p>voice message (only media)</p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>ATTACHMENT</code></td>
+
+                            <td class="type">
+                              <code class="param-type">String</code>
+                            </td>
+
+                            <td class="description last">
+                              <p>
+                                attachment message (file + optional caption)
+                              </p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>SYSTEM</code></td>
+
+                            <td class="type">
+                              <code class="param-type">String</code>
+                            </td>
+
+                            <td class="description last">
+                              <p>
+                                system message (has <code>event</code>, may have
+                                <code>additional_metadata</code>)
+                              </p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="Body_Services_ChatBot_Chat_data-structures.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a
+                            href="Body_Services_ChatBot_Chat_data-structures.js.html"
+                            >Body/Services/ChatBot/Chat/data-structures.js</a
+                          >,
+                          <a
+                            href="Body_Services_ChatBot_Chat_data-structures.js.html#line16"
+                            >line 16</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+                  </div>
+
+                  <div class="member">
+                    <h4 class="name" id="ParticipantTypes">
+                      <a class="href-link" href="#ParticipantTypes">#</a>
+
+                      <span class="tag">constant</span>
+
+                      <span class="code-name"> ParticipantTypes </span>
+                    </h4>
+
+                    <div class="description">
+                      <p>Represents participant types.</p>
+                    </div>
+
+                    <h5 class="subsection-title">Properties:</h5>
+
+                    <div class="table-container">
+                      <table class="props table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>BOT</code></td>
+
+                            <td class="type">
+                              <code class="param-type">String</code>
+                            </td>
+
+                            <td class="description last">
+                              <p>bot participant</p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>HUMAN</code></td>
+
+                            <td class="type">
+                              <code class="param-type">String</code>
+                            </td>
+
+                            <td class="description last">
+                              <p>human participant</p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="Body_Services_ChatBot_Lobby_data-structures.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a
+                            href="Body_Services_ChatBot_Lobby_data-structures.js.html"
+                            >Body/Services/ChatBot/Lobby/data-structures.js</a
+                          >,
+                          <a
+                            href="Body_Services_ChatBot_Lobby_data-structures.js.html#line10"
+                            >line 10</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+
+              <div class="vertical-section">
+                <h1>Methods</h1>
+                <div class="members">
+                  <div class="member">
+                    <h4 class="name" id="focus">
+                      <a class="href-link" href="#focus">#</a>
+
+                      <span class="code-name">
+                        focus<span class="signature">()</span
+                        ><span class="type-signature"></span>
+                      </span>
+                    </h4>
+
+                    <div class="description">
+                      <p>Focus the text field</p>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="Body_Services_ChatBot_Chat_MessageInputArea.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a
+                            href="Body_Services_ChatBot_Chat_MessageInputArea.js.html"
+                            >Body/Services/ChatBot/Chat/MessageInputArea.js</a
+                          >,
+                          <a
+                            href="Body_Services_ChatBot_Chat_MessageInputArea.js.html#line38"
+                            >line 38</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+
+              <div class="vertical-section">
+                <h1>Type Definitions</h1>
+                <div class="members">
+                  <div class="member">
+                    <h4 class="name" id="conversationListCallback">
+                      <a class="href-link" href="#conversationListCallback"
+                        >#</a
+                      >
+
+                      <span class="code-name">
+                        conversationListCallback<span class="signature"
+                          >(conversations)</span
+                        ><span class="type-signature"></span>
+                      </span>
+                    </h4>
+
+                    <h5>Parameters:</h5>
+
+                    <div class="table-container">
+                      <table class="params table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>conversations</code></td>
+
+                            <td class="type">
+                              <code class="param-type">Array.&lt;Object></code>
+                            </td>
+
+                            <td class="description last">
+                              <p>available conversations</p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="Body_Services_ChatBot_Lobby_io.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="Body_Services_ChatBot_Lobby_io.js.html"
+                            >Body/Services/ChatBot/Lobby/io.js</a
+                          >,
+                          <a
+                            href="Body_Services_ChatBot_Lobby_io.js.html#line15"
+                            >line 15</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+                  </div>
+
+                  <div class="member">
+                    <h4 class="name" id="enterConversationCallback">
+                      <a class="href-link" href="#enterConversationCallback"
+                        >#</a
+                      >
+
+                      <span class="code-name">
+                        enterConversationCallback<span class="signature"
+                          >(conversation)</span
+                        ><span class="type-signature"></span>
+                      </span>
+                    </h4>
+
+                    <h5>Parameters:</h5>
+
+                    <div class="table-container">
+                      <table class="params table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>conversation</code></td>
+
+                            <td class="type">
+                              <code class="param-type">Object</code>
+                            </td>
+
+                            <td class="description last">
+                              <p>conversation data</p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="Body_Services_ChatBot_Lobby_io.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="Body_Services_ChatBot_Lobby_io.js.html"
+                            >Body/Services/ChatBot/Lobby/io.js</a
+                          >,
+                          <a
+                            href="Body_Services_ChatBot_Lobby_io.js.html#line25"
+                            >line 25</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+                  </div>
+
+                  <div class="member">
+                    <h4 class="name" id="errorCallback">
+                      <a class="href-link" href="#errorCallback">#</a>
+
+                      <span class="code-name">
+                        errorCallback<span class="signature">(e)</span
+                        ><span class="type-signature"></span>
+                      </span>
+                    </h4>
+
+                    <h5>Parameters:</h5>
+
+                    <div class="table-container">
+                      <table class="params table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>e</code></td>
+
+                            <td class="type">
+                              <code class="param-type">*</code>
+                            </td>
+
+                            <td class="description last"><p>error</p></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="Body_Services_ChatBot_Lobby_io.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="Body_Services_ChatBot_Lobby_io.js.html"
+                            >Body/Services/ChatBot/Lobby/io.js</a
+                          >,
+                          <a
+                            href="Body_Services_ChatBot_Lobby_io.js.html#line20"
+                            >line 20</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+                  </div>
+
+                  <div class="member">
+                    <h4 class="name" id="receiveEventCallback">
+                      <a class="href-link" href="#receiveEventCallback">#</a>
+
+                      <span class="code-name">
+                        receiveEventCallback<span class="signature"
+                          >(type, event)</span
+                        ><span class="type-signature"></span>
+                      </span>
+                    </h4>
+
+                    <h5>Parameters:</h5>
+
+                    <div class="table-container">
+                      <table class="params table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>type</code></td>
+
+                            <td class="type">
+                              <code class="param-type">String</code>
+                            </td>
+
+                            <td class="description last"><p>event type</p></td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>event</code></td>
+
+                            <td class="type">
+                              <code class="param-type">String</code>
+                            </td>
+
+                            <td class="description last">
+                              <p>event contents</p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="Body_Services_ChatBot_Chat_io.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="Body_Services_ChatBot_Chat_io.js.html"
+                            >Body/Services/ChatBot/Chat/io.js</a
+                          >,
+                          <a href="Body_Services_ChatBot_Chat_io.js.html#line9"
+                            >line 9</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+                  </div>
+
+                  <div class="member">
+                    <h4 class="name" id="updatePendingListCallback">
+                      <a class="href-link" href="#updatePendingListCallback"
+                        >#</a
+                      >
+
+                      <span class="code-name">
+                        updatePendingListCallback<span class="signature"
+                          >(messages)</span
+                        ><span class="type-signature"></span>
+                      </span>
+                    </h4>
+
+                    <h5>Parameters:</h5>
+
+                    <div class="table-container">
+                      <table class="params table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>messages</code></td>
+
+                            <td class="type">
+                              <code class="param-type"
+                                >Array.&lt;<a href="Message.html">Message</a
+                                >></code
+                              >
+                            </td>
+
+                            <td class="description last">
+                              <p>pending messages</p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="Body_Services_ChatBot_Chat_io.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="Body_Services_ChatBot_Chat_io.js.html"
+                            >Body/Services/ChatBot/Chat/io.js</a
+                          >,
+                          <a href="Body_Services_ChatBot_Chat_io.js.html#line15"
+                            >line 15</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </section>
+        </div>
+
+        <footer class="footer">
+          <div class="content has-text-centered">
+            <p>
+              Documentation generated by
+              <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a>
+            </p>
+            <p class="sidebar-created-by">
+              <a
+                href="https://github.com/SoftwareBrothers/better-docs"
+                target="_blank"
+                >BetterDocs theme</a
+              >
+              provided with <i class="fas fa-heart"></i> by
+              <a href="http://softwarebrothers.co" target="_blank"
+                >SoftwareBrothers - JavaScript Development Agency</a
+              >
+            </p>
+          </div>
+        </footer>
+      </div>
+      <div id="side-nav" class="side-nav"></div>
+    </div>
+    <script src="scripts/app.min.js"></script>
+    <script>
+      PR.prettyPrint();
+    </script>
+    <script src="scripts/linenumber.js"></script>
+  </body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Body/Services/ChatBot/Chat/data-structures.js</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./build/entry.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css"
+    />
+    <link type="text/css" rel="stylesheet" href="styles/app.min.css" />
+    <link type="text/css" rel="stylesheet" href="styles/iframe.css" />
+    <link type="text/css" rel="stylesheet" href="" />
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+
+  <body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+
+    <div class="top-nav">
+      <div class="inner">
+        <a
+          id="hamburger"
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+          <a href="index.html">
+            <h1 class="navbar-item">My React components</h1>
+          </a>
+        </div>
+        <div class="menu">
+          <div class="navigation">
+            <a href="index.html" class="link"> Documentation </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <div class="sidebar" id="sidebarNav">
+        <nav>
+          <h2><a href="index.html">Documentation</a></h2>
+          <div class="category">
+            <h3><a href="global.html">Global</a></h3>
+          </div>
+          <div class="category">
+            <h2>Basic</h2>
+            <h3>Components</h3>
+            <ul>
+              <li><a href="Background.html">Background</a></li>
+              <li><a href="Body.html">Body</a></li>
+              <li><a href="Footer.html">Footer</a></li>
+            </ul>
+          </div>
+          <div class="category">
+            <h2>Services</h2>
+            <h3>Classes / ChatBot</h3>
+            <ul>
+              <li><a href="Conversation.html">Conversation</a></li>
+              <li><a href="LobbyIO.html">LobbyIO</a></li>
+              <li><a href="Message.html">Message</a></li>
+              <li><a href="MessageIO.html">MessageIO</a></li>
+              <li><a href="Participant.html">Participant</a></li>
+            </ul>
+            <h3>Components / Reporter</h3>
+            <ul>
+              <li><a href="BLABReporter.html">BLABReporter</a></li>
+              <li><a href="Reporter.html">Reporter</a></li>
+              <li><a href="TwitterBot.html">TwitterBot</a></li>
+            </ul>
+            <h3>Components / ChatBot</h3>
+            <ul>
+              <li><a href="BotSelector.html">BotSelector</a></li>
+              <li>
+                <a href="BottomRightTimestamp.html">BottomRightTimestamp</a>
+              </li>
+              <li><a href="Chat.html">Chat</a></li>
+              <li><a href="ChatBot.html">ChatBot</a></li>
+              <li><a href="ChatHeader.html">ChatHeader</a></li>
+              <li><a href="ChatRightMenu.html">ChatRightMenu</a></li>
+              <li><a href="ConversationList.html">ConversationList</a></li>
+              <li><a href="ConversationRow.html">ConversationRow</a></li>
+              <li><a href="Lobby.html">Lobby</a></li>
+              <li><a href="MessageBubble.html">MessageBubble</a></li>
+              <li><a href="MessageInputArea.html">MessageInputArea</a></li>
+              <li><a href="MessageRow.html">MessageRow</a></li>
+              <li><a href="NewConversation.html">NewConversation</a></li>
+              <li><a href="QuotedMessage.html">QuotedMessage</a></li>
+              <li>
+                <a href="SystemMessageBubble.html">SystemMessageBubble</a>
+              </li>
+            </ul>
+            <h3>Components / Initial</h3>
+            <ul>
+              <li><a href="Initial.html">Initial</a></li>
+            </ul>
+            <h3>Components / Wiki</h3>
+            <ul>
+              <li><a href="Wiki.html">Wiki</a></li>
+            </ul>
+            <h3>Global</h3>
+            <ul>
+              <li><a href="global.html#focus">focus</a></li>
+              <li>
+                <a href="global.html#MessageConditions">MessageConditions</a>
+              </li>
+              <li><a href="global.html#MessageTypes">MessageTypes</a></li>
+              <li>
+                <a href="global.html#ParticipantTypes">ParticipantTypes</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="core" id="main-content-wrapper">
+        <div class="content">
+          <header class="page-title">
+            <p>Source</p>
+            <h1>Body/Services/ChatBot/Chat/data-structures.js</h1>
+          </header>
+
+          <section>
+            <article>
+              <pre class="prettyprint source linenums"><code>/**
+ * Represents message types.
+ *
+ * @property {String} TEXT text message (has only text)
+ * @property {String} MEDIA image/audio/video message
+ *  (media + optional caption)
+ * @property {String} VOICE voice message (only media)
+ * @property {String} ATTACHMENT attachment message
+ *  (file + optional caption)
+ * @property {String} SYSTEM system message
+ *  (has `event`, may have `additional_metadata`)
+ *
+ * @category Services
+ * @subcategory ChatBot
+ */
+export const MessageTypes = Object.freeze({
+  TEXT: "T",
+  MEDIA: "M",
+  VOICE: "V",
+  ATTACHMENT: "A",
+  SYSTEM: "S",
+});
+
+/**
+ * Represent message direction and status.
+ *
+ * @property {String} SENDING pending message
+ * @property {String} SENT sent message (confirmed by server)
+ * @property {String} RECEIVED received message
+ * @property {String} SYSTEM system message
+ *
+ * @category Services
+ * @subcategory ChatBot
+ */
+export const MessageConditions = Object.freeze({
+  SENDING: "sending",
+  SENT: "sent",
+  RECEIVED: "received",
+  SYSTEM: "system",
+});
+
+/**
+ * Represents a message.
+ *
+ * @category Services
+ * @subcategory ChatBot
+ */
+export class Message {
+  /**
+   * Create a message.
+   *
+   * @param {string} type message type (see {@link MessageTypes})
+   * @param {string} condition message condition (see {@link MessageConditions})
+   * @param {Date} time when the message was sent
+   * @param {string} localId message id generated by the sender
+   * @param {string} id message id
+   * @param {string} text message text (for text messages),
+   *    transcription (for voice messages)
+   *    or caption (for attachment and media messages)
+   * @param {string} senderId sender's id
+   * @param {string} downloadUrl download URL
+   *    (for voice, media and attachment messages)
+   * @param {string} quotedMessageId id of the quoted message
+   * @param {string} event event type (for system messages)
+   * @param {Object} additionalMetadata additional metadata
+   *    (for system messages)
+   */
+  constructor(
+    type,
+    condition,
+    time,
+    localId,
+    id,
+    text,
+    senderId,
+    downloadUrl,
+    quotedMessageId,
+    event,
+    additionalMetadata
+  ) {
+    this.type = type;
+    this.condition = condition;
+    this.time = time instanceof Date ? time : new Date(time);
+    this.localId = localId;
+    this.id = id;
+    this.text = text;
+    this.senderId = senderId;
+    this.downloadUrl = downloadUrl;
+    this.quotedMessageId = quotedMessageId;
+    this.event = event;
+    this.additionalMetadata = additionalMetadata;
+  }
+
+  /**
+   * Convert the message into a plain JS object containing only the data
+   * that should be sent to the server.
+   *
+   * @returns a representation that is ready to be sent to the server
+   */
+  asObjectToSend() {
+    return {
+      type: this.type,
+      text: this.text,
+      quoted_message_id: this.quotedMessageId,
+      local_id: this.localId,
+    };
+  }
+
+  /**
+   * Build a {@link Message} instance from data returned by the server
+   *
+   * @param {Object} m message data (as received from the server)
+   * @param {string} m.type message type (see {@link MessageTypes})
+   * @param {string} m.time when the message was sent (ISO-8601 format)
+   * @param {string} m.local_id message id generated by the sender
+   * @param {string} m.id message id
+   * @param {string} m.text message text (for text messages),
+   *    transcription (for voice messages)
+   *    or caption (for attachment and media messages)
+   * @param {Object} m.sender who sent the message
+   * @param {string} m.sender_id sender's id
+   * @param {string} m.download_url download URL
+   *    (for voice, media and attachment messages)
+   * @param {string} m.quoted_message_id if of the quoted message
+   * @param {string} m.event event type (for system messages)
+   * @param {Object} m.additional_metadata additional metadata
+   *    (for system messages)
+   * @param {string} myParticipantId id of the current participant
+   *    (used to obtain origin, see {@link MessageConditions})
+   * @returns an instance of {@link Message} using the provided data
+   */
+  static fromServerData(m, myParticipantId) {
+    return new Message(
+      m.type,
+      m.type === MessageTypes.SYSTEM
+        ? MessageConditions.SYSTEM
+        : myParticipantId &amp;&amp; m.sender_id === myParticipantId
+        ? MessageConditions.SENT
+        : MessageConditions.RECEIVED,
+      m.time,
+      m.local_id,
+      m.id,
+      m.text,
+      m.sender_id,
+      m.download_url,
+      m.quoted_message_id,
+      m.event,
+      m.additional_metadata
+    );
+  }
+}
+</code></pre>
+            </article>
+          </section>
+        </div>
+
+        <footer class="footer">
+          <div class="content has-text-centered">
+            <p>
+              Documentation generated by
+              <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a>
+            </p>
+            <p class="sidebar-created-by">
+              <a
+                href="https://github.com/SoftwareBrothers/better-docs"
+                target="_blank"
+                >BetterDocs theme</a
+              >
+              provided with <i class="fas fa-heart"></i> by
+              <a href="http://softwarebrothers.co" target="_blank"
+                >SoftwareBrothers - JavaScript Development Agency</a
+              >
+            </p>
+          </div>
+        </footer>
+      </div>
+      <div id="side-nav" class="side-nav"></div>
+    </div>
+    <script src="scripts/app.min.js"></script>
+    <script>
+      PR.prettyPrint();
+    </script>
+    <script src="scripts/linenumber.js"></script>
+  </body>
+</html>

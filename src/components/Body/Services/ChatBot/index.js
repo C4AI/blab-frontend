@@ -113,7 +113,7 @@ const ChatBot = ({ setService }) => {
             />
           </div>
         </div>
-        <Suspense fallback={<div>Loading... / Carregando...</div>}>
+        <Suspense fallback={<>Loading... / Carregando...</>}>
           <ThemeProvider theme={theme}>
             {["rooms", "bots"].includes(mode) ? (
               !conversation ? (
@@ -126,9 +126,11 @@ const ChatBot = ({ setService }) => {
                   />
                 ) : (
                   <div>
-                    {/* this is rendered when the user was 
+                    {
+                      <>Loading</> /* this is rendered when the user was 
                     previously in a conversation, but the
-                    conversation data hasn't been loaded yet */}
+                    conversation data hasn't been loaded yet */
+                    }
                   </div>
                 )
               ) : (

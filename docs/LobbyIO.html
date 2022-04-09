@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LobbyIO</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./build/entry.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css"
+    />
+    <link type="text/css" rel="stylesheet" href="styles/app.min.css" />
+    <link type="text/css" rel="stylesheet" href="styles/iframe.css" />
+    <link type="text/css" rel="stylesheet" href="" />
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+
+  <body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+
+    <div class="top-nav">
+      <div class="inner">
+        <a
+          id="hamburger"
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+          <a href="index.html">
+            <h1 class="navbar-item">My React components</h1>
+          </a>
+        </div>
+        <div class="menu">
+          <div class="navigation">
+            <a href="index.html" class="link"> Documentation </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <div class="sidebar" id="sidebarNav">
+        <nav>
+          <h2><a href="index.html">Documentation</a></h2>
+          <div class="category">
+            <h3><a href="global.html">Global</a></h3>
+          </div>
+          <div class="category">
+            <h2>Basic</h2>
+            <h3>Components</h3>
+            <ul>
+              <li><a href="Background.html">Background</a></li>
+              <li><a href="Body.html">Body</a></li>
+              <li><a href="Footer.html">Footer</a></li>
+            </ul>
+          </div>
+          <div class="category">
+            <h2>Services</h2>
+            <h3>Classes / ChatBot</h3>
+            <ul>
+              <li><a href="Conversation.html">Conversation</a></li>
+              <li><a href="LobbyIO.html">LobbyIO</a></li>
+              <li><a href="Message.html">Message</a></li>
+              <li><a href="MessageIO.html">MessageIO</a></li>
+              <li><a href="Participant.html">Participant</a></li>
+            </ul>
+            <h3>Components / Reporter</h3>
+            <ul>
+              <li><a href="BLABReporter.html">BLABReporter</a></li>
+              <li><a href="Reporter.html">Reporter</a></li>
+              <li><a href="TwitterBot.html">TwitterBot</a></li>
+            </ul>
+            <h3>Components / ChatBot</h3>
+            <ul>
+              <li><a href="BotSelector.html">BotSelector</a></li>
+              <li>
+                <a href="BottomRightTimestamp.html">BottomRightTimestamp</a>
+              </li>
+              <li><a href="Chat.html">Chat</a></li>
+              <li><a href="ChatBot.html">ChatBot</a></li>
+              <li><a href="ChatHeader.html">ChatHeader</a></li>
+              <li><a href="ChatRightMenu.html">ChatRightMenu</a></li>
+              <li><a href="ConversationList.html">ConversationList</a></li>
+              <li><a href="ConversationRow.html">ConversationRow</a></li>
+              <li><a href="Lobby.html">Lobby</a></li>
+              <li><a href="MessageBubble.html">MessageBubble</a></li>
+              <li><a href="MessageInputArea.html">MessageInputArea</a></li>
+              <li><a href="MessageRow.html">MessageRow</a></li>
+              <li><a href="NewConversation.html">NewConversation</a></li>
+              <li><a href="QuotedMessage.html">QuotedMessage</a></li>
+              <li>
+                <a href="SystemMessageBubble.html">SystemMessageBubble</a>
+              </li>
+            </ul>
+            <h3>Components / Initial</h3>
+            <ul>
+              <li><a href="Initial.html">Initial</a></li>
+            </ul>
+            <h3>Components / Wiki</h3>
+            <ul>
+              <li><a href="Wiki.html">Wiki</a></li>
+            </ul>
+            <h3>Global</h3>
+            <ul>
+              <li><a href="global.html#focus">focus</a></li>
+              <li>
+                <a href="global.html#MessageConditions">MessageConditions</a>
+              </li>
+              <li><a href="global.html#MessageTypes">MessageTypes</a></li>
+              <li>
+                <a href="global.html#ParticipantTypes">ParticipantTypes</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="core" id="main-content-wrapper">
+        <div class="content">
+          <header class="page-title">
+            <p>Class</p>
+            <h1>LobbyIO</h1>
+          </header>
+
+          <section>
+            <header>
+              <h2>
+                <span class="attribs"><span class="type-signature"></span></span
+                >LobbyIO<span class="signature">()</span
+                ><span class="type-signature"></span>
+              </h2>
+
+              <div class="class-description">
+                <p>
+                  Provides methods to get the list of conversations and
+                  join/create a conversation.
+                </p>
+              </div>
+            </header>
+
+            <article>
+              <div class="container-overview">
+                <div class="vertical-section">
+                  <div class="members">
+                    <div class="member">
+                      <div class="name">
+                        <span class="tag">Constructor</span>
+                      </div>
+
+                      <h4 class="name" id="LobbyIO">
+                        <a class="href-link" href="#LobbyIO">#</a>
+
+                        <span class="code-name">
+                          new LobbyIO<span class="signature">()</span
+                          ><span class="type-signature"></span>
+                        </span>
+                      </h4>
+
+                      <dl class="details">
+                        <p class="tag-source">
+                          <a
+                            href="Body_Services_ChatBot_Lobby_io.js.html"
+                            class="button"
+                            >View Source</a
+                          >
+                          <span>
+                            <a href="Body_Services_ChatBot_Lobby_io.js.html"
+                              >Body/Services/ChatBot/Lobby/io.js</a
+                            >,
+                            <a
+                              href="Body_Services_ChatBot_Lobby_io.js.html#line36"
+                              >line 36</a
+                            >
+                          </span>
+                        </p>
+                      </dl>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="vertical-section">
+                <h1>Methods</h1>
+                <div class="members">
+                  <div class="member">
+                    <h4 class="name" id="close">
+                      <a class="href-link" href="#close">#</a>
+
+                      <span class="code-name">
+                        close<span class="signature">()</span
+                        ><span class="type-signature"></span>
+                      </span>
+                    </h4>
+
+                    <div class="description">
+                      <p>stop all connections</p>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="Body_Services_ChatBot_Lobby_io.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="Body_Services_ChatBot_Lobby_io.js.html"
+                            >Body/Services/ChatBot/Lobby/io.js</a
+                          >,
+                          <a
+                            href="Body_Services_ChatBot_Lobby_io.js.html#line160"
+                            >line 160</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+                  </div>
+
+                  <div class="member">
+                    <h4 class="name" id="createConversation">
+                      <a class="href-link" href="#createConversation">#</a>
+
+                      <span class="code-name">
+                        createConversation<span class="signature"
+                          >(nickname, conversationName, bots, callback,
+                          failCallback)</span
+                        ><span class="type-signature"></span>
+                      </span>
+                    </h4>
+
+                    <div class="description">
+                      <p>Create a conversation.</p>
+                    </div>
+
+                    <h5>Parameters:</h5>
+
+                    <div class="table-container">
+                      <table class="params table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>nickname</code></td>
+
+                            <td class="type">
+                              <code class="param-type">string</code>
+                            </td>
+
+                            <td class="description last">
+                              <p>participant's name</p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>conversationName</code></td>
+
+                            <td class="type">
+                              <code class="param-type">string</code>
+                            </td>
+
+                            <td class="description last">
+                              <p>conversation title</p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>bots</code></td>
+
+                            <td class="type">
+                              <code class="param-type">Array.&lt;string></code>
+                            </td>
+
+                            <td class="description last">
+                              <p>bots to include in the conversation</p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>callback</code></td>
+
+                            <td class="type">
+                              <code class="param-type"
+                                ><a href="global.html#enterConversationCallback"
+                                  >enterConversationCallback</a
+                                ></code
+                              >
+                            </td>
+
+                            <td class="description last">
+                              <p>
+                                function to call if the conversation is created
+                                successfully (conversation data is passed in the
+                                first argument)
+                              </p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>failCallback</code></td>
+
+                            <td class="type">
+                              <code class="param-type"
+                                ><a href="global.html#errorCallback"
+                                  >errorCallback</a
+                                ></code
+                              >
+                            </td>
+
+                            <td class="description last">
+                              <p>
+                                function to call if the conversation creation
+                                fails (error is passed in the first argument)
+                              </p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="Body_Services_ChatBot_Lobby_io.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="Body_Services_ChatBot_Lobby_io.js.html"
+                            >Body/Services/ChatBot/Lobby/io.js</a
+                          >,
+                          <a
+                            href="Body_Services_ChatBot_Lobby_io.js.html#line122"
+                            >line 122</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+                  </div>
+
+                  <div class="member">
+                    <h4 class="name" id="getBots">
+                      <a class="href-link" href="#getBots">#</a>
+
+                      <span class="code-name">
+                        getBots<span class="signature">(callback, limit)</span
+                        ><span class="type-signature"></span>
+                      </span>
+                    </h4>
+
+                    <div class="description">
+                      <p>Retrieve the list of available bots.</p>
+                    </div>
+
+                    <h5>Parameters:</h5>
+
+                    <div class="table-container">
+                      <table class="params table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th>Default</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>callback</code></td>
+
+                            <td class="type">
+                              <code class="param-type">function</code>
+                            </td>
+
+                            <td class="default"></td>
+
+                            <td class="description last">
+                              <p>
+                                the function to be called when the list of bots
+                                is retrieved
+                              </p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>limit</code></td>
+
+                            <td class="type">
+                              <code class="param-type">number</code>
+                            </td>
+
+                            <td class="default">100</td>
+
+                            <td class="description last">
+                              <p>the maximum number of bots to fetch</p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="Body_Services_ChatBot_Lobby_io.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="Body_Services_ChatBot_Lobby_io.js.html"
+                            >Body/Services/ChatBot/Lobby/io.js</a
+                          >,
+                          <a
+                            href="Body_Services_ChatBot_Lobby_io.js.html#line86"
+                            >line 86</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+                  </div>
+
+                  <div class="member">
+                    <h4 class="name" id="getConversations">
+                      <a class="href-link" href="#getConversations">#</a>
+
+                      <span class="code-name">
+                        getConversations<span class="signature"
+                          >(interval, callback, failCallback, retries)</span
+                        ><span class="type-signature"></span>
+                      </span>
+                    </h4>
+
+                    <div class="description">
+                      <p>Get the list of current conversations.</p>
+                      <p>
+                        Since this method should only be used in a development
+                        environment, it only returns the first page of results.
+                      </p>
+                    </div>
+
+                    <h5>Parameters:</h5>
+
+                    <div class="table-container">
+                      <table class="params table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>interval</code></td>
+
+                            <td class="type">
+                              <code class="param-type">number</code>
+                            </td>
+
+                            <td class="description last">
+                              <p>
+                                interval between server requests to get the
+                                conversation list (or null to request only once)
+                              </p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>callback</code></td>
+
+                            <td class="type">
+                              <code class="param-type"
+                                ><a href="global.html#conversationListCallback"
+                                  >conversationListCallback</a
+                                ></code
+                              >
+                            </td>
+
+                            <td class="description last">
+                              <p>
+                                function called when the conversation list is
+                                refreshed
+                              </p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>failCallback</code></td>
+
+                            <td class="type">
+                              <code class="param-type"
+                                ><a href="global.html#errorCallback"
+                                  >errorCallback</a
+                                ></code
+                              >
+                            </td>
+
+                            <td class="description last">
+                              <p>
+                                function called if the request fails (after
+                                retries, if any)
+                              </p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>retries</code></td>
+
+                            <td class="type">
+                              <code class="param-type">number</code>
+                            </td>
+
+                            <td class="description last">
+                              <p>
+                                number of retries if the request fails with 5XX
+                              </p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="Body_Services_ChatBot_Lobby_io.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="Body_Services_ChatBot_Lobby_io.js.html"
+                            >Body/Services/ChatBot/Lobby/io.js</a
+                          >,
+                          <a
+                            href="Body_Services_ChatBot_Lobby_io.js.html#line55"
+                            >line 55</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+                  </div>
+
+                  <div class="member">
+                    <h4 class="name" id="joinConversation">
+                      <a class="href-link" href="#joinConversation">#</a>
+
+                      <span class="code-name">
+                        joinConversation<span class="signature"
+                          >(nickname, conversationId, callback,
+                          failCallback)</span
+                        ><span class="type-signature"></span>
+                      </span>
+                    </h4>
+
+                    <div class="description">
+                      <p>Join a conversation.</p>
+                    </div>
+
+                    <h5>Parameters:</h5>
+
+                    <div class="table-container">
+                      <table class="params table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>nickname</code></td>
+
+                            <td class="type">
+                              <code class="param-type">string</code>
+                            </td>
+
+                            <td class="description last">
+                              <p>participant's name</p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>conversationId</code></td>
+
+                            <td class="type">
+                              <code class="param-type">string</code>
+                            </td>
+
+                            <td class="description last">
+                              <p>conversation id</p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>callback</code></td>
+
+                            <td class="type">
+                              <code class="param-type"
+                                ><a href="global.html#enterConversationCallback"
+                                  >enterConversationCallback</a
+                                ></code
+                              >
+                            </td>
+
+                            <td class="description last">
+                              <p>
+                                function to call if the conversation is joined
+                                successfully (conversation is passed in the
+                                first argument)
+                              </p>
+                            </td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>failCallback</code></td>
+
+                            <td class="type">
+                              <code class="param-type"
+                                ><a href="global.html#errorCallback"
+                                  >errorCallback</a
+                                ></code
+                              >
+                            </td>
+
+                            <td class="description last">
+                              <p>
+                                function to call if the conversation joining
+                                fails (error is passed in the first argument)
+                              </p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="Body_Services_ChatBot_Lobby_io.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="Body_Services_ChatBot_Lobby_io.js.html"
+                            >Body/Services/ChatBot/Lobby/io.js</a
+                          >,
+                          <a
+                            href="Body_Services_ChatBot_Lobby_io.js.html#line146"
+                            >line 146</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </section>
+        </div>
+
+        <footer class="footer">
+          <div class="content has-text-centered">
+            <p>
+              Documentation generated by
+              <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a>
+            </p>
+            <p class="sidebar-created-by">
+              <a
+                href="https://github.com/SoftwareBrothers/better-docs"
+                target="_blank"
+                >BetterDocs theme</a
+              >
+              provided with <i class="fas fa-heart"></i> by
+              <a href="http://softwarebrothers.co" target="_blank"
+                >SoftwareBrothers - JavaScript Development Agency</a
+              >
+            </p>
+          </div>
+        </footer>
+      </div>
+      <div id="side-nav" class="side-nav"></div>
+    </div>
+    <script src="scripts/app.min.js"></script>
+    <script>
+      PR.prettyPrint();
+    </script>
+    <script src="scripts/linenumber.js"></script>
+  </body>
+</html>

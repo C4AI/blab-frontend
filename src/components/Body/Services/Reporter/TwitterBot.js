@@ -24,12 +24,12 @@ const TwitterBot = ({ username, loadingMessage = "" }) => {
           className="twitter-timeline"
           sourceType="profile"
           options={{
-            height: "75vh"
+            height: "75vh",
           }}
           screenName={username}
           noFooter={true}
         />
-        </Suspense>
+      </Suspense>
     </>
   );
 };
