@@ -18,16 +18,18 @@ const TwitterBot = ({ username, loadingMessage = "" }) => {
       <Suspense fallback={<div>{loadingMessage}</div>}>
         <TwitterFollowButton
           className="twitter-follow-button"
-          screenName={username} 
+          screenName={username}
         />
         <TwitterTimelineEmbed
           className="twitter-timeline"
           sourceType="profile"
+          options={{
+            height: "75vh"
+          }}
           screenName={username}
-          options={{ height: 400 }}
           noFooter={true}
         />
-      </Suspense>
+        </Suspense>
     </>
   );
 };

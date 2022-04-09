@@ -25,11 +25,7 @@ const Reporter = ({ setService }) => {
   useTranslation();
   return (
     <div className="reporter">
-      <Container
-        className="reporter-container"
-        component="main"
-        maxWidth="xs"
-      >
+      <Container className="reporter-container" component="main" maxWidth="xs">
         <div className="reporter-container-header">
           <div className="reporter-return-button">
             <Button

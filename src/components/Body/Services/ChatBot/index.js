@@ -32,7 +32,6 @@ const theme = createTheme({
  *  @component
  */
 const ChatBot = ({ setService }) => {
-
   const handleClick = () => {
     setService("Initial");
   };

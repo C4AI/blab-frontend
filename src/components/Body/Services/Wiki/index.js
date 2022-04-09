@@ -23,11 +23,7 @@ const Wiki = ({ setService }) => {
   useTranslation();
   return (
     <div className="wiki">
-      <Container
-        className="wiki-container"
-        component="main"
-        maxWidth="xs"
-      >
+      <Container className="wiki-container" component="main" maxWidth="xs">
         <div className="wiki-container-header">
           <div className="wiki-return-button">
             <Button
@@ -36,7 +32,7 @@ const Wiki = ({ setService }) => {
             />
           </div>
         </div>
-        <iframe src="http://pt.wikipedia.org" className="wiki-iframe"/>
+        <iframe src="http://pt.wikipedia.org" className="wiki-iframe" />
       </Container>
     </div>
   );

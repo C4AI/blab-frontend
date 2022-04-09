@@ -20,20 +20,21 @@ const Initial = ({ setService }) => {
   return (
     <div className="initial">
       <Container className="title">
-        <Typography variant="h6" 
+        <Typography
+          variant="h6"
           sx={{
             textTransform: "uppercase",
             fontSize: "1rem",
             fontWeight: "bold",
             marginTop: {
               xs: "25px", //mobile
-              sm: "50px"  //tablet and above
+              sm: "50px", //tablet and above
             },
             paddingBottom: {
               xs: "0.5rem",
               sm: "1rem",
             },
-            letterSpacing: "0.25rem"
+            letterSpacing: "0.25rem",
           }}
         >
           Blue Amazon Brain
@@ -42,22 +43,21 @@ const Initial = ({ setService }) => {
           sx={{
             backgroundColor: "white",
             width: "180px",
-            margin: "auto"
+            margin: "auto",
           }}
         />
-        <Typography variant="h2"
-          sx={{
-          }}
-        >
+        <Typography variant="h2" sx={{}}>
           BLAB
         </Typography>
       </Container>
-      <Grid container className="grid"
+      <Grid
+        container
+        className="grid"
         sx={{
           width: "90vw",
           maxWidth: {
-            sm: "750px" //tablet and above
-          }
+            sm: "750px", //tablet and above
+          },
         }}
       >
         {ServicesList.map((info) => {

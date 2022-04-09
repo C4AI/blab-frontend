@@ -9,13 +9,15 @@ import {
   CardActionArea,
   Typography,
 } from "@mui/material";
-import { createTheme } from '@material-ui/core/styles';
+import { createTheme } from "@material-ui/core/styles";
 
 /*
+ *  MUI theme used for resizing card pictures.
  *
  *  @category Services
  *  @subcategory Initial
- *  @component
+ *  @constant
+ *  @typee {object}
  */
 const theme = createTheme({
   breakpoints: {
@@ -27,7 +29,7 @@ const theme = createTheme({
       lg: 1200,
       xl: 1536,
     },
-    keys:["xxs", "xs", "sm", "md", "lg", "xl"]
+    keys: ["xxs", "xs", "sm", "md", "lg", "xl"],
   },
 });
 
@@ -47,7 +49,7 @@ export const CardService = ({ setService, info }) => {
   };
 
   return (
-    <Grid item sx={ { margin: "1em auto" } }>
+    <Grid item sx={{ margin: "1em auto" }}>
       <div id={info.name} onClick={handleClick}>
         <Card
           className="root"
@@ -63,7 +65,7 @@ export const CardService = ({ setService, info }) => {
             },
             height: {
               xs: "130px",
-              sm: "220px"
+              sm: "220px",
             },
             borderRadius: 5,
             margin: "auto",
@@ -76,11 +78,11 @@ export const CardService = ({ setService, info }) => {
         >
           <CardActionArea
             sx={{
-                display: "flex",
-                flexDirection: {
-                  xs: "row", //mobile
-                  sm: "column", //tablet and above
-                }
+              display: "flex",
+              flexDirection: {
+                xs: "row", //mobile
+                sm: "column", //tablet and above
+              },
             }}
           >
             <CardMedia
@@ -88,7 +90,7 @@ export const CardService = ({ setService, info }) => {
               sx={{
                 width: {
                   xxs: "",
-                  xs: "30%",  //mobile
+                  xs: "30%", //mobile
                   sm: "100%", //tablet and above
                 },
                 height: {
@@ -105,7 +107,7 @@ export const CardService = ({ setService, info }) => {
               sx={{
                 height: {
                   sm: "130px",
-                }
+                },
               }}
             >
               <Typography gutterBottom variant="h5" component="div">

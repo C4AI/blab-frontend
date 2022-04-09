@@ -22,7 +22,9 @@ const ServicesList = [
     ),
     active: true,
     image: "RoboJornalista.jpeg",
-    imageAlt: <Trans i18nKey="reporterImageAlt">Illustration of a journalist bot</Trans>,
+    imageAlt: (
+      <Trans i18nKey="reporterImageAlt">Illustration of a journalist bot</Trans>
+    ),
   },
   {
     name: "Wiki",
