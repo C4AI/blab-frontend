@@ -7,6 +7,32 @@ import { Container, Grid, Typography, Divider } from "@mui/material";
 
 import "./initial.css";
 
+function FillerGridItem(){
+  return (
+    <Grid item 
+    sx={{
+      margin: "auto",
+      width: {
+        xs: "80vw",
+        sm: "250px",
+      },
+    }}/>
+  )
+}
+
+function FillGrid(props){
+  const numOfItems = props.numOfItems;
+  const numOfColumns = props.numOfColumns;
+  const Filler = [];
+  if (numOfItems % numOfColumns != 0) {
+    const extraItems = numOfColumns - numOfItems % numOfColumns ;
+    for (var i = 0; i < extraItems; i++) {
+      Filler[i] = <FillerGridItem key={'FillerGridItem_' + i}/>;
+    }
+  }
+  return Filler
+}
+
 /**
  *  Website services index. Contains clickable cards that redirect
  *  to the other BlAB services. Card data is loaded from the
@@ -17,6 +43,8 @@ import "./initial.css";
  *  @component
  */
 const Initial = ({ setService }) => {
+  var numOfActiveServices = 0;
+  var numOfColumns = 3;
   return (
     <div className="initial">
       <Container className="title">
@@ -56,26 +84,35 @@ const Initial = ({ setService }) => {
         sx={{
           width: "90vw",
           maxWidth: {
-            sm: "750px", //tablet and above
+            sm: "1000px", //tablet and above
           },
         }}
       >
-        {ServicesList.map((info) => {
-          return (
-            info.active === true && (
+        {
+        ServicesList.map((info) => {
+            if (info.active === true) {
+              numOfActiveServices += 1;
+              return (
               <CardService
                 key={info.name}
                 setService={setService}
                 info={info}
               />
-            )
-          );
+              )}
         })}
+        <FillGrid numOfItems={numOfActiveServices} numOfColumns={numOfColumns}/>
       </Grid>
     </div>
   );
 };
 
+
+
+FillGrid.propTypes = {
+  /** Setter for the website Body's service variable. */
+  numOfItems: PropTypes.number.isRequired,
+  numOfColumns: PropTypes.number.isRequired,
+};
 Initial.propTypes = {
   /** Setter for the website Body's service variable. */
   setService: PropTypes.func.isRequired,

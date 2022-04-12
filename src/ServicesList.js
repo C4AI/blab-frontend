@@ -34,6 +34,22 @@ const ServicesList = [
     image: "Wiki.png",
     imageAlt: <Trans i18nKey="wikiImageAlt">Illustration of a wiki</Trans>,
   },
+  {
+    name: "quarto",
+    title: "a",
+    text: "exemplo",
+    active: true,
+    image: "Wiki.png",
+    imageAlt: "a",
+  },
+  {
+    name: "quinte",
+    title: "b",
+    text: "exemplo",
+    active: true,
+    image: "Wiki.png",
+    imageAlt: "a",
+  },
 ];
 
 export default ServicesList;
