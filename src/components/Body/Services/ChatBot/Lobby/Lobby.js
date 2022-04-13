@@ -37,8 +37,7 @@ const Lobby = ({ onJoinConversation, onCreateConversation, mode, bots }) => {
   useEffect(() => {
     setDisableButton(!selectedId ||
                      (selectedId === idForNewConversation && !newConversationName) ||
-                     !nickname ||
-                     isJoining)
+                     !nickname)
   }, [selectedId, isJoining, nickname, newConversationName, idForNewConversation]);
 
   const ioRef = useRef(null);

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import ServiceContainer from "../../ServiceContainer";
+import ServiceLoading from "../../ServiceLoading";
 
 import "./Wiki.css";
 import { useTranslation } from "react-i18next";
@@ -15,6 +16,12 @@ import { useTranslation } from "react-i18next";
  */
 const Wiki = ({ setService }) => {
   useTranslation();
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  const [isLoading, setIsLoading] = useState(true);
+  const onLoad = () => {
+    setIsLoading(false);
+  }
+
   return (
     <ServiceContainer
       setService={setService}
@@ -23,7 +30,17 @@ const Wiki = ({ setService }) => {
         minHeight: "80vh"
       }}
     >
-      <iframe src="http://pt.wikipedia.org" className="wiki-iframe" />
+      <>
+        {isLoading &&
+          <div className="loading">
+            <ServiceLoading/>
+          </div>
+        }
+        {isMobile
+          ? <iframe src="http://pt.m.wikipedia.org" className="wiki-iframe" onLoad={onLoad} frameBorder="0"/>
+          : <iframe src="http://pt.wikipedia.org" className="wiki-iframe" onLoad={onLoad} frameBorder="0"/>
+        }
+      </>
     </ServiceContainer>
   );
 };
