@@ -77,7 +77,7 @@ const Lobby = ({ onJoinConversation, onCreateConversation, mode, bots }) => {
   }
 
   return (
-    <Box sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
+    <Box sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper", margin: "auto" }}>
       {mode === "rooms" && (
         <ConversationList
           conversations={conversations}

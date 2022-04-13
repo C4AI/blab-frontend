@@ -71,8 +71,8 @@ const Initial = ({ setService }) => {
             fontSize: "1rem",
             fontWeight: "bold",
             marginTop: {
-              xs: "25px", //mobile
-              sm: "50px", //tablet and above
+              xs: "50px", //mobile
+              sm: "10vh", //tablet and above
             },
             paddingBottom: {
               xs: "0.5rem",
@@ -102,6 +102,10 @@ const Initial = ({ setService }) => {
           maxWidth: {
             sm: "1000px", //tablet and above
           },
+          marginTop: {
+            xs: "50px", //mobile
+            sm: "10vh", //tablet and above
+          }
         }}
       >
         {

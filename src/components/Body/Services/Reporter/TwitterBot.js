@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
-
 import PropTypes from "prop-types";
+
+import ServiceLoading from "../../ServiceLoading";
 import { TwitterFollowButton } from "react-twitter-embed";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
 import i18n from "../../../../i18n";
@@ -30,6 +31,7 @@ const TwitterBot = ({ username, loadingMessage = "" }) => {
           screenName={username}
           noFooter={true}
           lang={i18n.language}
+          placeholder={<ServiceLoading/>}
         />
       </Suspense>
     </>

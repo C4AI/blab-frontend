@@ -1,10 +1,10 @@
-import React, { useEffect, useState, Suspense } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 import { createTheme, ThemeProvider } from "@mui/material";
-import { Container } from "@mui/material";
-import { Button } from "@material-ui/core";
-import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+
+import ServiceContainer from "../../ServiceContainer";
+import ServiceLoading from "../../ServiceLoading";
 
 import Lobby from "./Lobby/Lobby";
 import Chat from "./Chat/Chat";
@@ -31,11 +31,7 @@ const theme = createTheme({
  *  @subcategory ChatBot
  *  @component
  */
-const ChatBot = ({ setService }) => {
-  const handleClick = () => {
-    setService("Initial");
-  };
-
+const ChatBot = ({setService}) => {
   const { i18n } = useTranslation();
 
   const conversationIdKey = "conversationId";
@@ -98,55 +94,38 @@ const ChatBot = ({ setService }) => {
     });
 
   return (
-    <div className="chatbot">
-      <Container
-        className="chatbot-container"
-        component="main"
-        maxWidth="xs"
-        sx={{ position: "relative", minWidth: "40vw" }}
-      >
-        <div className="chatbot-container-header">
-          <div className="chatbot-return-button">
-            <Button
-              onClick={handleClick}
-              startIcon={<KeyboardBackspaceIcon style={{ fontSize: 50 }} />}
-            />
-          </div>
-        </div>
-        <Suspense fallback={<>Loading... / Carregando...</>}>
-          <ThemeProvider theme={theme}>
-            {["rooms", "bots"].includes(mode) ? (
-              !conversation ? (
-                !conversationId ? (
-                  <Lobby
-                    onCreateConversation={enterConversation}
-                    onJoinConversation={enterConversation}
-                    mode={mode}
-                    bots={bots}
-                  />
-                ) : (
-                  <div>
-                    {
-                      <>Loading</> /* this is rendered when the user was 
-                    previously in a conversation, but the
-                    conversation data hasn't been loaded yet */
-                    }
-                  </div>
-                )
+      <ServiceContainer setService={setService}>
+        <ThemeProvider theme={theme}>
+          {["rooms", "bots"].includes(mode) ? (
+            !conversation ? (
+              !conversationId ? (
+                <Lobby
+                  onCreateConversation={enterConversation}
+                  onJoinConversation={enterConversation}
+                  mode={mode}
+                  bots={bots}
+                />
               ) : (
-                <Chat conversation={conversation} onLeave={onLeave} />
+                <div>
+                  {
+                    <ServiceLoading/> /* this is rendered when the user was 
+                  previously in a conversation, but the
+                  conversation data hasn't been loaded yet */
+                  }
+                </div>
               )
             ) : (
-              <p>
-                INVALID MODE. PLEASE SET THE ENVIRONMENT VALUE{" "}
-                <code>REACT_APP_CHAT_MODE</code> TO <i>rooms</i> OR <i>bots</i>{" "}
-                AND TRY AGAIN.
-              </p>
-            )}
-          </ThemeProvider>
-        </Suspense>
-      </Container>
-    </div>
+              <Chat conversation={conversation} onLeave={onLeave} />
+            )
+          ) : (
+            <p>
+              INVALID MODE. PLEASE SET THE ENVIRONMENT VALUE{" "}
+              <code>REACT_APP_CHAT_MODE</code> TO <i>rooms</i> OR <i>bots</i>{" "}
+              AND TRY AGAIN.
+            </p>
+          )}
+        </ThemeProvider>
+      </ServiceContainer>
   );
 };
 

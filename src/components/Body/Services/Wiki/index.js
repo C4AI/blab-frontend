@@ -1,9 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { Button } from "@material-ui/core";
-import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
-import { Container } from "@mui/material";
+import ServiceContainer from "../../ServiceContainer";
 
 import "./Wiki.css";
 import { useTranslation } from "react-i18next";
@@ -16,25 +14,17 @@ import { useTranslation } from "react-i18next";
  *  @component
  */
 const Wiki = ({ setService }) => {
-  const handleClick = () => {
-    setService("Initial");
-  };
-
   useTranslation();
   return (
-    <div className="wiki">
-      <Container className="wiki-container" component="main" maxWidth="xs">
-        <div className="wiki-container-header">
-          <div className="wiki-return-button">
-            <Button
-              onClick={handleClick}
-              startIcon={<KeyboardBackspaceIcon style={{ fontSize: 50 }} />}
-            />
-          </div>
-        </div>
-        <iframe src="http://pt.wikipedia.org" className="wiki-iframe" />
-      </Container>
-    </div>
+    <ServiceContainer
+      setService={setService}
+      sx={{
+        minWidth: "80vw",
+        minHeight: "80vh"
+      }}
+    >
+      <iframe src="http://pt.wikipedia.org" className="wiki-iframe" />
+    </ServiceContainer>
   );
 };
 

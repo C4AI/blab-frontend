@@ -1,13 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { Button } from "@material-ui/core";
-import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
-import { Container } from "@mui/material";
-
-import "./Reporter.css";
+import ServiceContainer from "../../ServiceContainer";
 import BLABReporter from "./BlabReporterTwitterBot";
 import { useTranslation } from "react-i18next";
+
+import "./Reporter.css";
 
 /**
  *  Reporter service. Currently displays the profile's twitter
@@ -18,25 +16,11 @@ import { useTranslation } from "react-i18next";
  *  @component
  */
 const Reporter = ({ setService }) => {
-  const handleClick = () => {
-    setService("Initial");
-  };
-
   useTranslation();
   return (
-    <div className="reporter">
-      <Container className="reporter-container" component="main" maxWidth="xs">
-        <div className="reporter-container-header">
-          <div className="reporter-return-button">
-            <Button
-              onClick={handleClick}
-              startIcon={<KeyboardBackspaceIcon style={{ fontSize: 50 }} />}
-            />
-          </div>
-        </div>
-        <BLABReporter />
-      </Container>
-    </div>
+    <ServiceContainer setService={setService}>
+      <BLABReporter />
+    </ServiceContainer>
   );
 };
 
