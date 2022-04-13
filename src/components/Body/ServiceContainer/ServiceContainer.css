@@ -7,11 +7,13 @@
   justify-content: center;
   font-size: 18px;
   position: relative;
-  background-color: blue;
+  background-color: #150E77A0;
   margin-top: 2em;
   margin-bottom: 2em;
   padding-bottom: 1em;
   border-radius: 25px;
+  backdrop-filter: blur(2.6px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 .container-header {

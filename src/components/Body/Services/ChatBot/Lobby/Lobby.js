@@ -33,6 +33,14 @@ const Lobby = ({ onJoinConversation, onCreateConversation, mode, bots }) => {
 
   const [availableBots, setAvailableBots] = useState(null);
 
+  const [disableButton, setDisableButton] = useState(false);
+  useEffect(() => {
+    setDisableButton(!selectedId ||
+                     (selectedId === idForNewConversation && !newConversationName) ||
+                     !nickname ||
+                     isJoining)
+  }, [selectedId, isJoining, nickname, newConversationName, idForNewConversation]);
+
   const ioRef = useRef(null);
   useEffect(() => {
     if (!ioRef.current) {
@@ -77,7 +85,7 @@ const Lobby = ({ onJoinConversation, onCreateConversation, mode, bots }) => {
   }
 
   return (
-    <Box sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper", margin: "auto" }}>
+    <Box sx={{ width: "100%", bgcolor: "background.paper", margin: "auto" }}>
       {mode === "rooms" && (
         <ConversationList
           conversations={conversations}
@@ -119,6 +127,10 @@ const Lobby = ({ onJoinConversation, onCreateConversation, mode, bots }) => {
         <Button
           className="join-chat-btn"
           variant="contained"
+          sx={{
+            marginTop: "15px",
+            marginBottom: "15px"
+          }}
           onClick={() => {
             setIsJoining(true);
             if (selectedId === idForNewConversation) {
@@ -138,15 +150,12 @@ const Lobby = ({ onJoinConversation, onCreateConversation, mode, bots }) => {
               );
             }
           }}
-          disabled={
-            !selectedId ||
-            (selectedId === idForNewConversation && !newConversationName) ||
-            !nickname ||
-            isJoining
-          }
+          disabled={disableButton}
         >
           {mode === "bots" ? (
-            <Trans i18nKey="startConversation">Start conversation</Trans>
+            disableButton === false
+              ? <Trans i18nKey="startConversation">Start conversation</Trans>
+              : <Trans i18nKey="chatbotUnavailable">ChatBot Unavailable</Trans>
           ) : selectedId !== idForNewConversation ? (
             <Trans i18nKey="joinConversation">Join conversation</Trans>
           ) : (

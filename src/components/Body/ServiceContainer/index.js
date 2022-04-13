@@ -29,13 +29,16 @@ const ServiceContainer = (props) => {
         <div className="return-button">
           <Button
             onClick={returnClicked}
-            startIcon={<KeyboardBackspaceIcon style={{ fontSize: 50 }} />}
+            startIcon={<KeyboardBackspaceIcon style={{ fontSize: 50, color: "white" }} />}
           />
         </div>
         <div className="readmore-button">
           <Button
             onClick={readMoreClicked}
             variant="contained"
+            style={{
+              backgroundColor: "white",
+            }}
           >
             <Trans i18nKey="readMore">Read More</Trans>
           </Button>
