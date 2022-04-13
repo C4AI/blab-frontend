@@ -1,464 +1,675 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Conversation</title>
 
-    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="./build/entry.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
-      crossorigin="anonymous"
-    />
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css"
-    />
-    <link type="text/css" rel="stylesheet" href="styles/app.min.css" />
-    <link type="text/css" rel="stylesheet" href="styles/iframe.css" />
-    <link type="text/css" rel="stylesheet" href="" />
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-  </head>
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Conversation</title>
 
-  <body class="layout small-header">
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
     <div id="stickyNavbarOverlay"></div>
+    
 
-    <div class="top-nav">
-      <div class="inner">
-        <a
-          id="hamburger"
-          role="button"
-          class="navbar-burger"
-          aria-label="menu"
-          aria-expanded="false"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
         </a>
         <div class="logo">
-          <a href="index.html">
-            <h1 class="navbar-item">My React components</h1>
-          </a>
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">My React components</h1>
+                </a>
+            
         </div>
         <div class="menu">
-          <div class="navigation">
-            <a href="index.html" class="link"> Documentation </a>
-          </div>
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
         </div>
-      </div>
     </div>
+</div>
     <div id="main">
-      <div class="sidebar" id="sidebarNav">
-        <nav>
-          <h2><a href="index.html">Documentation</a></h2>
-          <div class="category">
-            <h3><a href="global.html">Global</a></h3>
-          </div>
-          <div class="category">
-            <h2>Basic</h2>
-            <h3>Components</h3>
-            <ul>
-              <li><a href="Background.html">Background</a></li>
-              <li><a href="Body.html">Body</a></li>
-              <li><a href="Footer.html">Footer</a></li>
-            </ul>
-          </div>
-          <div class="category">
-            <h2>Services</h2>
-            <h3>Classes / ChatBot</h3>
-            <ul>
-              <li><a href="Conversation.html">Conversation</a></li>
-              <li><a href="LobbyIO.html">LobbyIO</a></li>
-              <li><a href="Message.html">Message</a></li>
-              <li><a href="MessageIO.html">MessageIO</a></li>
-              <li><a href="Participant.html">Participant</a></li>
-            </ul>
-            <h3>Components / Reporter</h3>
-            <ul>
-              <li><a href="BLABReporter.html">BLABReporter</a></li>
-              <li><a href="Reporter.html">Reporter</a></li>
-              <li><a href="TwitterBot.html">TwitterBot</a></li>
-            </ul>
-            <h3>Components / ChatBot</h3>
-            <ul>
-              <li><a href="BotSelector.html">BotSelector</a></li>
-              <li>
-                <a href="BottomRightTimestamp.html">BottomRightTimestamp</a>
-              </li>
-              <li><a href="Chat.html">Chat</a></li>
-              <li><a href="ChatBot.html">ChatBot</a></li>
-              <li><a href="ChatHeader.html">ChatHeader</a></li>
-              <li><a href="ChatRightMenu.html">ChatRightMenu</a></li>
-              <li><a href="ConversationList.html">ConversationList</a></li>
-              <li><a href="ConversationRow.html">ConversationRow</a></li>
-              <li><a href="Lobby.html">Lobby</a></li>
-              <li><a href="MessageBubble.html">MessageBubble</a></li>
-              <li><a href="MessageInputArea.html">MessageInputArea</a></li>
-              <li><a href="MessageRow.html">MessageRow</a></li>
-              <li><a href="NewConversation.html">NewConversation</a></li>
-              <li><a href="QuotedMessage.html">QuotedMessage</a></li>
-              <li>
-                <a href="SystemMessageBubble.html">SystemMessageBubble</a>
-              </li>
-            </ul>
-            <h3>Components / Initial</h3>
-            <ul>
-              <li><a href="Initial.html">Initial</a></li>
-            </ul>
-            <h3>Components / Wiki</h3>
-            <ul>
-              <li><a href="Wiki.html">Wiki</a></li>
-            </ul>
-            <h3>Global</h3>
-            <ul>
-              <li><a href="global.html#focus">focus</a></li>
-              <li>
-                <a href="global.html#MessageConditions">MessageConditions</a>
-              </li>
-              <li><a href="global.html#MessageTypes">MessageTypes</a></li>
-              <li>
-                <a href="global.html#ParticipantTypes">ParticipantTypes</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-      <div class="core" id="main-content-wrapper">
-        <div class="content">
-          <header class="page-title">
-            <p>Class</p>
-            <h1>Conversation</h1>
-          </header>
-
-          <section>
-            <header>
-              <h2>
-                <span class="attribs"><span class="type-signature"></span></span
-                >Conversation<span class="signature"
-                  >(id, name, participants, myParticipantId)</span
-                ><span class="type-signature"></span>
-              </h2>
-
-              <div class="class-description">
-                <p>Represents a conversation and its participants.</p>
-              </div>
-            </header>
-
-            <article>
-              <div class="container-overview">
-                <div class="vertical-section">
-                  <div class="members">
-                    <div class="member">
-                      <div class="name">
-                        <span class="tag">Constructor</span>
-                      </div>
-
-                      <h4 class="name" id="Conversation">
-                        <a class="href-link" href="#Conversation">#</a>
-
-                        <span class="code-name">
-                          new Conversation<span class="signature"
-                            >(id, name, participants, myParticipantId)</span
-                          ><span class="type-signature"></span>
-                        </span>
-                      </h4>
-
-                      <div class="description">
-                        <p>Create an instance.</p>
-                      </div>
-
-                      <h5>Parameters:</h5>
-
-                      <div class="table-container">
-                        <table class="params table">
-                          <thead>
-                            <tr>
-                              <th>Name</th>
-
-                              <th>Type</th>
-
-                              <th>Default</th>
-
-                              <th class="last">Description</th>
-                            </tr>
-                          </thead>
-
-                          <tbody>
-                            <tr class="deep-level-0">
-                              <td class="name"><code>id</code></td>
-
-                              <td class="type">
-                                <code class="param-type">string</code>
-                              </td>
-
-                              <td class="default"></td>
-
-                              <td class="description last">
-                                <p>conversation id</p>
-                              </td>
-                            </tr>
-
-                            <tr class="deep-level-0">
-                              <td class="name"><code>name</code></td>
-
-                              <td class="type">
-                                <code class="param-type">string</code>
-                              </td>
-
-                              <td class="default"></td>
-
-                              <td class="description last">
-                                <p>conversation name</p>
-                              </td>
-                            </tr>
-
-                            <tr class="deep-level-0">
-                              <td class="name"><code>participants</code></td>
-
-                              <td class="type">
-                                <code class="param-type"
-                                  >Array.&lt;<a href="Participant.html"
-                                    >Participant</a
-                                  >></code
-                                >
-                              </td>
-
-                              <td class="default"></td>
-
-                              <td class="description last">
-                                <p>list of participants</p>
-                              </td>
-                            </tr>
-
-                            <tr class="deep-level-0">
-                              <td class="name"><code>myParticipantId</code></td>
-
-                              <td class="type">
-                                <code class="param-type">string</code>
-                                |
-
-                                <code class="param-type">null</code>
-                              </td>
-
-                              <td class="default">null</td>
-
-                              <td class="description last">
-                                <p>
-                                  id of the current participant (or
-                                  <code>null</code> if not present)
-                                </p>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-
-                      <dl class="details">
-                        <p class="tag-source">
-                          <a
-                            href="Body_Services_ChatBot_Lobby_data-structures.js.html"
-                            class="button"
-                            >View Source</a
-                          >
-                          <span>
-                            <a
-                              href="Body_Services_ChatBot_Lobby_data-structures.js.html"
-                              >Body/Services/ChatBot/Lobby/data-structures.js</a
-                            >,
-                            <a
-                              href="Body_Services_ChatBot_Lobby_data-structures.js.html#line54"
-                              >line 54</a
-                            >
-                          </span>
-                        </p>
-                      </dl>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <h3 class="subsection-title">Classes</h3>
-
-              <dl>
-                <dt><a href="Conversation.html">Conversation</a></dt>
-                <dd></dd>
-              </dl>
-
-              <div class="vertical-section">
-                <h1>Methods</h1>
-                <div class="members">
-                  <div class="member">
-                    <h4 class="name" id=".fromServerData">
-                      <a class="href-link" href="#.fromServerData">#</a>
-
-                      <span class="tag">static</span>
-
-                      <span class="code-name">
-                        fromServerData<span class="signature">(c)</span
-                        ><span class="type-signature"></span>
-                      </span>
-                    </h4>
-
-                    <div class="description">
-                      <p>
-                        Build a
-                        <a href="Conversation.html">Conversation</a> instance
-                        from data returned by the server.
-                      </p>
-                    </div>
-
-                    <h5>Parameters:</h5>
-
-                    <div class="table-container">
-                      <table class="params table">
-                        <thead>
-                          <tr>
-                            <th>Name</th>
-
-                            <th>Type</th>
-
-                            <th class="last">Description</th>
-                          </tr>
-                        </thead>
-
-                        <tbody>
-                          <tr class="deep-level-0">
-                            <td class="name"><code>c</code></td>
-
-                            <td class="type">
-                              <code class="param-type">Object</code>
-                            </td>
-
-                            <td class="description last">
-                              <p>
-                                participant data (as received from the server)
-                              </p>
-                            </td>
-                          </tr>
-
-                          <tr class="deep-level-1">
-                            <td class="name"><code>id</code></td>
-
-                            <td class="type">
-                              <code class="param-type">string</code>
-                            </td>
-
-                            <td class="description last">
-                              <p>conversation id</p>
-                            </td>
-                          </tr>
-
-                          <tr class="deep-level-1">
-                            <td class="name"><code>name</code></td>
-
-                            <td class="type">
-                              <code class="param-type">string</code>
-                            </td>
-
-                            <td class="description last">
-                              <p>conversation name</p>
-                            </td>
-                          </tr>
-
-                          <tr class="deep-level-1">
-                            <td class="name"><code>participants</code></td>
-
-                            <td class="type">
-                              <code class="param-type">Array.&lt;Object></code>
-                            </td>
-
-                            <td class="description last">
-                              <p>list of participants</p>
-                            </td>
-                          </tr>
-
-                          <tr class="deep-level-1">
-                            <td class="name"><code>my_participant_id</code></td>
-
-                            <td class="type">
-                              <code class="param-type">string</code>
-                              |
-
-                              <code class="param-type">null</code>
-                            </td>
-
-                            <td class="description last">
-                              <p>
-                                id of the current participant (or
-                                <code>null</code> if not present)
-                              </p>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-
-                    <dl class="details">
-                      <p class="tag-source">
-                        <a
-                          href="Body_Services_ChatBot_Lobby_data-structures.js.html"
-                          class="button"
-                          >View Source</a
-                        >
-                        <span>
-                          <a
-                            href="Body_Services_ChatBot_Lobby_data-structures.js.html"
-                            >Body/Services/ChatBot/Lobby/data-structures.js</a
-                          >,
-                          <a
-                            href="Body_Services_ChatBot_Lobby_data-structures.js.html#line80"
-                            >line 80</a
-                          >
-                        </span>
-                      </p>
-                    </dl>
-                  </div>
-                </div>
-              </div>
-            </article>
-          </section>
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3><a href="global.html">Global</a></h3></div><div class="category"><h2>Basic</h2><h3>Components</h3><ul><li><a href="Background.html">Background</a></li><li><a href="Body.html">Body</a></li><li><a href="Footer.html">Footer</a></li></ul></div><div class="category"><h2>Services</h2><h3>Classes / ChatBot</h3><ul><li><a href="Conversation.html">Conversation</a></li><li><a href="LobbyIO.html">LobbyIO</a></li><li><a href="Message.html">Message</a></li><li><a href="MessageIO.html">MessageIO</a></li><li><a href="Participant.html">Participant</a></li></ul><h3>Components / Reporter</h3><ul><li><a href="BLABReporter.html">BLABReporter</a></li><li><a href="Reporter.html">Reporter</a></li><li><a href="TwitterBot.html">TwitterBot</a></li></ul><h3>Components / ChatBot</h3><ul><li><a href="BotSelector.html">BotSelector</a></li><li><a href="BottomRightTimestamp.html">BottomRightTimestamp</a></li><li><a href="Chat.html">Chat</a></li><li><a href="ChatBot.html">ChatBot</a></li><li><a href="ChatHeader.html">ChatHeader</a></li><li><a href="ChatRightMenu.html">ChatRightMenu</a></li><li><a href="ConversationList.html">ConversationList</a></li><li><a href="ConversationRow.html">ConversationRow</a></li><li><a href="Lobby.html">Lobby</a></li><li><a href="MessageBubble.html">MessageBubble</a></li><li><a href="MessageInputArea.html">MessageInputArea</a></li><li><a href="MessageRow.html">MessageRow</a></li><li><a href="NewConversation.html">NewConversation</a></li><li><a href="QuotedMessage.html">QuotedMessage</a></li><li><a href="SystemMessageBubble.html">SystemMessageBubble</a></li></ul><h3>Components / Initial</h3><ul><li><a href="FillerGridItem.html">FillerGridItem</a></li><li><a href="Initial.html">Initial</a></li></ul><h3>Components / Wiki</h3><ul><li><a href="Wiki.html">Wiki</a></li></ul><h3>Global</h3><ul><li><a href="global.html#FillGrid">FillGrid</a></li><li><a href="global.html#focus">focus</a></li><li><a href="global.html#MessageConditions">MessageConditions</a></li><li><a href="global.html#MessageTypes">MessageTypes</a></li><li><a href="global.html#ParticipantTypes">ParticipantTypes</a></li></ul></div>
+                
+            </nav>
         </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Class</p>
+                    <h1>Conversation</h1>
+                </header>
+                
 
-        <footer class="footer">
-          <div class="content has-text-centered">
-            <p>
-              Documentation generated by
-              <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a>
-            </p>
-            <p class="sidebar-created-by">
-              <a
-                href="https://github.com/SoftwareBrothers/better-docs"
-                target="_blank"
-                >BetterDocs theme</a
-              >
-              provided with <i class="fas fa-heart"></i> by
-              <a href="http://softwarebrothers.co" target="_blank"
-                >SoftwareBrothers - JavaScript Development Agency</a
-              >
-            </p>
-          </div>
-        </footer>
-      </div>
-      <div id="side-nav" class="side-nav"></div>
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>Conversation<span class="signature">(id, name, participants, myParticipantId)</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description"><p>Represents a conversation and its participants.</p></div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class='vertical-section'>
+                <div class="members">
+                    <div class="member">
+                        <div class=name>
+                            <span class="tag">Constructor</span>
+                        </div>
+                        
+
+
+    
+    <h4 class="name" id="Conversation">
+        <a class="href-link" href="#Conversation">#</a>
+        
+        <span class="code-name">
+            
+                new Conversation<span class="signature">(id, name, participants, myParticipantId)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Create an instance.</p>
     </div>
-    <script src="scripts/app.min.js"></script>
-    <script>
-      PR.prettyPrint();
-    </script>
-    <script src="scripts/linenumber.js"></script>
-  </body>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+            <th>Default</th>
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>id</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+      </td>
+  
+
+  <td class="description last"><p>conversation id</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>name</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+      </td>
+  
+
+  <td class="description last"><p>conversation name</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>participants</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Array.&lt;<a href="Participant.html">Participant</a>></code>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+      </td>
+  
+
+  <td class="description last"><p>list of participants</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>myParticipantId</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+|
+
+<code class="param-type">null</code>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+          null
+      
+      </td>
+  
+
+  <td class="description last"><p>id of the current participant
+(or <code>null</code> if not present)</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="Body_Services_ChatBot_Lobby_data-structures.js.html" class="button">View Source</a>
+            <span>
+                <a href="Body_Services_ChatBot_Lobby_data-structures.js.html">Body/Services/ChatBot/Lobby/data-structures.js</a>, <a href="Body_Services_ChatBot_Lobby_data-structures.js.html#line54">line 54</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="Conversation.html">Conversation</a></dt>
+            <dd></dd>
+        </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".fromServerData">
+        <a class="href-link" href="#.fromServerData">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                fromServerData<span class="signature">(c)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Build a <a href="Conversation.html">Conversation</a> instance from data returned by the server.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>c</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Object</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>participant data (as received from the server)</p></td>
+</tr>
+
+  
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>id</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>conversation id</p></td>
+</tr>
+
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>name</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>conversation name</p></td>
+</tr>
+
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>participants</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Array.&lt;Object></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>list of participants</p></td>
+</tr>
+
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>my_participant_id</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+|
+
+<code class="param-type">null</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>id of the current participant
+(or <code>null</code> if not present)</p></td>
+</tr>
+
+  
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="Body_Services_ChatBot_Lobby_data-structures.js.html" class="button">View Source</a>
+            <span>
+                <a href="Body_Services_ChatBot_Lobby_data-structures.js.html">Body/Services/ChatBot/Lobby/data-structures.js</a>, <a href="Body_Services_ChatBot_Lobby_data-structures.js.html#line80">line 80</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
 </html>

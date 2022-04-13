@@ -3,6 +3,7 @@ import React, { Suspense } from "react";
 import PropTypes from "prop-types";
 import { TwitterFollowButton } from "react-twitter-embed";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
+import i18n from "../../../../i18n";
 
 import "./Reporter.css";
 
@@ -28,6 +29,7 @@ const TwitterBot = ({ username, loadingMessage = "" }) => {
           }}
           screenName={username}
           noFooter={true}
+          lang={i18n.language}
         />
       </Suspense>
     </>

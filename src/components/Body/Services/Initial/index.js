@@ -7,6 +7,14 @@ import { Container, Grid, Typography, Divider } from "@mui/material";
 
 import "./initial.css";
 
+/**
+ * Empty grid item. Used for grid alignment.
+ *
+ * @category Services
+ * @subcategory Initial
+ * @component
+ */
+
 function FillerGridItem(){
   return (
     <Grid item 
@@ -19,6 +27,14 @@ function FillerGridItem(){
     }}/>
   )
 }
+
+/**
+ * Fills grid container with empty grid items to align cards to the left.
+ *
+ * @category Services
+ * @subcategory Initial
+ * @function
+ */
 
 function FillGrid(props){
   const numOfItems = props.numOfItems;

@@ -6,7 +6,7 @@ const ServicesList = [
     name: "ChatBot",
     title: <Trans i18nKey="chatBotTitle">ChatBot</Trans>,
     text: (
-      <Trans i18nKey="chatBotText">A ChatBot specialized in Blue Amazon</Trans>
+      <Trans i18nKey="chatBotText">An agent specialized in the Blue Amazon</Trans>
     ),
     active: true,
     image: "Chatbot.jpg",
@@ -38,7 +38,7 @@ const ServicesList = [
     name: "quarto",
     title: "a",
     text: "exemplo",
-    active: true,
+    active: false,
     image: "Wiki.png",
     imageAlt: "a",
   },
@@ -46,7 +46,7 @@ const ServicesList = [
     name: "quinte",
     title: "b",
     text: "exemplo",
-    active: true,
+    active: false,
     image: "Wiki.png",
     imageAlt: "a",
   },
