@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import PropTypes from "prop-types";
 
 import ServiceContainer from "../../ServiceContainer";
@@ -18,9 +18,11 @@ import "./Reporter.css";
 const Reporter = ({ setService }) => {
   useTranslation();
   return (
-    <ServiceContainer setService={setService}>
-      <BLABReporter />
-    </ServiceContainer>
+      <ServiceContainer setService={setService}>
+        <Suspense>
+          <BLABReporter />
+        </Suspense>
+      </ServiceContainer>
   );
 };
 

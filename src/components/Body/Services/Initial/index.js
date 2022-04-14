@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import ServicesList from "../../../../ServicesList";
@@ -18,13 +18,11 @@ import "./initial.css";
 function FillerGridItem(){
   return (
     <Grid item 
-    sx={{
-      margin: "auto",
-      width: {
-        xs: "80vw",
-        sm: "250px",
-      },
-    }}/>
+      sx={{
+        margin: "1em auto",
+      }}
+      xs={12} sm={6} md={4}
+    />
   )
 }
 
@@ -59,8 +57,36 @@ function FillGrid(props){
  *  @component
  */
 const Initial = ({ setService }) => {
+  /* This calculates the number of columns to display according to screen size.
+     It needs to match the number of grid items per line in the CardService component.
+
+     Currently, phones will display a single column, tablets and small computers will
+     display two, and larger devices will display a maximum of three.
+  */
   var numOfActiveServices = 0;
-  var numOfColumns = 3;
+  var initialNumOfColumns = 0;
+  if(window.innerWidth < 600)
+    initialNumOfColumns = 1;
+  else if(window.innerWidth < 900)
+    initialNumOfColumns = 2;
+  else
+    initialNumOfColumns = 3;
+
+  const [numOfColumns, setNumOfColumns] = useState(initialNumOfColumns);
+  
+  /* Whenever the screen is resized, the number of columns is recalculated. */
+  const handleResize = () => {
+    if(window.innerWidth < 600)
+      setNumOfColumns(1);
+    else if(window.innerWidth < 900)
+      setNumOfColumns(2);
+    else
+      setNumOfColumns(3);
+  }
+  useEffect(() => {
+    window.addEventListener("resize", handleResize)
+  })
+  
   return (
     <div className="initial">
       <Container className="title">

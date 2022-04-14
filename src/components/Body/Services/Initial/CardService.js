@@ -49,7 +49,7 @@ export const CardService = ({ setService, info }) => {
   };
 
   return (
-    <Grid item sx={{ margin: "1em auto" }}>
+    <Grid item sx={{ margin: "1em auto" }} xs={12} sm={6} md={4}>
       <div id={info.name} onClick={handleClick}>
         <Card
           className="root"
