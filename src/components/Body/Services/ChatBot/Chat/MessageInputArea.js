@@ -1,4 +1,9 @@
-import React, { forwardRef, useImperativeHandle, useRef, useState } from "react";
+import React, {
+  forwardRef,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from "react";
 import PropTypes from "prop-types";
 import { v4 as uuidv4 } from "uuid";
 import SendIcon from "@mui/icons-material/Send";
@@ -22,13 +27,10 @@ import AttachFileIcon from "@mui/icons-material/AttachFile";
  * @subcategory ChatBot
  * @component React.FC<MessageInputAreaPropTypes>
  */
-const MessageInputArea = forwardRef((
-  { onSendMessage, limits = {} },
-  ref
-) => {
+const MessageInputArea = forwardRef(({ onSendMessage, limits = {} }, ref) => {
   const textFieldRef = useRef(null);
   useImperativeHandle(ref, () => ({
-    /** Focus the text field 
+    /** Focus the text field
      *
      * @category Services
      * @subcategory ChatBot

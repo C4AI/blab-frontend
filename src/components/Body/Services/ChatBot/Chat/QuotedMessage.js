@@ -15,11 +15,7 @@ import { Participant } from "../Lobby/data-structures";
  * @subcategory ChatBot
  * @component
  */
-const QuotedMessage = ({
-  message,
-  participants,
-  handleRemoveQuote = null,
-}) => {
+const QuotedMessage = ({ message, participants, handleRemoveQuote = null }) => {
   if (!message) return null;
   return (
     <div className="quoted-message">
@@ -48,7 +44,7 @@ const QuotedMessage = ({
       )}
     </div>
   );
-}
+};
 
 QuotedMessage.propTypes = {
   /** the quoted message to be displayed (if absent, nothing is rendered) */

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chat/QuotedMessage.js</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./build/entry.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css"
+    />
+    <link type="text/css" rel="stylesheet" href="styles/app.min.css" />
+    <link type="text/css" rel="stylesheet" href="styles/iframe.css" />
+    <link type="text/css" rel="stylesheet" href="" />
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+
+  <body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+
+    <div class="top-nav">
+      <div class="inner">
+        <a
+          id="hamburger"
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+          <a href="index.html">
+            <h1 class="navbar-item">My React components</h1>
+          </a>
+        </div>
+        <div class="menu">
+          <div class="navigation">
+            <a href="index.html" class="link"> Documentation </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <div class="sidebar" id="sidebarNav">
+        <nav>
+          <h2><a href="index.html">Documentation</a></h2>
+          <div class="category">
+            <h3>Classes</h3>
+            <ul>
+              <li><a href="Conversation.html">Conversation</a></li>
+              <li><a href="Message.html">Message</a></li>
+              <li><a href="MessageIO.html">MessageIO</a></li>
+              <li><a href="module.exports_module.exports.html">exports</a></li>
+              <li><a href="Participant.html">Participant</a></li>
+            </ul>
+            <h3>Components</h3>
+            <ul>
+              <li><a href="MessageInputArea.html">MessageInputArea</a></li>
+            </ul>
+            <h3>Global</h3>
+            <ul>
+              <li>
+                <a href="global.html#BottomRightTimestamp"
+                  >BottomRightTimestamp</a
+                >
+              </li>
+              <li><a href="global.html#close">close</a></li>
+              <li>
+                <a href="global.html#createConversation">createConversation</a>
+              </li>
+              <li><a href="global.html#focus">focus</a></li>
+              <li><a href="global.html#getBots">getBots</a></li>
+              <li>
+                <a href="global.html#getConversations">getConversations</a>
+              </li>
+              <li><a href="global.html#id">id</a></li>
+              <li>
+                <a href="global.html#joinConversation">joinConversation</a>
+              </li>
+              <li>
+                <a href="global.html#MessageConditions">MessageConditions</a>
+              </li>
+              <li><a href="global.html#MessageTypes">MessageTypes</a></li>
+              <li><a href="global.html#name">name</a></li>
+              <li>
+                <a href="global.html#ParticipantTypes">ParticipantTypes</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="core" id="main-content-wrapper">
+        <div class="content">
+          <header class="page-title">
+            <p>Source</p>
+            <h1>Chat/QuotedMessage.js</h1>
+          </header>
+
+          <section>
+            <article>
+              <pre
+                class="prettyprint source linenums"
+              ><code>import React from "react";
+
+import PropTypes from "prop-types";
+
+import { IconButton } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import { Message, MessageConditions } from "./data-structures";
+import { Trans } from "react-i18next";
+import { Participant } from "../Lobby/data-structures";
+
+/**
+ * Display a quoted message.
+ */
+export default function QuotedMessage({
+  message,
+  participants,
+  handleRemoveQuote = null,
+}) {
+  if (!message) return null;
+  return (
+    &lt;div className="quoted-message">
+      {/* vertical bar on the left */}
+      &lt;div className="left-quote">&lt;/div>
+
+      &lt;div data-msg-id={"msg_" + message.id} className="main-quote">
+        {/* sender */}
+        &lt;div className="message-sender">
+          {message.condition === MessageConditions.RECEIVED ? (
+            participants[message.senderId].name
+          ) : (
+            &lt;Trans i18nKey="senderYou">You&lt;/Trans>
+          )}
+        &lt;/div>
+
+        {/* message contents */}
+        {message.text &amp;&amp; &lt;div className="message-text">{message.text}&lt;/div>}
+      &lt;/div>
+
+      {/* "x" button */}
+      {handleRemoveQuote &amp;&amp; (
+        &lt;IconButton className="close" onClick={() => handleRemoveQuote()}>
+          &lt;CloseIcon />
+        &lt;/IconButton>
+      )}
+    &lt;/div>
+  );
+}
+
+QuotedMessage.propTypes = {
+  /** the quoted message to be displayed (if absent, nothing is rendered) */
+  message: PropTypes.instanceOf(Message),
+
+  /** conversation participants (id -> Participant) */
+  participants: PropTypes.objectOf(PropTypes.instanceOf(Participant).isRequired)
+    .isRequired,
+
+  /** function to be called when the user removes the quote by clicking "x"
+   * (if the function is not present, the "x" button is not shown)
+   */
+  handleRemoveQuote: PropTypes.func,
+};
+</code></pre>
+            </article>
+          </section>
+        </div>
+
+        <footer class="footer">
+          <div class="content has-text-centered">
+            <p>
+              Documentation generated by
+              <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a>
+            </p>
+            <p class="sidebar-created-by">
+              <a
+                href="https://github.com/SoftwareBrothers/better-docs"
+                target="_blank"
+                >BetterDocs theme</a
+              >
+              provided with <i class="fas fa-heart"></i> by
+              <a href="http://softwarebrothers.co" target="_blank"
+                >SoftwareBrothers - JavaScript Development Agency</a
+              >
+            </p>
+          </div>
+        </footer>
+      </div>
+      <div id="side-nav" class="side-nav"></div>
+    </div>
+    <script src="scripts/app.min.js"></script>
+    <script>
+      PR.prettyPrint();
+    </script>
+    <script src="scripts/linenumber.js"></script>
+  </body>
+</html>

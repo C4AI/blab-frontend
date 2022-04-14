@@ -28,9 +28,11 @@ function Background() {
   });
   return (
     <AnimatePresence initial={false}>
-      <motion.img
+      <motion.div
         key={page}
-        src={images[imageIndex]}
+        style={{
+          backgroundImage: `url(${images[imageIndex]})`,
+        }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 1 }}

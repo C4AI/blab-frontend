@@ -113,7 +113,7 @@ const ChatRightMenu = ({ onTrigger }) => {
       </Dialog>
     </div>
   );
-}
+};
 
 ChatRightMenu.propTypes = {
   /** function called when an action is triggered

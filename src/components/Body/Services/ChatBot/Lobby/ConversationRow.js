@@ -10,11 +10,7 @@ import PropTypes from "prop-types";
  * @subcategory ChatBot
  * @component
  */
-const ConversationRow = ({
-  conversation,
-  isSelected,
-  handleSelect,
-}) => {
+const ConversationRow = ({ conversation, isSelected, handleSelect }) => {
   return (
     <ListItemButton selected={isSelected} onClick={() => handleSelect(true)}>
       <Radio
@@ -24,7 +20,7 @@ const ConversationRow = ({
       <ListItemText primary={conversation.name} />
     </ListItemButton>
   );
-}
+};
 
 ConversationRow.propTypes = {
   /** conversation to be displayed */

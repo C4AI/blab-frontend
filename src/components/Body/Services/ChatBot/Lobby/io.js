@@ -152,11 +152,11 @@ class LobbyIO {
       .catch((e) => failCallback && failCallback(e));
   }
 
-  /** stop all connections 
-    *
-    * @category Services
-    * @subcategory ChatBot
-    */
+  /** stop all connections
+   *
+   * @category Services
+   * @subcategory ChatBot
+   */
   close() {
     this.intentionallyClosed = true;
     for (const t of this.timeoutIds) clearTimeout(t);

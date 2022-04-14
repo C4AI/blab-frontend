@@ -12,12 +12,12 @@ export const ParticipantTypes = Object.freeze({
   HUMAN: "H",
 });
 
-/** 
-  * Represents a conversation participant 
-  *
-  * @category Services
-  * @subcategory ChatBot
-  * */
+/**
+ * Represents a conversation participant
+ *
+ * @category Services
+ * @subcategory ChatBot
+ * */
 export class Participant {
   /**
    * Create an instance.
@@ -46,11 +46,11 @@ export class Participant {
 }
 
 /**
-  * Represents a conversation and its participants. 
-  *
-  * @category Services
-  * @subcategory ChatBot
-  */
+ * Represents a conversation and its participants.
+ *
+ * @category Services
+ * @subcategory ChatBot
+ */
 export class Conversation {
   /**
    * Create an instance.

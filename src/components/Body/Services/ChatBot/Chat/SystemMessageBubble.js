@@ -15,11 +15,7 @@ import { Participant } from "../Lobby/data-structures";
  * @subcategory ChatBot
  * @component
  */
-const SystemMessageBubble = ({
-  message,
-  participants,
-  myParticipantId,
-}) => {
+const SystemMessageBubble = ({ message, participants, myParticipantId }) => {
   let text = "";
   const participantId = message.additionalMetadata["participant_id"];
   const name = participantId ? participants[participantId].name : null;
@@ -65,7 +61,7 @@ const SystemMessageBubble = ({
       <Chip data-msg-id={"msg_" + message.id} label={text} />
     </Tooltip>
   );
-}
+};
 
 SystemMessageBubble.propTypes = {
   /** the system message to display */

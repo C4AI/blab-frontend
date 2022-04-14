@@ -19,5 +19,18 @@
   "sendMessage": "Enviar mensagem",
   "insertAttachment": "Anexar arquivo",
   "insertMedia": "Inserir mídia",
-  "recordVoice": "Gravar voz"
+  "recordVoice": "Gravar voz",
+  "loadingReporter": "Carregando os tweets de BLAB Repórter...",
+  "chatBotTitle": "ChatBot",
+  "chatBotText": "Um agente especializado na Amazônia Azul",
+  "chatBotImageAlt": "Ilustração de um robô de conversa",
+  "reporterTitle": "Robô Jornalista",
+  "reporterText": "Um robô que gera notícias sobre a Amazônia Azul",
+  "reporterImageAlt": "Ilustração de um robô jornalista",
+  "wikiTitle": "Wiki",
+  "wikiText": "Uma wiki especializada em temas da Amazônia Azul",
+  "wikiImageAlt": "Ilustração de um Wiki",
+  "readMore": "Saiba Mais",
+  "chatbotUnavailable": "ChatBot Indisponível",
+  "adBlockWarning": "Por favor, desabilite o bloqueador de anúncios para poder visualizar este serviço."
 }

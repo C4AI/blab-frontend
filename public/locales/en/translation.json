@@ -19,5 +19,18 @@
   "sendMessage": "Send message",
   "insertAttachment": "Attach file",
   "insertMedia": "Insert media",
-  "recordVoice": "Record voice"
+  "recordVoice": "Record voice",
+  "loadingReporter": "Loading tweets by BLAB Reporter...",
+  "chatBotTitle": "ChatBot",
+  "chatBotText": "An agent specialized in the Blue Amazon",
+  "chatBotImageAlt": "Illustration of chatbot",
+  "reporterTitle": "Journalist Robot",
+  "reporterText": "A robot that generates news on the Blue Amazon",
+  "reporterImageAlt": "Illustration of a journalist bot",
+  "wikiTitle": "Wiki",
+  "wikiText": "A wiki focused on the Blue Amazon",
+  "wikiImageAlt": "Illustration of a wiki",
+  "readMore": "Read More",
+  "chatbotUnavailable": "ChatBot Unavailable",
+  "adBlockWarning": "Please, disable your ad blocker to be able to properly view this service."
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import "@fontsource/roboto";
 import "./index.css";
@@ -9,7 +9,9 @@ import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Suspense fallback={<></>}>
+      <App />
+    </Suspense>
   </React.StrictMode>,
   document.getElementById("root")
 );

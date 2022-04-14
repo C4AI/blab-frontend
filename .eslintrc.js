@@ -15,5 +15,5 @@ module.exports = {
   rules: {},
   globals: {
     require: true,
-  }
+  },
 };

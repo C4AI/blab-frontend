@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lobby/data-structures.js</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./build/entry.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css"
+    />
+    <link type="text/css" rel="stylesheet" href="styles/app.min.css" />
+    <link type="text/css" rel="stylesheet" href="styles/iframe.css" />
+    <link type="text/css" rel="stylesheet" href="" />
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+
+  <body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+
+    <div class="top-nav">
+      <div class="inner">
+        <a
+          id="hamburger"
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+          <a href="index.html">
+            <h1 class="navbar-item">My React components</h1>
+          </a>
+        </div>
+        <div class="menu">
+          <div class="navigation">
+            <a href="index.html" class="link"> Documentation </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <div class="sidebar" id="sidebarNav">
+        <nav>
+          <h2><a href="index.html">Documentation</a></h2>
+          <div class="category">
+            <h3>Classes</h3>
+            <ul>
+              <li><a href="Conversation.html">Conversation</a></li>
+              <li><a href="Message.html">Message</a></li>
+              <li><a href="MessageIO.html">MessageIO</a></li>
+              <li><a href="module.exports_module.exports.html">exports</a></li>
+              <li><a href="Participant.html">Participant</a></li>
+            </ul>
+            <h3>Components</h3>
+            <ul>
+              <li><a href="MessageInputArea.html">MessageInputArea</a></li>
+            </ul>
+            <h3>Global</h3>
+            <ul>
+              <li>
+                <a href="global.html#BottomRightTimestamp"
+                  >BottomRightTimestamp</a
+                >
+              </li>
+              <li><a href="global.html#close">close</a></li>
+              <li>
+                <a href="global.html#createConversation">createConversation</a>
+              </li>
+              <li><a href="global.html#focus">focus</a></li>
+              <li><a href="global.html#getBots">getBots</a></li>
+              <li>
+                <a href="global.html#getConversations">getConversations</a>
+              </li>
+              <li><a href="global.html#id">id</a></li>
+              <li>
+                <a href="global.html#joinConversation">joinConversation</a>
+              </li>
+              <li>
+                <a href="global.html#MessageConditions">MessageConditions</a>
+              </li>
+              <li><a href="global.html#MessageTypes">MessageTypes</a></li>
+              <li><a href="global.html#name">name</a></li>
+              <li>
+                <a href="global.html#ParticipantTypes">ParticipantTypes</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="core" id="main-content-wrapper">
+        <div class="content">
+          <header class="page-title">
+            <p>Source</p>
+            <h1>Lobby/data-structures.js</h1>
+          </header>
+
+          <section>
+            <article>
+              <pre class="prettyprint source linenums"><code>/**
+ * Represents participant types.
+ *
+ * @property {String} BOT bot participant
+ * @property {String} HUMAN human participant
+ */
+export const ParticipantTypes = Object.freeze({
+  BOT: "B",
+  HUMAN: "H",
+});
+
+/** Represents a conversation participant */
+export class Participant {
+  /**
+   * Create an instance.
+   * @param {string} id participant id
+   * @param {string} name participant name
+   * @param {string} type participant type (see {@link ParticipantTypes})
+   */
+  constructor(id, name, type) {
+    this.id = id;
+    this.name = name;
+    this.type = type;
+  }
+
+  /**
+   * Build a {@link Participant} instance from data returned by the server.
+   *
+   * @param {Object} p participant data (as received from the server)
+   * @param {string} p.id participant id
+   * @param {string} p.name participant name
+   * @param {string} p.type participant type (see {@link ParticipantTypes})
+   *
+   */
+  static fromServerData(p) {
+    return new Participant(p.id, p.name, p.type);
+  }
+}
+
+/** Represents a conversation and its participants. */
+export class Conversation {
+  /**
+   * Create an instance.
+   * @param {string} id conversation id
+   * @param {string} name conversation name
+   * @param {Array&lt;Participant>} participants list of participants
+   * @param {string|null} myParticipantId id of the current participant
+   *     (or `null` if not present)
+   */
+  constructor(id, name, participants, myParticipantId = null) {
+    this.id = id;
+    this.name = name;
+    this.participants = participants;
+    this.myParticipantId = myParticipantId;
+  }
+
+  /**
+   * Build a {@link Conversation} instance from data returned by the server.
+   *
+   * @param {Object} c participant data (as received from the server)
+   * @param {string} c.id conversation id
+   * @param {string} c.name conversation name
+   * @param {Array&lt;Object>} c.participants list of participants
+   * @param {string|null} c.my_participant_id id of the current participant
+   *     (or `null` if not present)
+   */
+  static fromServerData(c) {
+    return new Conversation(
+      c.id,
+      c.name,
+      c.participants.map((p) => Participant.fromServerData(p)),
+      c.my_participant_id
+    );
+  }
+}
+</code></pre>
+            </article>
+          </section>
+        </div>
+
+        <footer class="footer">
+          <div class="content has-text-centered">
+            <p>
+              Documentation generated by
+              <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a>
+            </p>
+            <p class="sidebar-created-by">
+              <a
+                href="https://github.com/SoftwareBrothers/better-docs"
+                target="_blank"
+                >BetterDocs theme</a
+              >
+              provided with <i class="fas fa-heart"></i> by
+              <a href="http://softwarebrothers.co" target="_blank"
+                >SoftwareBrothers - JavaScript Development Agency</a
+              >
+            </p>
+          </div>
+        </footer>
+      </div>
+      <div id="side-nav" class="side-nav"></div>
+    </div>
+    <script src="scripts/app.min.js"></script>
+    <script>
+      PR.prettyPrint();
+    </script>
+    <script src="scripts/linenumber.js"></script>
+  </body>
+</html>

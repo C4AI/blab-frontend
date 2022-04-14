@@ -57,7 +57,7 @@ const MessageRow = ({
       <div className="after"></div>
     </div>
   );
-}
+};
 
 MessageRow.propTypes = {
   /** the message to be displayed in this row */
