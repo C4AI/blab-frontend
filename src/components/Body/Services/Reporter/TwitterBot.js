@@ -5,7 +5,7 @@ import ServiceLoading from "../../ServiceLoading";
 import { TwitterFollowButton } from "react-twitter-embed";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
 import i18n from "../../../../i18n";
-
+import { Trans } from "react-i18next";
 import { Alert } from "@mui/material";
 
 import "./Reporter.css";
@@ -44,7 +44,11 @@ const TwitterBot = ({ username }) => {
     <>
       {adBlockEnabled
         ?
-          <Alert sx={{ marginTop:"15%"}} severity="error">Por favor, desabilite o bloqueador de anúncios para poder visualizar este serviço.</Alert>
+          <Alert sx={{ marginTop:"15%"}} severity="error">
+            <Trans i18nKey="adBlockWarning">
+              Please, disable your ad blocker to be able to properly view this service.
+            </Trans>
+          </Alert>
         :
           <>
             <TwitterFollowButton
