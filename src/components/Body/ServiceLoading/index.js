@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@mui/material";
-import { TailSpin } from "react-loader-spinner";
+import { Rings } from "react-loader-spinner";
 
 const ServiceLoading = () => {
   return (
@@ -13,7 +13,7 @@ const ServiceLoading = () => {
         transform: "translate(-50%, 0)",
       }}
     >
-      <TailSpin color="#FFFFFF" height={80} width={80}/>
+      <Rings color="#FFFFFF" height={80} width={80}/>
     </Box>
   )
 }
