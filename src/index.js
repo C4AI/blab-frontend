@@ -5,12 +5,15 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import reportWebVitals from "./reportWebVitals";
+import {BrowserRouter} from "react-router-dom";
 // import './fonts/fontawesome-webfont.ttf'
 
 ReactDOM.render(
   <React.StrictMode>
     <Suspense fallback={<></>}>
-      <App />
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <App />
+      </BrowserRouter>
     </Suspense>
   </React.StrictMode>,
   document.getElementById("root")
