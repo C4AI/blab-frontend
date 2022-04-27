@@ -11,7 +11,6 @@ import {Routes, Route} from "react-router-dom";
 import LanguageSwitch from "./components/LanguageSwitch.js";
 
 const App = withTranslation()(() => {
-
   return (
     <div className="App">
       <CssBaseline />
