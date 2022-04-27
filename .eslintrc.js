@@ -15,6 +15,7 @@ module.exports = {
   rules: {},
   globals: {
     require: true,
+    process: true,
   },
   settings: {
     react: {
