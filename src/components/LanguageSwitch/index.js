@@ -1,7 +1,13 @@
 import React from "react";
+import i18n from "i18next";
 import { Box, InputLabel, FormControl, NativeSelect } from '@mui/material';
 
 function LanguageSwitch() {
+    function setLanguage(language) {
+        i18n.changeLanguage(language);
+        return;
+    }
+
     return (
         <Box 
             sx={{
@@ -19,11 +25,12 @@ function LanguageSwitch() {
                     Language
                 </InputLabel>
                 <NativeSelect
-                    defaultValue="pt"
+                    defaultValue={i18n.language}
                     inputProps={{
                         name: 'language',
                         id: 'uncontrolled-native',
                     }}
+                    onChange={() => setLanguage(event.target.value)}
                 >
                     <option value="pt">Português</option>
                     <option value="en">English</option>

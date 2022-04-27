@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
-import ServicesList from "../../../../ServicesList";
+import GetServicesList from "../../../../ServicesList";
 import { CardService } from "./CardService";
 import { Container, Grid, Typography, Divider } from "@mui/material";
 
@@ -57,6 +57,8 @@ function FillGrid(props){
  *  @component
  */
 const Initial = ({ setService }) => {
+  const ServicesList = GetServicesList();
+
   /* This calculates the number of columns to display according to screen size.
      It needs to match the number of grid items per line in the CardService component.
 
