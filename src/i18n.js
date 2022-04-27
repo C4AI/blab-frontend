@@ -14,7 +14,7 @@ i18n
       escapeValue: false,
     },
     backend: {
-      loadPath: process.env.PUBLIC_URL + 'locales/{{lng}}/{{ns}}.json',
+      loadPath: process.env.PUBLIC_URL + '/locales/{{lng}}/{{ns}}.json',
     },
   });
 
