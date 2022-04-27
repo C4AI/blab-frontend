@@ -24,6 +24,9 @@
   max-width: 70%;
 }
 
+.message-bubble .embedded-media {
+  max-width: 100%;
+}
 .message-row {
   clear: both;
   margin: 0.75rem;

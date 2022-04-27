@@ -3,7 +3,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useTheme } from "@emotion/react";
 import QuotedMessage from "./QuotedMessage";
-import { Message, MessageConditions } from "./data-structures";
+import { Message, MessageConditions, MessageTypes } from "./data-structures";
+import {
+  ImageDisplay,
+  AudioDisplay,
+  VideoDisplay,
+  AttachmentDisplay,
+} from "./Media";
 import { Participant } from "../Lobby/data-structures";
 import BottomRightTimestamp from "./BottomRightTimestamp";
 
@@ -35,6 +41,32 @@ const MessageBubble = ({ message, participants, quotedMessage = null }) => {
 
       {/* quoted message */}
       <QuotedMessage message={quotedMessage} participants={participants} />
+
+      {/* image */}
+      {message.type == MessageTypes.IMAGE && (
+        <ImageDisplay url={message.fileUrl} />
+      )}
+
+      {/* audio */}
+      {(message.type == MessageTypes.AUDIO ||
+        message.type == MessageTypes.VOICE) && (
+        <AudioDisplay url={message.fileUrl} />
+      )}
+
+      {/* video */}
+      {message.type == MessageTypes.VIDEO && (
+        <VideoDisplay url={message.fileUrl} />
+      )}
+
+      {message.type == MessageTypes.ATTACHMENT && console.log(message)}
+      {/* attachment */}
+      {message.type == MessageTypes.ATTACHMENT && (
+        <AttachmentDisplay
+          url={message.fileUrl}
+          fileName={message.fileName}
+          size={message.fileSize}
+        />
+      )}
 
       {/* message text */}
       {message.text && <div className="message-text">{message.text}</div>}

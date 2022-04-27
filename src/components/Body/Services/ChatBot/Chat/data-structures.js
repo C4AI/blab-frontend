@@ -2,9 +2,10 @@
  * Represents message types.
  *
  * @property {String} TEXT text message (has only text)
- * @property {String} MEDIA image/audio/video message
- *  (media + optional caption)
- * @property {String} VOICE voice message (only media)
+ * @property {String} AUDIO message with audio (with optional caption)
+ * @property {String} VIDEO message with video (with optional caption)
+ * @property {String} IMAGE message with image (with optional caption)
+ * @property {String} VOICE voice message (only audio)
  * @property {String} ATTACHMENT attachment message
  *  (file + optional caption)
  * @property {String} SYSTEM system message
@@ -15,7 +16,9 @@
  */
 export const MessageTypes = Object.freeze({
   TEXT: "T",
-  MEDIA: "M",
+  AUDIO: "a",
+  VIDEO: "v",
+  IMAGE: "i",
   VOICE: "V",
   ATTACHMENT: "A",
   SYSTEM: "S",
@@ -58,8 +61,10 @@ export class Message {
    *    transcription (for voice messages)
    *    or caption (for attachment and media messages)
    * @param {string} senderId sender's id
-   * @param {string} downloadUrl download URL
+   * @param {string} fileUrl download URL
    *    (for voice, media and attachment messages)
+   * @param {number} fileSize file size in bytes
+   * @param {string} fileName file name
    * @param {string} quotedMessageId id of the quoted message
    * @param {string} event event type (for system messages)
    * @param {Object} additionalMetadata additional metadata
@@ -73,7 +78,9 @@ export class Message {
     id,
     text,
     senderId,
-    downloadUrl,
+    fileUrl,
+    fileSize,
+    fileName,
     quotedMessageId,
     event,
     additionalMetadata
@@ -85,7 +92,9 @@ export class Message {
     this.id = id;
     this.text = text;
     this.senderId = senderId;
-    this.downloadUrl = downloadUrl;
+    this.fileUrl = fileUrl;
+    this.fileSize = fileSize;
+    this.fileName = fileName;
     this.quotedMessageId = quotedMessageId;
     this.event = event;
     this.additionalMetadata = additionalMetadata;
@@ -119,7 +128,11 @@ export class Message {
    *    or caption (for attachment and media messages)
    * @param {Object} m.sender who sent the message
    * @param {string} m.sender_id sender's id
-   * @param {string} m.download_url download URL
+   * @param {string} m.file_url file download URL
+   *    (for voice, media and attachment messages)
+   * @param {string} m.file_size file size in bytes
+   *    (for voice, media and attachment messages)
+   * @param {string} m.file_name file name
    *    (for voice, media and attachment messages)
    * @param {string} m.quoted_message_id if of the quoted message
    * @param {string} m.event event type (for system messages)
@@ -142,7 +155,9 @@ export class Message {
       m.id,
       m.text,
       m.sender_id,
-      m.download_url,
+      m.file_url,
+      m.file_size,
+      m.file_name,
       m.quoted_message_id,
       m.event,
       m.additional_metadata
