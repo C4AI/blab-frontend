@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "https://c4ai.github.io/blab-frontend/static/css/main.52a37497.css",
-    "main.js": "https://c4ai.github.io/blab-frontend/static/js/main.32d9239c.js",
+    "main.js": "https://c4ai.github.io/blab-frontend/static/js/main.ac129bf2.js",
     "static/js/377.79331280.chunk.js": "https://c4ai.github.io/blab-frontend/static/js/377.79331280.chunk.js",
     "static/media/image_3.jpg": "https://c4ai.github.io/blab-frontend/static/media/image_3.3b3ffc67620437a6aa71.jpg",
     "static/media/image_2.jpg": "https://c4ai.github.io/blab-frontend/static/media/image_2.560f676a6bfb5709e4ce.jpg",
@@ -20,11 +20,11 @@
     "index.html": "https://c4ai.github.io/blab-frontend/index.html",
     "static/media/getFetch.cjs": "https://c4ai.github.io/blab-frontend/static/media/getFetch.c780682470504fffbd04.cjs",
     "main.52a37497.css.map": "https://c4ai.github.io/blab-frontend/static/css/main.52a37497.css.map",
-    "main.32d9239c.js.map": "https://c4ai.github.io/blab-frontend/static/js/main.32d9239c.js.map",
+    "main.ac129bf2.js.map": "https://c4ai.github.io/blab-frontend/static/js/main.ac129bf2.js.map",
     "377.79331280.chunk.js.map": "https://c4ai.github.io/blab-frontend/static/js/377.79331280.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.52a37497.css",
-    "static/js/main.32d9239c.js"
+    "static/js/main.ac129bf2.js"
   ]
 }
