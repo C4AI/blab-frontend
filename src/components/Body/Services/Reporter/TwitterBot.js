@@ -75,9 +75,6 @@ const TwitterBot = ({ username }) => {
 TwitterBot.propTypes = {
   /** Twitter username */
   username: PropTypes.string.isRequired,
-
-  /** Message to be shown while timeline is loading */
-  loadingMessage: PropTypes.object,
 };
 
 export default TwitterBot;

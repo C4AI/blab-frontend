@@ -125,6 +125,8 @@ export const CardService = ({ setService, info }) => {
 };
 
 CardService.propTypes = {
+  /** Setter for the website Body's service variable. */
   setService: PropTypes.func.isRequired,
+  /** Information about the service to be displayed in the Card. */
   info: PropTypes.object.isRequired,
 };

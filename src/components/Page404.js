@@ -2,6 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Paper, Box, Typography, Button, Grid } from "@mui/material";
 
+/**
+ *  Page 404 to be shown when user tries to acess a nonexistent page like https://website.com/ThisDoesNotExist .
+ *
+ *  @category Basic
+ *  @component
+ */
 function Page404() {
     return (
         <div className="page404">

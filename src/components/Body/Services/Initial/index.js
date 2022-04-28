@@ -198,8 +198,9 @@ const Initial = ({ setService }) => {
 };
 
 FillGrid.propTypes = {
-  /** Setter for the website Body's service variable. */
+  /** Number of active items displayed on the grid. */
   numOfItems: PropTypes.number.isRequired,
+  /** Number of columns displayed on the grid. */
   numOfColumns: PropTypes.number.isRequired,
 };
 Initial.propTypes = {

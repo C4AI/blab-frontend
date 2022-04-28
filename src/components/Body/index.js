@@ -10,7 +10,7 @@ import Wiki from "./Services/Wiki";
 import "./Body.css";
 
 /**
- *  Global website body.
+ *  Manual language selector.
  *
  *  @category Basic
  *  @component
