@@ -15,8 +15,11 @@ function LanguageSwitch() {
                 position: "fixed", 
                 width: 150,
                 height: 50,
-                right: 0,
-                top: "10vh",
+                left: 0,
+                top: {
+                    xs: "85vh",
+                    md: "10vh",
+                },
                 backgroundColor: "white",
                 borderRadius: 1
             }}>
