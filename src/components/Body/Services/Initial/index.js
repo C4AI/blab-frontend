@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
-import ServicesList from "../../../../ServicesList";
+import Popup from "./Popup.js"
+import GetServicesList from "../../../../ServicesList";
 import { CardService } from "./CardService";
-import { Container, Grid, Typography, Divider } from "@mui/material";
+import { Container, Grid, Typography, Divider, Link } from "@mui/material";
 
 import "./initial.css";
 
@@ -57,6 +58,8 @@ function FillGrid(props){
  *  @component
  */
 const Initial = ({ setService }) => {
+  const ServicesList = GetServicesList();
+
   /* This calculates the number of columns to display according to screen size.
      It needs to match the number of grid items per line in the CardService component.
 
@@ -86,9 +89,14 @@ const Initial = ({ setService }) => {
   useEffect(() => {
     window.addEventListener("resize", handleResize)
   })
-  
+
+  const [popupOpen, setPopupOpen] = useState(false);
+
   return (
     <div className="initial">
+      {popupOpen &&
+        <Popup handleClose={() => setPopupOpen(false)}/>
+      }
       <Container className="title">
         <Typography
           variant="h6"
@@ -97,8 +105,8 @@ const Initial = ({ setService }) => {
             fontSize: "1rem",
             fontWeight: "bold",
             marginTop: {
-              xs: "50px", //mobile
-              sm: "10vh", //tablet and above
+              xs: "50px", //mobile and tablet
+              md: "10vh", //above
             },
             paddingBottom: {
               xs: "0.5rem",
@@ -119,6 +127,39 @@ const Initial = ({ setService }) => {
         <Typography variant="h2" sx={{}}>
           BLAB
         </Typography>
+        <Typography
+          variant="h6"
+          sx={{
+            marginTop: {
+              xs: "25px", //mobile
+              md: "5vh", //above
+            },
+            marginBottom: {
+              xs: "25px", //mobile
+              md: "5vh", //above
+            },
+            maxWidth: "800px",
+            margin: "auto",
+            fontSize: {
+              xs: "1rem",
+              sm: "1.25rem",
+              md: "1.5rem",
+            }
+          }}
+        >
+          O Blue Amazon Brain incorpora informações sobre a costa marítima brasileira, conhecida como Amazônia Azul. 
+          {" "}
+          <Link
+            onClick={() => setPopupOpen(true)}
+            underline="hover"
+            sx={{
+              color: "red",
+              cursor: "pointer",
+            }}
+          >
+              Saiba mais!
+          </Link>
+        </Typography>
       </Container>
       <Grid
         container
@@ -129,8 +170,12 @@ const Initial = ({ setService }) => {
             sm: "1000px", //tablet and above
           },
           marginTop: {
-            xs: "50px", //mobile
-            sm: "10vh", //tablet and above
+            xs: "25px", //mobile
+            sm: "15px", //above
+            md: "5vh", //above
+          },
+          fontSize: {
+            xs: "1rem",
           }
         }}
       >
@@ -151,8 +196,6 @@ const Initial = ({ setService }) => {
     </div>
   );
 };
-
-
 
 FillGrid.propTypes = {
   /** Setter for the website Body's service variable. */
