@@ -19,6 +19,7 @@ import MicIcon from "@mui/icons-material/Mic";
 import { Message, MessageConditions, MessageTypes } from "./data-structures";
 import PermMediaIcon from "@mui/icons-material/PermMedia";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
+import AttachedFile from "./AttachedFile";
 
 /**
  * Display elements where the user can insert a message and send it.
@@ -42,6 +43,53 @@ const MessageInputArea = forwardRef(({ onSendMessage, limits = {} }, ref) => {
 
   // text typed by the user
   const [typedText, setTypedText] = useState("");
+
+  const [inputMessageType, setInputMessageType] = useState(MessageTypes.TEXT);
+
+  // file attached by the user
+  const [attachedFile, setAttachedFile] = useState(null);
+
+  /**
+   * Let the user choose any file to be attached to the message.
+   */
+  const chooseAttachment = () => {
+    const elem = document.createElement("input");
+    elem.type = "file";
+    elem.accept = "*";
+    elem.addEventListener("change", (e) => {
+      if (e.target.files.length) {
+        setAttachedFile(e.target.files[0]);
+        setInputMessageType(MessageTypes.ATTACHMENT);
+        inputMessageType;
+      }
+    });
+    elem.click();
+  };
+
+  /**
+   * Let the user choose any media file to be attached to the message.
+   */
+  const chooseMedia = () => {
+    const types = {
+      audio: MessageTypes.AUDIO,
+      video: MessageTypes.VIDEO,
+      image: MessageTypes.IMAGE,
+    };
+    const elem = document.createElement("input");
+    elem.type = "file";
+    elem.accept = "audio/*, image/*, video/*";
+    elem.addEventListener("change", (e) => {
+      if (e.target.files.length) {
+        const file = e.target.files[0];
+        const type = types[file.type.split("/", 1)[0]];
+        if (type !== undefined) {
+          setAttachedFile(file);
+          setInputMessageType(type);
+        }
+      }
+    });
+    elem.click();
+  };
 
   /** If there is a message (typed, attachment inserted, etc.),
    * store its data in a {@link Message} instance; otherwise,
@@ -96,86 +144,101 @@ const MessageInputArea = forwardRef(({ onSendMessage, limits = {} }, ref) => {
   const enableAttachment = Boolean(limits.MAX_ATTACHMENT_SIZE);
 
   return (
-    <TextField
-      inputRef={textFieldRef}
-      value={typedText}
-      fullWidth
-      multiline
-      minRows={4}
-      label={<Trans i18nKey="typeMessage">Type a message</Trans>}
-      variant="outlined"
-      sx={{ bgcolor: "white" }}
-      onChange={(e) => setTypedText(e.target.value)}
-      onKeyPress={(e) => {
-        if (e.key === "Enter" && !e.shiftKey) {
-          sendMessage(typedText.trim());
-          e.preventDefault();
-        }
-      }}
-      InputProps={{
-        endAdornment: (
-          <InputAdornment position="end">
-            <Stack>
-              {enableMedia && (
-                <Tooltip title={insertMediaLbl}>
-                  <span>
-                    <IconButton
-                      aria-label={insertMediaLbl}
-                      // disabled={}
-                      // onClick={}
-                      onMouseDown={(e) => e.preventDefault()} // don't lose focus
-                    >
-                      <PermMediaIcon />
-                    </IconButton>
-                  </span>
-                </Tooltip>
-              )}
-              {enableAttachment && (
-                <Tooltip title={insertFileLbl}>
-                  <span>
-                    <IconButton
-                      aria-label={insertFileLbl}
-                      // disabled={}
-                      // onClick={}
-                      onMouseDown={(e) => e.preventDefault()} // don't lose focus
-                    >
-                      <AttachFileIcon />
-                    </IconButton>
-                  </span>
-                </Tooltip>
-              )}
-            </Stack>
-            {(typedText.trim() || !enableVoice) && (
-              <Tooltip title={sendLbl}>
-                <span>
-                  <IconButton
-                    aria-label={sendLbl}
-                    disabled={!typedText.trim()}
-                    onClick={() => sendMessage(typedText.trim())}
-                    onMouseDown={(e) => e.preventDefault()} // don't lose focus
-                  >
-                    <SendIcon />
-                  </IconButton>
-                </span>
-              </Tooltip>
-            )}
-            {!typedText.trim() && enableVoice && (
-              <Tooltip title={insertVoiceLbl}>
-                <span>
-                  <IconButton
-                    aria-label={insertVoiceLbl}
-                    // disabled={}
-                    // onClick={}
-                  >
-                    <MicIcon />
-                  </IconButton>
-                </span>
-              </Tooltip>
-            )}
-          </InputAdornment>
-        ),
-      }}
-    />
+    <>
+      <Stack>
+        {Boolean(attachedFile) && (
+          <AttachedFile
+            file={attachedFile}
+            type={inputMessageType}
+            handleRemoveFile={() => {
+              setAttachedFile(null);
+              setInputMessageType(MessageTypes.TEXT);
+            }}
+          />
+        )}
+
+        <TextField
+          inputRef={textFieldRef}
+          value={typedText}
+          fullWidth
+          multiline
+          minRows={4}
+          label={<Trans i18nKey="typeMessage">Type a message</Trans>}
+          variant="outlined"
+          sx={{ bgcolor: "white" }}
+          onChange={(e) => setTypedText(e.target.value)}
+          onKeyPress={(e) => {
+            if (e.key === "Enter" && !e.shiftKey) {
+              sendMessage(typedText.trim());
+              e.preventDefault();
+            }
+          }}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <Stack>
+                  {enableMedia && (
+                    <Tooltip title={insertMediaLbl}>
+                      <span>
+                        <IconButton
+                          aria-label={insertMediaLbl}
+                          // disabled={}
+                          onClick={chooseMedia}
+                          onMouseDown={(e) => e.preventDefault()} // don't lose focus
+                        >
+                          <PermMediaIcon />
+                        </IconButton>
+                      </span>
+                    </Tooltip>
+                  )}
+                  {enableAttachment && (
+                    <Tooltip title={insertFileLbl}>
+                      <span>
+                        <IconButton
+                          aria-label={insertFileLbl}
+                          // disabled={}
+                          onClick={chooseAttachment}
+                          onMouseDown={(e) => e.preventDefault()} // don't lose focus
+                        >
+                          <AttachFileIcon />
+                        </IconButton>
+                      </span>
+                    </Tooltip>
+                  )}
+                </Stack>
+                {(typedText.trim() || !enableVoice) && (
+                  <Tooltip title={sendLbl}>
+                    <span>
+                      <IconButton
+                        aria-label={sendLbl}
+                        disabled={!typedText.trim()}
+                        onClick={() => sendMessage(typedText.trim())}
+                        onMouseDown={(e) => e.preventDefault()} // don't lose focus
+                      >
+                        <SendIcon />
+                      </IconButton>
+                    </span>
+                  </Tooltip>
+                )}
+                {!typedText.trim() && enableVoice && (
+                  <Tooltip title={insertVoiceLbl}>
+                    <span>
+                      <IconButton
+                        aria-label={insertVoiceLbl}
+                        // disabled={}
+                        // onClick={}
+                      >
+                        <MicIcon />
+                      </IconButton>
+                    </span>
+                  </Tooltip>
+                )}
+              </InputAdornment>
+            ),
+          }}
+        />
+      </Stack>
+    </>
   );
 });
 

@@ -3,6 +3,7 @@ import { w3cwebsocket as W3CWebSocket } from "websocket";
 import axios from "axios";
 import axiosRetry from "axios-retry";
 import { Message } from "./data-structures";
+import i18n from "../../../../../i18n";
 
 axiosRetry(axios, { retries: 0, retryDelay: axiosRetry.exponentialDelay });
 
@@ -226,6 +227,25 @@ class MessageIO {
   close() {
     this.intentionallyClosed = true;
     this.ws && this.ws.close();
+  }
+
+  static formatSize(b) {
+    if (isNaN(b)) return "";
+    const base = 1000; // it could be 1024 depending on the definition
+    const pfx = ["", "kilo", "mega", "giga", "tera", "peta"];
+    const i = Math.max(
+      0,
+      Math.min(
+        pfx.length - 1,
+        Math.floor(Math.log(Math.abs(b)) / Math.log(base))
+      )
+    );
+    return new Intl.NumberFormat(i18n.language, {
+      style: "unit",
+      unit: pfx[i] + "byte",
+      unitDisplay: "short",
+      maximumFractionDigits: 1,
+    }).format(b / Math.pow(base, i));
   }
 }
 

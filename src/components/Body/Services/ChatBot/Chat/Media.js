@@ -2,22 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 import DownloadIcon from "@mui/icons-material/Download";
-import i18n from "../../../../../i18n";
-
-function formatSize(b) {
-  if (isNaN(b)) return "";
-  const base = 1024;
-  const pfx = ["", "kilo", "mega", "giga", "tera", "peta"];
-  const i = Math.max(
-    0,
-    Math.min(pfx.length - 1, Math.floor(Math.log(Math.abs(b)) / Math.log(base)))
-  );
-  return new Intl.NumberFormat(i18n.language, {
-    style: "unit",
-    unit: pfx[i] + "byte",
-    unitDisplay: "short",
-  }).format(b / Math.pow(base, i));
-}
+import MessageIO from "./io";
 
 /**
  * Display an image that is part of a message.
@@ -94,7 +79,7 @@ export const AttachmentDisplay = ({ url, fileName, size }) => {
             {fileName}
           </Typography>
           <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            {formatSize(size)}
+            {MessageIO.formatSize(size)}
           </Typography>
         </CardContent>
       </Card>
