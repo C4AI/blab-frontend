@@ -100,14 +100,22 @@ const MessageInputArea = forwardRef(({ onSendMessage, limits = {} }, ref) => {
    */
   function collectMessage() {
     const text = typedText.trim();
-    if (!text) return null;
+    if (!text && !attachedFile) return null;
     return new Message(
-      MessageTypes.TEXT,
+      inputMessageType,
       MessageConditions.SENDING,
       new Date(),
       uuidv4().replace(/-/g, ""),
       undefined,
-      text
+      text,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      attachedFile
     );
   }
 
@@ -120,6 +128,7 @@ const MessageInputArea = forwardRef(({ onSendMessage, limits = {} }, ref) => {
     const message = collectMessage();
     if (message === null) return;
     setTypedText("");
+    setAttachedFile(null);
     onSendMessage(message);
   }
 
@@ -206,12 +215,12 @@ const MessageInputArea = forwardRef(({ onSendMessage, limits = {} }, ref) => {
                     </Tooltip>
                   )}
                 </Stack>
-                {(typedText.trim() || !enableVoice) && (
+                {(typedText.trim() || !enableVoice || attachedFile) && (
                   <Tooltip title={sendLbl}>
                     <span>
                       <IconButton
                         aria-label={sendLbl}
-                        disabled={!typedText.trim()}
+                        disabled={!typedText.trim() && !attachedFile}
                         onClick={() => sendMessage(typedText.trim())}
                         onMouseDown={(e) => e.preventDefault()} // don't lose focus
                       >
@@ -220,7 +229,7 @@ const MessageInputArea = forwardRef(({ onSendMessage, limits = {} }, ref) => {
                     </span>
                   </Tooltip>
                 )}
-                {!typedText.trim() && enableVoice && (
+                {!typedText.trim() && !attachedFile && enableVoice && (
                   <Tooltip title={insertVoiceLbl}>
                     <span>
                       <IconButton

@@ -69,6 +69,9 @@ export class Message {
    * @param {string} event event type (for system messages)
    * @param {Object} additionalMetadata additional metadata
    *    (for system messages)
+   * @param {File} rawFile contents of the file being attached
+   *    (only for messages that have not been sent yet;
+   *     messages returned from the server should use `fileUrl`)
    */
   constructor(
     type,
@@ -83,7 +86,8 @@ export class Message {
     fileName,
     quotedMessageId,
     event,
-    additionalMetadata
+    additionalMetadata,
+    rawFile
   ) {
     this.type = type;
     this.condition = condition;
@@ -98,6 +102,7 @@ export class Message {
     this.quotedMessageId = quotedMessageId;
     this.event = event;
     this.additionalMetadata = additionalMetadata;
+    this.rawFile = rawFile;
   }
 
   /**
@@ -105,14 +110,20 @@ export class Message {
    * that should be sent to the server.
    *
    * @returns a representation that is ready to be sent to the server
+   *          (either JSON or FormData)
    */
   asObjectToSend() {
-    return {
+    const m = {
       type: this.type,
       text: this.text,
-      quoted_message_id: this.quotedMessageId,
       local_id: this.localId,
     };
+    if (this.quotedMessageId) m["quoted_message_id"] = this.quotedMessageId;
+    if (this.type == MessageTypes.TEXT || this.rawFile === undefined) return m;
+    const fd = new FormData();
+    Object.keys(m).forEach((key) => fd.append(key, m[key]));
+    fd.append("file", this.rawFile);
+    return fd;
   }
 
   /**
@@ -160,7 +171,8 @@ export class Message {
       m.file_name,
       m.quoted_message_id,
       m.event,
-      m.additional_metadata
+      m.additional_metadata,
+      undefined
     );
   }
 }
