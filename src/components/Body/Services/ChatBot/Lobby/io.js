@@ -39,6 +39,10 @@ class LobbyIO {
     this.intentionallyClosed = false;
   }
 
+  /** URL of the back-end server */
+  static serverURL =
+    process.env.REACT_APP_CHAT_URL || "http://" + window.location.hostname;
+
   /**
    * Get the list of current conversations.
    *
@@ -54,7 +58,7 @@ class LobbyIO {
    */
   getConversations(callback, failCallback, interval, retries = Infinity) {
     axios
-      .get("/api/chat/conversations/", {
+      .get(LobbyIO.serverURL + "/api/chat/conversations/", {
         "axios-retry": {
           retries: retries,
         },
@@ -84,7 +88,7 @@ class LobbyIO {
    * @subcategory ChatBot
    */
   getBots(callback, limit = 100) {
-    let url = `/api/chat/bots/`;
+    let url = LobbyIO.serverURL + "/api/chat/bots/";
     const params = {
       limit,
     };
@@ -121,11 +125,15 @@ class LobbyIO {
    */
   createConversation(nickname, conversationName, bots, callback, failCallback) {
     axios
-      .post("/api/chat/conversations/", {
-        nickname: nickname,
-        name: conversationName,
-        bots: bots,
-      })
+      .post(
+        LobbyIO.serverURL + "/api/chat/conversations/",
+        {
+          nickname: nickname,
+          name: conversationName,
+          bots: bots,
+        },
+        { withCredentials: true }
+      )
       .then((r) => callback(Conversation.fromServerData(r.data)))
       .catch((e) => failCallback && failCallback(e));
   }
@@ -145,9 +153,16 @@ class LobbyIO {
    */
   joinConversation(nickname, conversationId, callback, failCallback) {
     axios
-      .post("/api/chat/conversations/" + conversationId + "/join/", {
-        nickname: nickname,
-      })
+      .post(
+        LobbyIO.serverURL +
+          "/api/chat/conversations/" +
+          conversationId +
+          "/join/",
+        {
+          nickname: nickname,
+        },
+        { withCredentials: true }
+      )
       .then((r) => callback(Conversation.fromServerData(r.data)))
       .catch((e) => failCallback && failCallback(e));
   }

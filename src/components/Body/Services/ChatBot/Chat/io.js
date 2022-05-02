@@ -2,7 +2,7 @@ import { w3cwebsocket as W3CWebSocket } from "websocket";
 
 import axios from "axios";
 import axiosRetry from "axios-retry";
-import { Message } from "./data-structures";
+import { Message, MessageTypes } from "./data-structures";
 import i18n from "../../../../../i18n";
 
 axiosRetry(axios, { retries: 0, retryDelay: axiosRetry.exponentialDelay });
@@ -26,7 +26,11 @@ axiosRetry(axios, { retries: 0, retryDelay: axiosRetry.exponentialDelay });
  * @subcategory ChatBot
  */
 class MessageIO {
-  /** URL of the web socket server */
+  /** URL of the back-end server */
+  static serverURL =
+    process.env.REACT_APP_CHAT_URL || "http://" + window.location.hostname;
+
+  /** URL of the back-end server used for the web socket */
   static webSocketURL =
     process.env.REACT_APP_CHAT_WS_URL || "ws://" + window.location.hostname;
 
@@ -139,7 +143,21 @@ class MessageIO {
    * @param {Message} message the message to be sent
    */
   #sendMessage(message) {
-    this.ws.send(JSON.stringify(message.asObjectToSend()));
+    const data = message.asObjectToSend();
+    if (message.type == MessageTypes.TEXT) {
+      this.ws.send(JSON.stringify(data));
+    } else {
+      axios
+        .post(
+          MessageIO.serverURL +
+            "/api/chat/conversations/" +
+            this.conversationId +
+            "/messages/",
+          data,
+          { withCredentials: true }
+        )
+        .finally(() => this.#sendNextPendingMessage());
+    }
   }
 
   /**
