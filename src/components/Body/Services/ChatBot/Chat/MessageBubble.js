@@ -58,7 +58,6 @@ const MessageBubble = ({ message, participants, quotedMessage = null }) => {
         <VideoDisplay url={message.fileUrl} />
       )}
 
-      {message.type == MessageTypes.ATTACHMENT && console.log(message)}
       {/* attachment */}
       {message.type == MessageTypes.ATTACHMENT && (
         <AttachmentDisplay

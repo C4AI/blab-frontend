@@ -9,6 +9,7 @@ import AttachmentIcon from "@mui/icons-material/Attachment";
 import ImageIcon from "@mui/icons-material/Image";
 import AudioFileIcon from "@mui/icons-material/AudioFile";
 import VideocamIcon from "@mui/icons-material/Videocam";
+import MicTwoToneIcon from "@mui/icons-material/MicTwoTone";
 import { MessageTypes } from "./data-structures";
 
 /**
@@ -29,6 +30,7 @@ const AttachedFile = ({
       [MessageTypes.IMAGE]: ImageIcon,
       [MessageTypes.VIDEO]: VideocamIcon,
       [MessageTypes.AUDIO]: AudioFileIcon,
+      [MessageTypes.VOICE]: MicTwoToneIcon,
     }[messageType] || AttachmentIcon;
   return (
     <div className="attached-file">

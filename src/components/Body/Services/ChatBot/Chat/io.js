@@ -265,6 +265,31 @@ class MessageIO {
       maximumFractionDigits: 1,
     }).format(b / Math.pow(base, i));
   }
+
+  static formatLength(t) {
+    if (isNaN(t)) return "";
+    if (t == Infinity) return "∞";
+    const locale = i18n.language;
+    const delimiter = new Intl.DateTimeFormat(locale, {
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+    })
+      .formatToParts(new Date("1999-12-31T23:59:59"))
+      .find((elem) => elem.type == "literal" && elem.value != " ").value;
+    t = Math.floor(t);
+    const hFmt = new Intl.NumberFormat(locale, { minimumIntegerDigits: 1 });
+    const minFmt = new Intl.NumberFormat(locale, {
+      minimumIntegerDigits: t >= 3600 ? 2 : 1,
+    });
+    const sFmt = new Intl.NumberFormat(locale, { minimumIntegerDigits: 2 });
+    return (
+      (t >= 3600 ? hFmt.format(Math.floor(t / 3600)) + delimiter : "") +
+      minFmt.format(Math.floor((t % 3600) / 60)) +
+      delimiter +
+      sFmt.format(t % 60)
+    );
+  }
 }
 
 export default MessageIO;

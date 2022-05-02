@@ -20,6 +20,7 @@ import { Message, MessageConditions, MessageTypes } from "./data-structures";
 import PermMediaIcon from "@mui/icons-material/PermMedia";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import AttachedFile from "./AttachedFile";
+import VoiceRecorder from "./VoiceRecorder";
 
 /**
  * Display elements where the user can insert a message and send it.
@@ -107,7 +108,7 @@ const MessageInputArea = forwardRef(({ onSendMessage, limits = {} }, ref) => {
       new Date(),
       uuidv4().replace(/-/g, ""),
       undefined,
-      text,
+      inputMessageType !== MessageTypes.VOICE ? text : "",
       undefined,
       undefined,
       undefined,
@@ -138,20 +139,40 @@ const MessageInputArea = forwardRef(({ onSendMessage, limits = {} }, ref) => {
   const insertFileLbl = <Trans i18nKey="insertAttachment">Insert file</Trans>;
   const insertVoiceLbl = <Trans i18nKey="recordVoice">Record voice</Trans>;
 
-  const enableAudio = Boolean(limits.MAX_AUDIO_SIZE && limits.MAX_AUDIO_LENGTH);
-  const enableVideo = Boolean(
-    limits.MAX_VIDEO_SIZE &&
-      limits.MAX_VIDEO_LENGTH &&
-      limits.MAX_VIDEO_RESOLUTION
-  );
-  const enableImage = Boolean(
-    limits.MAX_IMAGE_SIZE && limits.MAX_IMAGE_RESOLUTION
-  );
-  const enableMedia = Boolean(enableAudio || enableVideo || enableImage);
-  const enableVoice = Boolean(
-    limits.MAX_VOICE_LENGTH && limits.MAX_VOICE_LENGTH
-  );
-  const enableAttachment = Boolean(limits.MAX_ATTACHMENT_SIZE);
+  const enableAudio =
+    !attachedFile &&
+    inputMessageType !== MessageTypes.VOICE &&
+    Boolean(limits.MAX_AUDIO_SIZE && limits.MAX_AUDIO_LENGTH);
+  const enableVideo =
+    !attachedFile &&
+    inputMessageType !== MessageTypes.VOICE &&
+    Boolean(
+      limits.MAX_VIDEO_SIZE &&
+        limits.MAX_VIDEO_LENGTH &&
+        limits.MAX_VIDEO_RESOLUTION
+    );
+  const enableImage =
+    !attachedFile &&
+    inputMessageType !== MessageTypes.VOICE &&
+    Boolean(limits.MAX_IMAGE_SIZE && limits.MAX_IMAGE_RESOLUTION);
+  const enableMedia =
+    !attachedFile &&
+    inputMessageType !== MessageTypes.VOICE &&
+    Boolean(enableAudio || enableVideo || enableImage);
+  const enableVoice =
+    !attachedFile &&
+    inputMessageType !== MessageTypes.VOICE &&
+    Boolean(
+      limits.MAX_VOICE_LENGTH &&
+        limits.MAX_VOICE_LENGTH &&
+        navigator.mediaDevices &&
+        navigator.mediaDevices.getUserMedia
+    );
+  const enableAttachment =
+    !attachedFile &&
+    inputMessageType !== MessageTypes.VOICE &&
+    Boolean(limits.MAX_ATTACHMENT_SIZE);
+  const enableTextField = inputMessageType !== MessageTypes.VOICE;
 
   return (
     <>
@@ -167,13 +188,28 @@ const MessageInputArea = forwardRef(({ onSendMessage, limits = {} }, ref) => {
           />
         )}
 
+        {inputMessageType === MessageTypes.VOICE && (
+          <VoiceRecorder
+            handleFinishRecording={(file) => setAttachedFile(file)}
+            handleDiscardAudio={() => {
+              setAttachedFile(null);
+              setInputMessageType(MessageTypes.TEXT);
+            }}
+          />
+        )}
+
         <TextField
           inputRef={textFieldRef}
           value={typedText}
           fullWidth
           multiline
+          disabled={!enableTextField}
           minRows={4}
-          label={<Trans i18nKey="typeMessage">Type a message</Trans>}
+          label={
+            enableTextField && (
+              <Trans i18nKey="typeMessage">Type a message</Trans>
+            )
+          }
           variant="outlined"
           sx={{ bgcolor: "white" }}
           onChange={(e) => setTypedText(e.target.value)}
@@ -216,7 +252,7 @@ const MessageInputArea = forwardRef(({ onSendMessage, limits = {} }, ref) => {
                     </Tooltip>
                   )}
                 </Stack>
-                {(typedText.trim() || !enableVoice || attachedFile) && (
+                {(typedText.trim() || !enableVoice) && (
                   <Tooltip title={sendLbl}>
                     <span>
                       <IconButton
@@ -230,13 +266,13 @@ const MessageInputArea = forwardRef(({ onSendMessage, limits = {} }, ref) => {
                     </span>
                   </Tooltip>
                 )}
-                {!typedText.trim() && !attachedFile && enableVoice && (
+                {!typedText.trim() && enableVoice && (
                   <Tooltip title={insertVoiceLbl}>
                     <span>
                       <IconButton
                         aria-label={insertVoiceLbl}
                         // disabled={}
-                        // onClick={}
+                        onClick={() => setInputMessageType(MessageTypes.VOICE)}
                       >
                         <MicIcon />
                       </IconButton>
