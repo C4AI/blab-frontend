@@ -127,6 +127,7 @@ const MessageInputArea = forwardRef(({ onSendMessage, limits = {} }, ref) => {
   function sendMessage() {
     const message = collectMessage();
     if (message === null) return;
+    setInputMessageType(MessageTypes.TEXT);
     setTypedText("");
     setAttachedFile(null);
     onSendMessage(message);
