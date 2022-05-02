@@ -58,8 +58,8 @@ const MessageInputArea = forwardRef(({ onSendMessage, limits = {} }, ref) => {
     elem.accept = "*";
     elem.addEventListener("change", (e) => {
       if (e.target.files.length) {
-        setAttachedFile(e.target.files[0]);
         setInputMessageType(MessageTypes.ATTACHMENT);
+        setAttachedFile(e.target.files[0]);
         inputMessageType;
       }
     });
@@ -149,7 +149,7 @@ const MessageInputArea = forwardRef(({ onSendMessage, limits = {} }, ref) => {
         {Boolean(attachedFile) && (
           <AttachedFile
             file={attachedFile}
-            type={inputMessageType}
+            messageType={inputMessageType}
             handleRemoveFile={() => {
               setAttachedFile(null);
               setInputMessageType(MessageTypes.TEXT);
