@@ -44,5 +44,6 @@
   "messageTypeVideo": "Video",
   "messageTypeAttachment": "Attachment",
   "messageTypeSystem": "System message",
-  "messageTypeImage": "Image"
+  "messageTypeImage": "Image",
+  "fileTooLarge": "Files larger than <1>{{maxSize}}</1> are not accepted."
 }

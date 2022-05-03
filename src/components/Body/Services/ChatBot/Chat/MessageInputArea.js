@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import { v4 as uuidv4 } from "uuid";
 import SendIcon from "@mui/icons-material/Send";
 import {
+  Alert,
   IconButton,
   InputAdornment,
   Stack,
@@ -21,6 +22,7 @@ import PermMediaIcon from "@mui/icons-material/PermMedia";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import AttachedFile from "./AttachedFile";
 import VoiceRecorder from "./VoiceRecorder";
+import MessageIO from "./io";
 
 /**
  * Display elements where the user can insert a message and send it.
@@ -50,6 +52,21 @@ const MessageInputArea = forwardRef(({ onSendMessage, limits = {} }, ref) => {
   // file attached by the user
   const [attachedFile, setAttachedFile] = useState(null);
 
+  // alerts
+  const [alertComponent, setAlertComponent] = useState(null);
+
+  /** Show an error message letting the user know that the selected file is too large. */
+  const showFileTooLargeError = (maxSize) => {
+    const formattedMaxSize = MessageIO.formatSize(maxSize);
+    const elem = (
+      <Trans i18nKey="fileTooLarge" maxSize={formattedMaxSize}>
+        Files larger than <b>{{ maxSize: formattedMaxSize }}</b> are not
+        accepted.
+      </Trans>
+    );
+    setAlertComponent(elem);
+  };
+
   /**
    * Let the user choose any file to be attached to the message.
    */
@@ -59,9 +76,14 @@ const MessageInputArea = forwardRef(({ onSendMessage, limits = {} }, ref) => {
     elem.accept = "*";
     elem.addEventListener("change", (e) => {
       if (e.target.files.length) {
+        const file = e.target.files[0];
+        if (file.size > limits.MAX_ATTACHMENT_SIZE) {
+          showFileTooLargeError(limits.MAX_ATTACHMENT_SIZE);
+          return;
+        }
+        setAlertComponent(null);
         setInputMessageType(MessageTypes.ATTACHMENT);
-        setAttachedFile(e.target.files[0]);
-        inputMessageType;
+        setAttachedFile(file);
       }
     });
     elem.click();
@@ -76,6 +98,11 @@ const MessageInputArea = forwardRef(({ onSendMessage, limits = {} }, ref) => {
       video: MessageTypes.VIDEO,
       image: MessageTypes.IMAGE,
     };
+    const maxSizes = {
+      [MessageTypes.AUDIO]: limits.MAX_AUDIO_SIZE,
+      [MessageTypes.VIDEO]: limits.MAX_VIDEO_SIZE,
+      [MessageTypes.IMAGE]: limits.MAX_IMAGE_SIZE,
+    };
     const elem = document.createElement("input");
     elem.type = "file";
     elem.accept = "audio/*, image/*, video/*";
@@ -83,10 +110,16 @@ const MessageInputArea = forwardRef(({ onSendMessage, limits = {} }, ref) => {
       if (e.target.files.length) {
         const file = e.target.files[0];
         const type = types[file.type.split("/", 1)[0]];
-        if (type !== undefined) {
-          setAttachedFile(file);
-          setInputMessageType(type);
+        if (type === undefined) return;
+        const maxSize = maxSizes[type];
+        console.log([maxSizes, type, maxSize]);
+        if (file.size > maxSize) {
+          showFileTooLargeError(maxSize);
+          return;
         }
+        setAlertComponent(null);
+        setAttachedFile(file);
+        setInputMessageType(type);
       }
     });
     elem.click();
@@ -142,19 +175,15 @@ const MessageInputArea = forwardRef(({ onSendMessage, limits = {} }, ref) => {
   const enableAudio =
     !attachedFile &&
     inputMessageType !== MessageTypes.VOICE &&
-    Boolean(limits.MAX_AUDIO_SIZE && limits.MAX_AUDIO_LENGTH);
+    Boolean(limits.MAX_AUDIO_SIZE);
   const enableVideo =
     !attachedFile &&
     inputMessageType !== MessageTypes.VOICE &&
-    Boolean(
-      limits.MAX_VIDEO_SIZE &&
-        limits.MAX_VIDEO_LENGTH &&
-        limits.MAX_VIDEO_RESOLUTION
-    );
+    Boolean(limits.MAX_VIDEO_SIZE);
   const enableImage =
     !attachedFile &&
     inputMessageType !== MessageTypes.VOICE &&
-    Boolean(limits.MAX_IMAGE_SIZE && limits.MAX_IMAGE_RESOLUTION);
+    Boolean(limits.MAX_IMAGE_SIZE);
   const enableMedia =
     !attachedFile &&
     inputMessageType !== MessageTypes.VOICE &&
@@ -163,8 +192,7 @@ const MessageInputArea = forwardRef(({ onSendMessage, limits = {} }, ref) => {
     !attachedFile &&
     inputMessageType !== MessageTypes.VOICE &&
     Boolean(
-      limits.MAX_VOICE_LENGTH &&
-        limits.MAX_VOICE_LENGTH &&
+      limits.MAX_VOICE_SIZE &&
         navigator.mediaDevices &&
         navigator.mediaDevices.getUserMedia
     );
@@ -177,6 +205,14 @@ const MessageInputArea = forwardRef(({ onSendMessage, limits = {} }, ref) => {
   return (
     <>
       <Stack>
+        <div>
+          {Boolean(alertComponent) && (
+            <Alert severity="error" onClose={() => setAlertComponent(null)}>
+              {alertComponent}
+            </Alert>
+          )}
+        </div>
+
         {Boolean(attachedFile) && (
           <AttachedFile
             file={attachedFile}
