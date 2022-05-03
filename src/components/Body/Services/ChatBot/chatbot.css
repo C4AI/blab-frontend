@@ -162,3 +162,21 @@
 .attached-file .file-data {
   flex-grow: 2;
 }
+.attached-file .embedded-media {
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.attached-file img.embedded-media {
+  max-width: 30%
+}
+
+.attached-file video.embedded-media {
+  max-width: 40%
+}
+
+.voice-recorder .recording-timer {
+  margin-top: auto;
+  margin-bottom: auto;
+}

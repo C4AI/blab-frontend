@@ -30,6 +30,14 @@ const MessageBubble = ({ message, participants, quotedMessage = null }) => {
     color: received ? "black" : "white",
   };
 
+  const [fileUrl, fileName, fileSize] = message.rawFile
+    ? [
+        URL.createObjectURL(message.rawFile),
+        message.rawFile.name,
+        message.rawFile.size,
+      ]
+    : [message.fileUrl, message.fileName, message.fileSize];
+
   return (
     <div data-msg-id={"msg_" + message.id} className="message-bubble" style={s}>
       {/* sender (only if it is someone else) */}
@@ -43,28 +51,18 @@ const MessageBubble = ({ message, participants, quotedMessage = null }) => {
       <QuotedMessage message={quotedMessage} participants={participants} />
 
       {/* image */}
-      {message.type == MessageTypes.IMAGE && (
-        <ImageDisplay url={message.fileUrl} />
-      )}
+      {message.type == MessageTypes.IMAGE && <ImageDisplay url={fileUrl} />}
 
       {/* audio */}
       {(message.type == MessageTypes.AUDIO ||
-        message.type == MessageTypes.VOICE) && (
-        <AudioDisplay url={message.fileUrl} />
-      )}
+        message.type == MessageTypes.VOICE) && <AudioDisplay url={fileUrl} />}
 
       {/* video */}
-      {message.type == MessageTypes.VIDEO && (
-        <VideoDisplay url={message.fileUrl} />
-      )}
+      {message.type == MessageTypes.VIDEO && <VideoDisplay url={fileUrl} />}
 
       {/* attachment */}
       {message.type == MessageTypes.ATTACHMENT && (
-        <AttachmentDisplay
-          url={message.fileUrl}
-          fileName={message.fileName}
-          size={message.fileSize}
-        />
+        <AttachmentDisplay url={fileUrl} fileName={fileName} size={fileSize} />
       )}
 
       {/* message text */}

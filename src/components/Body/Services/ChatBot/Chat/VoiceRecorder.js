@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Card, IconButton, Stack } from "@mui/material";
+import { Card, IconButton, Stack, Typography } from "@mui/material";
 import PropTypes from "prop-types";
 
 import FiberManualRecordRoundedIcon from "@mui/icons-material/FiberManualRecordRounded";
 import StopIcon from "@mui/icons-material/Stop";
 import CloseIcon from "@mui/icons-material/Close";
 import MicOffIcon from "@mui/icons-material/MicOff";
+
+import MessageIO from "./io";
 
 const VoiceRecorder = ({
   maxLength = Infinity,
@@ -14,11 +16,11 @@ const VoiceRecorder = ({
 }) => {
   maxLength;
 
-  /*eslint no-unused-vars: "off" */
-
   const [recorder, setRecorder] = useState(null);
   const [recordedFile, setRecordedFile] = useState(null);
-  const [isRecording, setRecording] = useState(false);
+  const [recordingStart, setRecordingStart] = useState(null);
+  const [recordedLength, setRecordedLength] = useState(null);
+  const [recordingTimer, setRecordingTimer] = useState(null);
 
   const collectRecording = function (data) {
     if (recordedFile) return;
@@ -33,11 +35,9 @@ const VoiceRecorder = ({
       .getUserMedia({ audio: true })
       .then((stream) => {
         const rec = new MediaRecorder(stream);
-        ["start", "resume"].forEach((evt) =>
-          rec.addEventListener(evt, () => setRecording(true))
-        );
-        ["error", "pause", "stop"].forEach((evt) =>
-          rec.addEventListener(evt, () => setRecording(false))
+        rec.addEventListener("start", () => setRecordingStart(new Date()));
+        [("error", "stop")].forEach((evt) =>
+          rec.addEventListener(evt, () => setRecordingStart(null))
         );
         rec.addEventListener("dataavailable", (e) => collectRecording(e.data));
         setRecorder(rec);
@@ -47,10 +47,25 @@ const VoiceRecorder = ({
       });
   }, []);
 
-  const blobURL = recordedFile ? URL.createObjectURL(recordedFile) : null;
+  useEffect(() => {
+    if (recordingStart)
+      setRecordingTimer(
+        setInterval(
+          () =>
+            setRecordedLength(Math.floor((new Date() - recordingStart) / 1000)),
+          250
+        )
+      );
+    else {
+      setRecordedLength(null);
+      clearInterval(recordingTimer);
+    }
+  }, [recordingStart]);
+
+  const isRecording = recordingStart !== null;
 
   return (
-    <Card>
+    <Card className="voice-recorder">
       <Stack direction="row" spacing={2}>
         {!recordedFile && !isRecording && (
           <IconButton
@@ -64,12 +79,15 @@ const VoiceRecorder = ({
         )}
 
         {isRecording && (
-          <IconButton onClick={() => recorder.stop()}>
-            <StopIcon />
-          </IconButton>
+          <>
+            <IconButton onClick={() => recorder.stop()}>
+              <StopIcon />
+            </IconButton>
+            <Typography className="recording-timer">
+              {MessageIO.formatLength(recordedLength)}
+            </Typography>
+          </>
         )}
-
-        {Boolean(recordedFile) && <audio controls src={blobURL} />}
 
         <div style={{ flex: 1 }}></div>
 

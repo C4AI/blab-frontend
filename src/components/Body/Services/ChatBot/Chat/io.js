@@ -156,7 +156,7 @@ class MessageIO {
           data,
           { withCredentials: true }
         )
-        .finally(() => this.#sendNextPendingMessage());
+        .catch(() => this.#sendNextPendingMessage());
     }
   }
 

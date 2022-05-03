@@ -3,7 +3,6 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { Box, Card, CardMedia, IconButton, Typography } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
 import MessageIO from "./io";
 import AttachmentIcon from "@mui/icons-material/Attachment";
 import ImageIcon from "@mui/icons-material/Image";
@@ -11,6 +10,7 @@ import AudioFileIcon from "@mui/icons-material/AudioFile";
 import VideocamIcon from "@mui/icons-material/Videocam";
 import MicTwoToneIcon from "@mui/icons-material/MicTwoTone";
 import { MessageTypes } from "./data-structures";
+import { DeleteForever } from "@material-ui/icons";
 
 /**
  * Display name and size of an attached file.
@@ -39,9 +39,39 @@ const AttachedFile = ({
           sx={{ display: "flex", flexDirection: "column" }}
           style={{ opacity: "80%" }}
         >
-          <CardMedia component={icon} />
+          <CardMedia disabled component={icon} style={{ opacity: "40%" }} />
+
+          {messageType === MessageTypes.IMAGE && (
+            <img className="embedded-media" src={URL.createObjectURL(file)} />
+          )}
+
+          {(messageType === MessageTypes.AUDIO ||
+            messageType === MessageTypes.VOICE) && (
+            <audio
+              className="embedded-media"
+              src={URL.createObjectURL(file)}
+              controls
+              preload="auto"
+            />
+          )}
+
+          {messageType === MessageTypes.VIDEO && (
+            <video
+              className="embedded-media"
+              src={URL.createObjectURL(file)}
+              controls
+              controlsList="nodownload noremoteplayback"
+              playsInline
+              preload="auto"
+            />
+          )}
+
           <Box sx={{ display: "flex", flexDirection: "column" }}>
-            <Typography>{file.name}</Typography>
+            {messageType !== MessageTypes.VOICE && (
+              <a href={URL.createObjectURL(file)} download={file.name}>
+                <Typography>{file.name}</Typography>
+              </a>
+            )}
             <Typography variant="body2" color="text.secondary">
               {MessageIO.formatSize(file.size)}
             </Typography>
@@ -52,7 +82,7 @@ const AttachedFile = ({
       {/* "x" button */}
       {handleRemoveFile && (
         <IconButton className="close" onClick={() => handleRemoveFile()}>
-          <CloseIcon />
+          <DeleteForever />
         </IconButton>
       )}
     </div>
@@ -61,7 +91,7 @@ const AttachedFile = ({
 
 AttachedFile.propTypes = {
   /** file whose metadata will be display */
-  file: PropTypes.instanceOf(File),
+  file: PropTypes.instanceOf(Blob),
 
   /** type of the message */
   messageType: PropTypes.string,
