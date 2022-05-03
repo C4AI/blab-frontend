@@ -1,16 +1,27 @@
 import React from "react";
 
 import PropTypes from "prop-types";
+import { Trans } from "react-i18next";
 
-import { Box, Card, CardMedia, IconButton, Typography } from "@mui/material";
-import MessageIO from "./io";
+import {
+  Box,
+  Card,
+  CardMedia,
+  IconButton,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+
 import AttachmentIcon from "@mui/icons-material/Attachment";
 import ImageIcon from "@mui/icons-material/Image";
 import AudioFileIcon from "@mui/icons-material/AudioFile";
 import VideocamIcon from "@mui/icons-material/Videocam";
 import MicTwoToneIcon from "@mui/icons-material/MicTwoTone";
-import { MessageTypes } from "./data-structures";
 import { DeleteForever } from "@material-ui/icons";
+
+import MessageIO from "./io";
+
+import { MessageTypes } from "./data-structures";
 
 /**
  * Display name and size of an attached file.
@@ -25,13 +36,12 @@ const AttachedFile = ({
   handleRemoveFile = null,
 }) => {
   if (!file) return null;
-  const icon =
-    {
-      [MessageTypes.IMAGE]: ImageIcon,
-      [MessageTypes.VIDEO]: VideocamIcon,
-      [MessageTypes.AUDIO]: AudioFileIcon,
-      [MessageTypes.VOICE]: MicTwoToneIcon,
-    }[messageType] || AttachmentIcon;
+  const [icon, iconKey, iconFallbackText] = {
+    [MessageTypes.IMAGE]: [ImageIcon, "messageTypeImage", "Image"],
+    [MessageTypes.VIDEO]: [VideocamIcon, "messageTypeVideo", "Video"],
+    [MessageTypes.AUDIO]: [AudioFileIcon, "messageTypeAudio", "Audio"],
+    [MessageTypes.VOICE]: [MicTwoToneIcon, "messageTypeVoice", "Voice"],
+  }[messageType] || [AttachmentIcon, "messageTypeAttachment", "Attachment"];
   return (
     <div className="attached-file">
       <div className="file-data">
@@ -39,7 +49,14 @@ const AttachedFile = ({
           sx={{ display: "flex", flexDirection: "column" }}
           style={{ opacity: "80%" }}
         >
-          <CardMedia disabled component={icon} style={{ opacity: "40%" }} />
+          <Tooltip
+            placement="bottom-start"
+            title={<Trans i18nKey={iconKey}>{iconFallbackText}</Trans>}
+          >
+            <span>
+              <CardMedia disabled component={icon} style={{ opacity: "40%" }} />
+            </span>
+          </Tooltip>
 
           {messageType === MessageTypes.IMAGE && (
             <img className="embedded-media" src={URL.createObjectURL(file)} />
@@ -81,9 +98,24 @@ const AttachedFile = ({
 
       {/* "x" button */}
       {handleRemoveFile && (
-        <IconButton className="close" onClick={() => handleRemoveFile()}>
-          <DeleteForever />
-        </IconButton>
+        <Tooltip
+          placement="top"
+          title={
+            messageType === MessageTypes.VOICE ? (
+              <Trans i18nKey="discardVoiceRecording">Discard recording</Trans>
+            ) : messageType === MessageTypes.ATTACHMENT ? (
+              <Trans i18nKey="removeAttachment">Remove attachment</Trans>
+            ) : (
+              <Trans i18nKey="removeMedia">Remove media file</Trans>
+            )
+          }
+        >
+          <span>
+            <IconButton className="close" onClick={() => handleRemoveFile()}>
+              <DeleteForever />
+            </IconButton>
+          </span>
+        </Tooltip>
       )}
     </div>
   );

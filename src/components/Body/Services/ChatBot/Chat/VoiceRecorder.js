@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Card, IconButton, Stack, Typography } from "@mui/material";
+import { Card, IconButton, Stack, Tooltip, Typography } from "@mui/material";
 import PropTypes from "prop-types";
 
 import FiberManualRecordRoundedIcon from "@mui/icons-material/FiberManualRecordRounded";
 import StopIcon from "@mui/icons-material/Stop";
 import CloseIcon from "@mui/icons-material/Close";
 import MicOffIcon from "@mui/icons-material/MicOff";
+import { Trans } from "react-i18next";
+
 
 import MessageIO from "./io";
 
@@ -68,21 +70,35 @@ const VoiceRecorder = ({
     <Card className="voice-recorder">
       <Stack direction="row" spacing={2}>
         {!recordedFile && !isRecording && (
-          <IconButton
-            disabled={!recorder}
-            onClick={() =>
-              recorder.start(isFinite(maxLength) ? 1000 * maxLength : undefined)
-            }
+          <Tooltip
+            title={<Trans i18nKey="startVoiceRecording">Start recording</Trans>}
           >
-            {recorder ? <FiberManualRecordRoundedIcon /> : <MicOffIcon />}
-          </IconButton>
+            <span>
+              <IconButton
+                disabled={!recorder}
+                onClick={() =>
+                  recorder.start(
+                    isFinite(maxLength) ? 1000 * maxLength : undefined
+                  )
+                }
+              >
+                {recorder ? <FiberManualRecordRoundedIcon /> : <MicOffIcon />}
+              </IconButton>
+            </span>
+          </Tooltip>
         )}
 
         {isRecording && (
           <>
-            <IconButton onClick={() => recorder.stop()}>
-              <StopIcon />
-            </IconButton>
+            <Tooltip
+              title={<Trans i18nKey="stopVoiceRecording">Stop recording</Trans>}
+            >
+              <span>
+                <IconButton onClick={() => recorder.stop()}>
+                  <StopIcon />
+                </IconButton>
+              </span>
+            </Tooltip>
             <Typography className="recording-timer">
               {MessageIO.formatLength(recordedLength)}
             </Typography>
@@ -92,9 +108,15 @@ const VoiceRecorder = ({
         <div style={{ flex: 1 }}></div>
 
         {!recordedFile && (
-          <IconButton onClick={handleDiscardAudio}>
-            <CloseIcon />
-          </IconButton>
+          <Tooltip
+            title={<Trans i18nKey="cancelVoiceRecording">Cancel recording</Trans>}
+          >
+            <span>
+              <IconButton onClick={handleDiscardAudio}>
+                <CloseIcon />
+              </IconButton>{" "}
+            </span>
+          </Tooltip>
         )}
       </Stack>
     </Card>

@@ -32,5 +32,17 @@
   "wikiImageAlt": "Ilustração de um Wiki",
   "readMore": "Saiba Mais",
   "chatbotUnavailable": "ChatBot Indisponível",
-  "adBlockWarning": "Por favor, desabilite o bloqueador de anúncios para poder visualizar este serviço."
+  "adBlockWarning": "Por favor, desabilite o bloqueador de anúncios para poder visualizar este serviço.",
+  "startVoiceRecording": "Iniciar gravação",
+  "stopVoiceRecording": "Parar gravação",
+  "cancelVoiceRecording": "Cancelar gravação",
+  "removeAttachment": "Remover anexo",
+  "removeMedia": "Remover mídia",
+  "discardVoiceRecording": "Descartar gravação",
+  "messageTypeAudio": "Áudio",
+  "messageTypeVoice": "Gravação de voz",
+  "messageTypeVideo": "Vídeo",
+  "messageTypeAttachment": "Anexo",
+  "messageTypeSystem": "Mensagem do sistema",
+  "messageTypeImage": "Imagem"
 }
