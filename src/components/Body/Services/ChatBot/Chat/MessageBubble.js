@@ -36,7 +36,14 @@ const MessageBubble = ({ message, participants, quotedMessage = null }) => {
         message.rawFile.name,
         message.rawFile.size,
       ]
-    : [message.fileUrl, message.fileName, message.fileSize];
+    : [
+        message.fileUrl && message.fileUrl.startsWith("/")
+          ? process.env.REACT_APP_CHAT_URL + message.fileUrl
+          : message.fileUrl,
+        message.fileName,
+        message.fileSize,
+      ];
+
 
   return (
     <div data-msg-id={"msg_" + message.id} className="message-bubble" style={s}>
