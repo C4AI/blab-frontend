@@ -3,6 +3,12 @@ import i18n from "i18next";
 import { Box, InputLabel, FormControl, NativeSelect } from '@mui/material';
 import { Trans } from "react-i18next";
 
+/**
+ *  Manual language selection.
+ *
+ *  @category Basic
+ *  @component
+ */
 function LanguageSwitch() {
     function setLanguage(language) {
         i18n.changeLanguage(language);

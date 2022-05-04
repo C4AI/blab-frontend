@@ -3,6 +3,13 @@ import PropTypes from "prop-types";
 
 import { Trans } from "react-i18next";
 
+/**
+ *  Modal popup with explanation and information about the website.
+ *
+ *  @category Basic
+ *  @component
+ */
+
 const Popup = ({ handleClose }) => {
   return (
     <div className="popup-box">
@@ -15,6 +22,7 @@ const Popup = ({ handleClose }) => {
 };
 
 Popup.propTypes = {
+  /** Popup visibility setter. Used when closing the modal popup. */
   handleClose: PropTypes.func.isRequired,
 };
 

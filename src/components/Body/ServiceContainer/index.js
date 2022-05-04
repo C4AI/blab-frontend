@@ -9,6 +9,12 @@ import { Trans } from "react-i18next";
 
 import "./ServiceContainer.css";
 
+/**
+ *  Container to wrap services. It has a Return button and a ReadMore button.
+ *
+ *  @category Basic
+ *  @component
+ */
 const ServiceContainer = (props) => {
   const returnClicked = () => {
     props.setService("Initial");
