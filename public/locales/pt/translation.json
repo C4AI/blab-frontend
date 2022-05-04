@@ -32,5 +32,11 @@
   "wikiImageAlt": "Ilustração de um Wiki",
   "readMore": "Saiba Mais",
   "chatbotUnavailable": "ChatBot Indisponível",
-  "adBlockWarning": "Por favor, desabilite o bloqueador de anúncios para poder visualizar este serviço."
+  "adBlockWarning": "Por favor, desabilite o bloqueador de anúncios para poder visualizar este serviço.",
+  "initialDescription": "O Blue Amazon Brain incorpora informações sobre a costa marítima brasileira, conhecida como Amazônia Azul.",
+  "popupLink": "Saiba mais!",
+  "popupText": "Lorem Ipsum português",
+  "404message": "Esta página não existe ou algo deu errado.",
+  "404redirectButton": "Voltar ao Início",
+  "languageSwitch": "Língua"
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Paper, Box, Typography, Button, Grid } from "@mui/material";
+import { Trans } from "react-i18next";
 
 function Page404() {
     return (
@@ -27,7 +28,7 @@ function Page404() {
                         },
                         maxWidth: {
                             xs: "100vw",
-                            mds: "800px",
+                            md: "800px",
                         },
                         backgroundColor: "#00605D",
                         borderRadius: {
@@ -96,10 +97,11 @@ function Page404() {
                                 variant="h4"
                                 sx={{
                                     margin: "auto",
+                                    marginTop: "30px",
                                     maxWidth: "90%",
                                 }}
                             >
-                                Esta página não existe ou algo deu errado.
+                                <Trans i18nKey="404message">This page does not exist, or something went wrong.</Trans>
                             </Typography>
                         </Grid>
                         <Grid item xs={12} order={{ xs: 4, sm: 4 }}
@@ -119,7 +121,7 @@ function Page404() {
                                     color:"black",
                                 }}
                             >
-                                Voltar ao início
+                                <Trans i18nKey="404redirectButton">Return to the Start</Trans>
                             </Button>
                         </Grid>
                     </Grid>

@@ -32,5 +32,11 @@
   "wikiImageAlt": "Illustration of a wiki",
   "readMore": "Read More",
   "chatbotUnavailable": "ChatBot Unavailable",
-  "adBlockWarning": "Please, disable your ad blocker to be able to properly view this service."
+  "adBlockWarning": "Please, disable your ad blocker to be able to properly view this service.",
+  "initialDescription": "The Blue Amazon Brain integrates information about     the brazilian marine coast, known as Blue Amazon.",
+  "popupLink": "Read more!",
+  "popupText": "Lorem Ipsum",
+  "404message": "This page does not exist, or something went wrong.",
+  "404redirectButton": "Back to the Start",
+  "languageSwitch": "Language"
 }

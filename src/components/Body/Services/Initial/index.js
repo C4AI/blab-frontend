@@ -5,6 +5,7 @@ import Popup from "./Popup.js"
 import GetServicesList from "../../../../ServicesList";
 import { CardService } from "./CardService";
 import { Container, Grid, Typography, Divider, Link } from "@mui/material";
+import { Trans } from "react-i18next";
 
 import "./initial.css";
 
@@ -147,7 +148,7 @@ const Initial = ({ setService }) => {
             }
           }}
         >
-          O Blue Amazon Brain incorpora informações sobre a costa marítima brasileira, conhecida como Amazônia Azul. 
+          <Trans i18nKey="initialDescription">The Blue Amazon Brain integrates information about the brazilian marine coast, known as Blue Amazon.</Trans>
           {" "}
           <Link
             onClick={() => setPopupOpen(true)}
@@ -157,7 +158,7 @@ const Initial = ({ setService }) => {
               cursor: "pointer",
             }}
           >
-              Saiba mais!
+            <Trans i18nKey="popupLink">Read more!</Trans>
           </Link>
         </Typography>
       </Container>
