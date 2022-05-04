@@ -36,7 +36,7 @@
   "initialDescription": "The Blue Amazon Brain integrates information about     the brazilian marine coast, known as Blue Amazon.",
   "popupLink": "Read more!",
   "popupText": "Lorem Ipsum",
-  "404message": "This page does not exist, or something went wrong.",
-  "404redirectButton": "Back to the Start",
+  "404message": "This page does not exist or something went wrong.",
+  "404redirectButton": "Back to the start",
   "languageSwitch": "Language"
 }
