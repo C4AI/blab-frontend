@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import i18n from "i18next";
-import { Grid, InputLabel, FormControl, NativeSelect, Collapse, CardActionArea } from '@mui/material';
+import { Box, InputLabel, FormControl, NativeSelect, Collapse, CardActionArea } from '@mui/material';
 import { ArrowLeft, ArrowRight } from '@mui/icons-material';
 import { Trans } from "react-i18next";
 
@@ -22,30 +22,30 @@ function LanguageSwitch() {
         console.log(checked)
     };
 
-    const endev = () => {
-        console.log('end event')
-    }
 
     return (
-        <Collapse in={checked} addEndListener={endev}>
-            <Grid container 
-                sx={{
-                    zIndex: "tooltip",
-                    position: "fixed",
-                    width: "170px",
-                    height: "50px",
-                    left: 0,
-                    top: {
-                        xs: "85vh",
-                        md: "10vh",
-                    },
-                    backgroundColor: "white",
-                    borderRadius: 1
-                }}
-                styles={{}}
-                >
-                <Grid item sx={{width:"15px"}}/>
-                <Grid item sx={{width:"125px"}}>
+        <Box
+            sx={{
+                zIndex: "tooltip",
+                position: "fixed",
+                height: "50px",
+                right: 0,
+                top: "10vh",
+                backgroundColor: "white",
+                borderRadius: "20px 0px 0px 20px",
+                display: "inline-flex"
+            }}>
+            <Box sx={{ width: "30px", display: "inline-flex" }}>
+                <CardActionArea onClick={handleChange} sx={{borderRadius: "20px 0px 0px 20px"}}>
+                    {checked ? (
+                        <ArrowRight sx={{ fontSize: 30 }} />
+                    ) : (
+                        <ArrowLeft sx={{ fontSize: 30 }} />
+                    )}
+                </CardActionArea>
+            </Box>
+            <Collapse in={checked} orientation="horizontal">
+                <Box item sx={{ width: "140px", display: "inline-flex" }}>
                     <FormControl >
                         <InputLabel variant="standard" htmlFor="uncontrolled-native">
                             <Trans i18nKey="languageSwitch">Language</Trans>
@@ -62,18 +62,10 @@ function LanguageSwitch() {
                             <option value="en">English</option>
                         </NativeSelect>
                     </FormControl>
-                </Grid>
-                <Grid item sx={{width:"30px"}}>
-                    <CardActionArea onClick={handleChange} sx={{width:"100%", height:"100%"}}>
-                        {checked ? 
-                            <ArrowLeft sx={{ fontSize: 30 }}/> 
-                            : 
-                            <ArrowRight sx={{ fontSize: 30 }}/>}
-                    </CardActionArea>
-                </Grid>
-            </Grid>
-        </Collapse>
-
+                    <Box sx={{width:"15px"}}/>
+                </Box>
+            </Collapse>
+        </Box >
     )
 }
 
