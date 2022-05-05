@@ -19,7 +19,6 @@ function LanguageSwitch() {
 
     const handleChange = () => {
         setChecked((prev) => !prev);
-        console.log(checked)
     };
 
 
