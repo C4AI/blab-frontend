@@ -112,7 +112,6 @@ const MessageInputArea = forwardRef(({ onSendMessage, limits = {} }, ref) => {
         const type = types[file.type.split("/", 1)[0]];
         if (type === undefined) return;
         const maxSize = maxSizes[type];
-        console.log([maxSizes, type, maxSize]);
         if (file.size > maxSize) {
           showFileTooLargeError(maxSize);
           return;
