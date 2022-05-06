@@ -12,6 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 
+import SendIcon from "@mui/icons-material/Send";
 import AttachmentIcon from "@mui/icons-material/Attachment";
 import ImageIcon from "@mui/icons-material/Image";
 import AudioFileIcon from "@mui/icons-material/AudioFile";
@@ -34,6 +35,7 @@ const AttachedFile = ({
   file,
   messageType = null,
   handleRemoveFile = null,
+  handleSend = null,
 }) => {
   if (!file) return null;
   const [icon, iconKey, iconFallbackText] = {
@@ -42,6 +44,9 @@ const AttachedFile = ({
     [MessageTypes.AUDIO]: [AudioFileIcon, "messageTypeAudio", "Audio"],
     [MessageTypes.VOICE]: [MicTwoToneIcon, "messageTypeVoice", "Voice"],
   }[messageType] || [AttachmentIcon, "messageTypeAttachment", "Attachment"];
+
+  const sendLbl = <Trans i18nKey="sendMessage">Send</Trans>;
+
   return (
     <div className="attached-file">
       <div className="file-data">
@@ -117,6 +122,20 @@ const AttachedFile = ({
           </span>
         </Tooltip>
       )}
+
+      {handleSend && (
+        <Tooltip title={sendLbl}>
+          <span>
+            <IconButton
+              aria-label={sendLbl}
+              onClick={() => handleSend()}
+              onMouseDown={(e) => e.preventDefault()} // don't lose focus
+            >
+              <SendIcon />
+            </IconButton>
+          </span>
+        </Tooltip>
+      )}
     </div>
   );
 };
@@ -132,6 +151,12 @@ AttachedFile.propTypes = {
    * (if the function is not present, the "x" button is not shown)
    */
   handleRemoveFile: PropTypes.func,
+
+  /** function to be called when the user presses the button to send
+   * the message
+   * (if the function is not present, the Send button is not shown)
+   */
+  handleSend: PropTypes.func,
 };
 
 export default AttachedFile;

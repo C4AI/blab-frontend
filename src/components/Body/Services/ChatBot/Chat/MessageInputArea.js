@@ -217,6 +217,9 @@ const MessageInputArea = forwardRef(({ onSendMessage, limits = {} }, ref) => {
           <AttachedFile
             file={attachedFile}
             messageType={inputMessageType}
+            handleSend={
+              inputMessageType === MessageTypes.VOICE ? sendMessage : null
+            }
             handleRemoveFile={() => {
               setAttachedFile(null);
               setInputMessageType(MessageTypes.TEXT);
@@ -234,91 +237,95 @@ const MessageInputArea = forwardRef(({ onSendMessage, limits = {} }, ref) => {
           />
         )}
 
-        <TextField
-          inputRef={textFieldRef}
-          value={typedText}
-          fullWidth
-          multiline
-          disabled={!enableTextField}
-          minRows={4}
-          label={
-            enableTextField && (
-              <Trans i18nKey="typeMessage">Type a message</Trans>
-            )
-          }
-          variant="outlined"
-          sx={{ bgcolor: "white" }}
-          onChange={(e) => setTypedText(e.target.value)}
-          onKeyPress={(e) => {
-            if (e.key === "Enter" && !e.shiftKey) {
-              sendMessage(typedText.trim());
-              e.preventDefault();
+        {inputMessageType !== MessageTypes.VOICE && (
+          <TextField
+            inputRef={textFieldRef}
+            value={typedText}
+            fullWidth
+            multiline
+            disabled={!enableTextField}
+            minRows={4}
+            label={
+              enableTextField && (
+                <Trans i18nKey="typeMessage">Type a message</Trans>
+              )
             }
-          }}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <Stack>
-                  {enableMedia && (
-                    <Tooltip title={insertMediaLbl}>
+            variant="outlined"
+            sx={{ bgcolor: "white" }}
+            onChange={(e) => setTypedText(e.target.value)}
+            onKeyPress={(e) => {
+              if (e.key === "Enter" && !e.shiftKey) {
+                sendMessage(typedText.trim());
+                e.preventDefault();
+              }
+            }}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <Stack>
+                    {enableMedia && (
+                      <Tooltip title={insertMediaLbl}>
+                        <span>
+                          <IconButton
+                            aria-label={insertMediaLbl}
+                            // disabled={}
+                            onClick={chooseMedia}
+                            onMouseDown={(e) => e.preventDefault()} // don't lose focus
+                          >
+                            <PermMediaIcon />
+                          </IconButton>
+                        </span>
+                      </Tooltip>
+                    )}
+                    {enableAttachment && (
+                      <Tooltip title={insertFileLbl}>
+                        <span>
+                          <IconButton
+                            aria-label={insertFileLbl}
+                            // disabled={}
+                            onClick={chooseAttachment}
+                            onMouseDown={(e) => e.preventDefault()} // don't lose focus
+                          >
+                            <AttachFileIcon />
+                          </IconButton>
+                        </span>
+                      </Tooltip>
+                    )}
+                  </Stack>
+                  {(typedText.trim() || !enableVoice) && (
+                    <Tooltip title={sendLbl}>
                       <span>
                         <IconButton
-                          aria-label={insertMediaLbl}
-                          // disabled={}
-                          onClick={chooseMedia}
+                          aria-label={sendLbl}
+                          disabled={!typedText.trim() && !attachedFile}
+                          onClick={() => sendMessage()}
                           onMouseDown={(e) => e.preventDefault()} // don't lose focus
                         >
-                          <PermMediaIcon />
+                          <SendIcon />
                         </IconButton>
                       </span>
                     </Tooltip>
                   )}
-                  {enableAttachment && (
-                    <Tooltip title={insertFileLbl}>
+                  {!typedText.trim() && enableVoice && (
+                    <Tooltip title={insertVoiceLbl}>
                       <span>
                         <IconButton
-                          aria-label={insertFileLbl}
+                          aria-label={insertVoiceLbl}
                           // disabled={}
-                          onClick={chooseAttachment}
-                          onMouseDown={(e) => e.preventDefault()} // don't lose focus
+                          onClick={() =>
+                            setInputMessageType(MessageTypes.VOICE)
+                          }
                         >
-                          <AttachFileIcon />
+                          <MicIcon />
                         </IconButton>
                       </span>
                     </Tooltip>
                   )}
-                </Stack>
-                {(typedText.trim() || !enableVoice) && (
-                  <Tooltip title={sendLbl}>
-                    <span>
-                      <IconButton
-                        aria-label={sendLbl}
-                        disabled={!typedText.trim() && !attachedFile}
-                        onClick={() => sendMessage(typedText.trim())}
-                        onMouseDown={(e) => e.preventDefault()} // don't lose focus
-                      >
-                        <SendIcon />
-                      </IconButton>
-                    </span>
-                  </Tooltip>
-                )}
-                {!typedText.trim() && enableVoice && (
-                  <Tooltip title={insertVoiceLbl}>
-                    <span>
-                      <IconButton
-                        aria-label={insertVoiceLbl}
-                        // disabled={}
-                        onClick={() => setInputMessageType(MessageTypes.VOICE)}
-                      >
-                        <MicIcon />
-                      </IconButton>
-                    </span>
-                  </Tooltip>
-                )}
-              </InputAdornment>
-            ),
-          }}
-        />
+                </InputAdornment>
+              ),
+            }}
+          />
+        )}
       </Stack>
     </>
   );
