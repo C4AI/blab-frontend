@@ -13,7 +13,7 @@ import { Message } from "./data-structures";
 import { Conversation, Participant } from "../Lobby/data-structures";
 import ChatHeader from "./ChatHeader";
 
-/** Displays the chat area, with conversation header, message history and input fields.
+/** Display the chat area, with conversation header, message history and input fields.
  *
  * @category Services
  * @subcategory ChatBot

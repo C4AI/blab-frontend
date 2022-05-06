@@ -3,26 +3,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Trans } from "react-i18next";
 
-import {
-  Box,
-  Card,
-  CardMedia,
-  IconButton,
-  Tooltip,
-  Typography,
-} from "@mui/material";
+import { Box, Card, IconButton, Tooltip, Typography } from "@mui/material";
 
 import SendIcon from "@mui/icons-material/Send";
-import AttachmentIcon from "@mui/icons-material/Attachment";
-import ImageIcon from "@mui/icons-material/Image";
-import AudioFileIcon from "@mui/icons-material/AudioFile";
-import VideocamIcon from "@mui/icons-material/Videocam";
-import MicTwoToneIcon from "@mui/icons-material/MicTwoTone";
+
 import { DeleteForever } from "@material-ui/icons";
 
 import MessageIO from "./io";
 
 import { MessageTypes } from "./data-structures";
+import MediaIcon from "./MediaIcon";
 
 /**
  * Display name and size of an attached file.
@@ -38,12 +28,6 @@ const AttachedFile = ({
   handleSend = null,
 }) => {
   if (!file) return null;
-  const [icon, iconKey, iconFallbackText] = {
-    [MessageTypes.IMAGE]: [ImageIcon, "messageTypeImage", "Image"],
-    [MessageTypes.VIDEO]: [VideocamIcon, "messageTypeVideo", "Video"],
-    [MessageTypes.AUDIO]: [AudioFileIcon, "messageTypeAudio", "Audio"],
-    [MessageTypes.VOICE]: [MicTwoToneIcon, "messageTypeVoice", "Voice"],
-  }[messageType] || [AttachmentIcon, "messageTypeAttachment", "Attachment"];
 
   const sendLbl = <Trans i18nKey="sendMessage">Send</Trans>;
 
@@ -54,14 +38,7 @@ const AttachedFile = ({
           sx={{ display: "flex", flexDirection: "column" }}
           style={{ opacity: "80%" }}
         >
-          <Tooltip
-            placement="bottom-start"
-            title={<Trans i18nKey={iconKey}>{iconFallbackText}</Trans>}
-          >
-            <span>
-              <CardMedia disabled component={icon} style={{ opacity: "40%" }} />
-            </span>
-          </Tooltip>
+          <MediaIcon messageType={messageType} />
 
           {messageType === MessageTypes.IMAGE && (
             <img className="embedded-media" src={URL.createObjectURL(file)} />

@@ -2,11 +2,12 @@ import React from "react";
 
 import PropTypes from "prop-types";
 
-import { IconButton } from "@mui/material";
+import { IconButton, Stack } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { Message, MessageConditions } from "./data-structures";
 import { Trans } from "react-i18next";
 import { Participant } from "../Lobby/data-structures";
+import MediaIcon from "./MediaIcon";
 
 /**
  * Display a quoted message.
@@ -33,7 +34,13 @@ const QuotedMessage = ({ message, participants, handleRemoveQuote = null }) => {
         </div>
 
         {/* message contents */}
-        {message.text && <div className="message-text">{message.text}</div>}
+        <Stack direction={"row"}>
+          {/* media icon */}
+          <MediaIcon messageType={message.type} />
+
+          {/* text */}
+          {message.text && <div className="message-text">{message.text}</div>}
+        </Stack>
       </div>
 
       {/* "x" button */}

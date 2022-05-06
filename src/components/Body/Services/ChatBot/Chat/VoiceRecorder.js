@@ -11,13 +11,14 @@ import { Trans } from "react-i18next";
 
 import MessageIO from "./io";
 
-const VoiceRecorder = ({
-  maxLength = Infinity,
-  handleFinishRecording,
-  handleDiscardAudio,
-}) => {
-  maxLength;
-
+/**
+ * Display a component that allows the user to record a voice message.
+ * 
+ * @category Services
+ * @subcategory ChatBot
+ * @component
+ */
+const VoiceRecorder = ({ handleFinishRecording, handleDiscardAudio }) => {
   const [recorder, setRecorder] = useState(null);
   const [recordedFile, setRecordedFile] = useState(null);
   const [recordingStart, setRecordingStart] = useState(null);
@@ -74,14 +75,7 @@ const VoiceRecorder = ({
             title={<Trans i18nKey="startVoiceRecording">Start recording</Trans>}
           >
             <span>
-              <IconButton
-                disabled={!recorder}
-                onClick={() =>
-                  recorder.start(
-                    isFinite(maxLength) ? 1000 * maxLength : undefined
-                  )
-                }
-              >
+              <IconButton disabled={!recorder} onClick={() => recorder.start()}>
                 {recorder ? <FiberManualRecordRoundedIcon /> : <MicOffIcon />}
               </IconButton>
             </span>
@@ -109,7 +103,9 @@ const VoiceRecorder = ({
 
         {!recordedFile && (
           <Tooltip
-            title={<Trans i18nKey="cancelVoiceRecording">Cancel recording</Trans>}
+            title={
+              <Trans i18nKey="cancelVoiceRecording">Cancel recording</Trans>
+            }
           >
             <span>
               <IconButton onClick={handleDiscardAudio}>
@@ -123,9 +119,6 @@ const VoiceRecorder = ({
   );
 };
 VoiceRecorder.propTypes = {
-  /** maximum length (in seconds) */
-  maxLength: PropTypes.number,
-
   /** function to be called when an audio recording is completed
    * and ready to be sent
    */

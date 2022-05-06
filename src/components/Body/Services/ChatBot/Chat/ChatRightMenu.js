@@ -20,7 +20,7 @@ import { Trans } from "react-i18next";
 import PropTypes from "prop-types";
 
 /**
- * Displays the top-right corner menu in a conversation.
+ * Display the top-right corner menu in a conversation.
  * Currently, it only has one option ("leave").
  *
  * @category Services
