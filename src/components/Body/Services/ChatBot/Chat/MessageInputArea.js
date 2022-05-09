@@ -148,6 +148,7 @@ const MessageInputArea = forwardRef(({ onSendMessage, limits = {} }, ref) => {
       undefined,
       undefined,
       undefined,
+      undefined,
       attachedFile
     );
   }

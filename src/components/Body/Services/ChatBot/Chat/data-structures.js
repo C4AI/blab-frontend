@@ -67,6 +67,7 @@ export class Message {
    * @param {string} fileName file name
    * @param {string} quotedMessageId id of the quoted message
    * @param {string} event event type (for system messages)
+   * @param {string[]} options list of options to be chosen by the user
    * @param {Object} additionalMetadata additional metadata
    *    (for system messages)
    * @param {File} rawFile contents of the file being attached
@@ -86,9 +87,11 @@ export class Message {
     fileName,
     quotedMessageId,
     event,
+    options,
     additionalMetadata,
     rawFile
   ) {
+    console.log([text, quotedMessageId]);
     this.type = type;
     this.condition = condition;
     this.time = time instanceof Date ? time : new Date(time);
@@ -101,6 +104,7 @@ export class Message {
     this.fileName = fileName;
     this.quotedMessageId = quotedMessageId;
     this.event = event;
+    this.options = options;
     this.additionalMetadata = additionalMetadata;
     this.rawFile = rawFile;
   }
@@ -147,6 +151,7 @@ export class Message {
    *    (for voice, media and attachment messages)
    * @param {string} m.quoted_message_id if of the quoted message
    * @param {string} m.event event type (for system messages)
+   * @param {string[]} options list of options to be chosen by the user
    * @param {Object} m.additional_metadata additional metadata
    *    (for system messages)
    * @param {string} myParticipantId id of the current participant
@@ -171,6 +176,7 @@ export class Message {
       m.file_name,
       m.quoted_message_id,
       m.event,
+      m.options,
       m.additional_metadata,
       undefined
     );

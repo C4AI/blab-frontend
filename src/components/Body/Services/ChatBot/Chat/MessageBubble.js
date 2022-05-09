@@ -12,6 +12,7 @@ import {
 } from "./Media";
 import { Participant } from "../Lobby/data-structures";
 import BottomRightTimestamp from "./BottomRightTimestamp";
+import MessageOption from "./MessageOption";
 
 /**
  * Display a bubble with the contents of a message.
@@ -20,7 +21,12 @@ import BottomRightTimestamp from "./BottomRightTimestamp";
  * @subcategory ChatBot
  * @component
  */
-const MessageBubble = ({ message, participants, quotedMessage = null }) => {
+const MessageBubble = ({
+  message,
+  participants,
+  quotedMessage = null,
+  handleSelectOption = null,
+}) => {
   const theme = useTheme();
   const received = message.condition === MessageConditions.RECEIVED;
   const s = {
@@ -43,7 +49,6 @@ const MessageBubble = ({ message, participants, quotedMessage = null }) => {
         message.fileName,
         message.fileSize,
       ];
-
 
   return (
     <div data-msg-id={"msg_" + message.id} className="message-bubble" style={s}>
@@ -75,6 +80,19 @@ const MessageBubble = ({ message, participants, quotedMessage = null }) => {
       {/* message text */}
       {message.text && <div className="message-text">{message.text}</div>}
 
+      {/* options */}
+      {Boolean(message.options && message.options.length) && (
+        <div>
+          {message.options.map((o, i) => (
+            <MessageOption
+              option={o}
+              key={"opt_" + i}
+              handleClick={handleSelectOption}
+            />
+          ))}
+        </div>
+      )}
+
       {/* timestamp */}
       <BottomRightTimestamp time={message.time} />
     </div>
@@ -91,6 +109,11 @@ MessageBubble.propTypes = {
 
   /** the quoted message, if any */
   quotedMessage: PropTypes.instanceOf(Message),
+
+  /** function to be called when the user chooses one of the options
+   * given by this message (or null to disable the button)
+   */
+  handleSelectOption: PropTypes.func,
 };
 
 export default MessageBubble;

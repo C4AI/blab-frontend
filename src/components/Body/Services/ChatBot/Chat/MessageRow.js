@@ -23,6 +23,7 @@ const MessageRow = ({
   participants,
   handleQuote,
   quotedMessage = null,
+  handleSelectOption = null,
 }) => {
   const replyBtn =
     message["type"] !== MessageTypes.SYSTEM ? (
@@ -51,6 +52,7 @@ const MessageRow = ({
           message={message}
           participants={participants}
           quotedMessage={quotedMessage}
+          handleSelectOption={handleSelectOption}
         />
       )}
       {replyBtn && message.condition === MessageConditions.RECEIVED && replyBtn}
@@ -79,6 +81,11 @@ MessageRow.propTypes = {
 
   /** the message quoted by this message */
   quotedMessage: PropTypes.instanceOf(Message),
+
+  /** function to be called when the user chooses one of the options
+   * given by this message (or null to disable the button)
+   */
+  handleSelectOption: PropTypes.func,
 };
 
 export default MessageRow;

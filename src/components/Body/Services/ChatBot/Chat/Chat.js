@@ -2,6 +2,7 @@ import React from "react";
 
 import { Paper } from "@mui/material";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 import MessageRow from "./MessageRow";
 import PropTypes from "prop-types";
@@ -9,7 +10,7 @@ import PropTypes from "prop-types";
 import QuotedMessage from "./QuotedMessage";
 import MessageIO from "./io";
 import MessageInputArea from "./MessageInputArea";
-import { Message } from "./data-structures";
+import { Message, MessageConditions, MessageTypes } from "./data-structures";
 import { Conversation, Participant } from "../Lobby/data-structures";
 import ChatHeader from "./ChatHeader";
 
@@ -174,7 +175,7 @@ const Chat = ({ conversation, onLeave }) => {
   const sendMessage = (message) => {
     if (!message) return;
     message.senderId = conversation.myParticipantId;
-    message.quotedMessageId = quotedMessage?.id;
+    message.quotedMessageId = message.quotedMessageId || quotedMessage?.id;
     const send = (message) => {
       if (io) io.enqueueMessage(message);
       else setTimeout(() => send(message), 100);
@@ -218,6 +219,24 @@ const Chat = ({ conversation, onLeave }) => {
               messageInputRef.current.focus();
             }}
             quotedMessage={messagesById[message.quotedMessageId] || null}
+            handleSelectOption={(
+              (id) => (option) =>
+                sendMessage(
+                  new Message(
+                    MessageTypes.TEXT,
+                    MessageConditions.SENDING,
+                    new Date(),
+                    uuidv4().replace(/-/g, ""),
+                    undefined,
+                    option,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    id
+                  )
+                )
+            )(message.id)}
           />
         ))}
         {pendingMessages
