@@ -91,7 +91,6 @@ export class Message {
     additionalMetadata,
     rawFile
   ) {
-    console.log([text, quotedMessageId]);
     this.type = type;
     this.condition = condition;
     this.time = time instanceof Date ? time : new Date(time);

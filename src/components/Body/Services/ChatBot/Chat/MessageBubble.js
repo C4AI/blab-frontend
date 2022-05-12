@@ -13,6 +13,7 @@ import {
 import { Participant } from "../Lobby/data-structures";
 import BottomRightTimestamp from "./BottomRightTimestamp";
 import MessageOption from "./MessageOption";
+import MessageText from "./MessageText";
 
 /**
  * Display a bubble with the contents of a message.
@@ -78,7 +79,7 @@ const MessageBubble = ({
       )}
 
       {/* message text */}
-      {message.text && <div className="message-text">{message.text}</div>}
+      {message.text && <MessageText text={message.text} createLinks={true} />}
 
       {/* options */}
       {Boolean(message.options && message.options.length) && (
