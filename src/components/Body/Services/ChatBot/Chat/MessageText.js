@@ -14,9 +14,13 @@ const MessageText = ({ text, createLinks = false }) => {
   const linkify = (text) => {
     const parts = [];
     let pos = 0;
-    (LinkifyIt().match(text) || []).forEach((match) => {
+    (LinkifyIt().match(text) || []).forEach((match, i) => {
       if (match.index > pos) parts.push(text.substring(pos, match.index));
-      const a = <a href={match.url}>{match.raw}</a>;
+      const a = (
+        <a href={match.url} key={`_${i}`}>
+          {match.raw}
+        </a>
+      );
       parts.push(a);
       pos = match.lastIndex;
     });
