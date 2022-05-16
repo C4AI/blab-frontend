@@ -25,14 +25,14 @@ const MessageRow = ({
   quotedMessage = null,
   handleSelectOption = null,
 }) => {
-  const replyBtn =
-    message["type"] !== MessageTypes.SYSTEM ? (
+  const replyBtn = Boolean(handleQuote) &&
+    message["type"] !== MessageTypes.SYSTEM && (
       <div className="reply-btn">
         <IconButton size="small" onClick={() => handleQuote()}>
           <ReplyIcon fontSize="small" />
         </IconButton>
       </div>
-    ) : null;
+    );
   return (
     <div
       className="message-row"
@@ -75,7 +75,7 @@ MessageRow.propTypes = {
     .isRequired,
 
   /** function to be called when the user chooses to
-   * reply to this message
+   * reply to this message (if missing, reply button is not shown)
    */
   handleQuote: PropTypes.func,
 
