@@ -32,5 +32,11 @@
   "wikiImageAlt": "Ilustração de um Wiki",
   "readMore": "Saiba Mais",
   "chatbotUnavailable": "ChatBot Indisponível",
-  "adBlockWarning": "Por favor, desabilite o bloqueador de anúncios para poder visualizar este serviço."
+  "adBlockWarning": "Por favor, desabilite o bloqueador de anúncios para poder visualizar este serviço.",
+  "initialDescription": "O Blue Amazon Brain incorpora informações sobre a costa marítima brasileira, conhecida como Amazônia Azul.",
+  "popupLink": "Saiba mais!",
+  "popupText": "A Amazônia Azul é o espaço marítimo que \"pertence\" ao Brasil, ou seja, o espaço que só ele pode explorar economicamente. Ela é demarcada contando 200 milhas a partir da costa, ao longo de todo litoral + a área de extensão da plataforma continental. Além disso, inclui as áreas ao redor das ilhas oceânicas. O nome foi dado devido ao seu gigante tamanho, de aproximadamente 3,5 milhões de km2, e a sua enorme biodiversidade, assim, em comparação com a Amazônia \"Verde\". Na Amazônia azul circulam 95% do comércio exterior, são extraídos 95% do petróleo e 80% do gás natural que são produzidos no país, além de 45% do pescado produzido.",
+  "404message": "Esta página não existe ou algo deu errado.",
+  "404redirectButton": "Voltar ao início",
+  "languageSwitch": "Idioma"
 }
