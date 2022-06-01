@@ -44,7 +44,8 @@ const Lobby = ({ onJoinConversation, onCreateConversation, mode, bots }) => {
   useEffect(() => {
     if (!ioRef.current) {
       ioRef.current = new LobbyIO();
-      ioRef.current.getConversations(setConversations, console.log, 1000);
+      if (mode === "rooms")
+        ioRef.current.getConversations(setConversations, console.log, 1000);
       ioRef.current.getBots(setAvailableBots, 1000);
     }
     const s = ioRef.current;

@@ -2,7 +2,8 @@ import { w3cwebsocket as W3CWebSocket } from "websocket";
 
 import axios from "axios";
 import axiosRetry from "axios-retry";
-import { Message } from "./data-structures";
+import { Message, MessageTypes } from "./data-structures";
+import i18n from "../../../../../i18n";
 
 axiosRetry(axios, { retries: 0, retryDelay: axiosRetry.exponentialDelay });
 
@@ -25,7 +26,11 @@ axiosRetry(axios, { retries: 0, retryDelay: axiosRetry.exponentialDelay });
  * @subcategory ChatBot
  */
 class MessageIO {
-  /** URL of the web socket server */
+  /** URL of the back-end server */
+  static serverURL =
+    process.env.REACT_APP_CHAT_URL || "http://" + window.location.hostname;
+
+  /** URL of the back-end server used for the web socket */
   static webSocketURL =
     process.env.REACT_APP_CHAT_WS_URL || "ws://" + window.location.hostname;
 
@@ -138,7 +143,21 @@ class MessageIO {
    * @param {Message} message the message to be sent
    */
   #sendMessage(message) {
-    this.ws.send(JSON.stringify(message.asObjectToSend()));
+    const data = message.asObjectToSend();
+    if (message.type == MessageTypes.TEXT) {
+      this.ws.send(JSON.stringify(data));
+    } else {
+      axios
+        .post(
+          MessageIO.serverURL +
+            "/api/chat/conversations/" +
+            this.conversationId +
+            "/messages/",
+          data,
+          { withCredentials: true }
+        )
+        .catch(() => this.#sendNextPendingMessage());
+    }
   }
 
   /**
@@ -226,6 +245,50 @@ class MessageIO {
   close() {
     this.intentionallyClosed = true;
     this.ws && this.ws.close();
+  }
+
+  static formatSize(b) {
+    if (isNaN(b)) return "";
+    const base = 1000; // it could be 1024 depending on the definition
+    const pfx = ["", "kilo", "mega", "giga", "tera", "peta"];
+    const i = Math.max(
+      0,
+      Math.min(
+        pfx.length - 1,
+        Math.floor(Math.log(Math.abs(b)) / Math.log(base))
+      )
+    );
+    return new Intl.NumberFormat(i18n.language, {
+      style: "unit",
+      unit: pfx[i] + "byte",
+      unitDisplay: "short",
+      maximumFractionDigits: 1,
+    }).format(b / Math.pow(base, i));
+  }
+
+  static formatLength(t) {
+    if (isNaN(t)) return "";
+    if (t == Infinity) return "∞";
+    const locale = i18n.language;
+    const delimiter = new Intl.DateTimeFormat(locale, {
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+    })
+      .formatToParts(new Date("1999-12-31T23:59:59"))
+      .find((elem) => elem.type == "literal" && elem.value != " ").value;
+    t = Math.floor(t);
+    const hFmt = new Intl.NumberFormat(locale, { minimumIntegerDigits: 1 });
+    const minFmt = new Intl.NumberFormat(locale, {
+      minimumIntegerDigits: t >= 3600 ? 2 : 1,
+    });
+    const sFmt = new Intl.NumberFormat(locale, { minimumIntegerDigits: 2 });
+    return (
+      (t >= 3600 ? hFmt.format(Math.floor(t / 3600)) + delimiter : "") +
+      minFmt.format(Math.floor((t % 3600) / 60)) +
+      delimiter +
+      sFmt.format(t % 60)
+    );
   }
 }
 
