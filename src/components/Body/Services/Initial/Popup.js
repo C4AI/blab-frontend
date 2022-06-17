@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Box, Typography } from '@mui/material'
+import { Box, Typography, Fab } from '@mui/material'
 import { Trans } from "react-i18next";
+import CloseIcon from '@mui/icons-material/Close';
 
 /**
  *  Modal popup with explanation and information about the website.
@@ -14,7 +15,19 @@ const Popup = ({ handleClose }) => {
   return (
     <div className="popup-box">
       <div className="box">
-        <span className="close-icon" onClick={handleClose}>x</span>
+        <div className="box-header">
+          <div className="close-button">
+            <Fab
+              style={{boxShadow: "none"}}
+              size="small"
+              onClick={handleClose}
+              variant="outlined"
+            >
+              <CloseIcon style={{ fontSize: 20, color: "black" }} />
+            </Fab>
+          </div>
+        </div>
+        <div className="box-content">
         <Box
           component="img"
           sx={{
@@ -28,14 +41,26 @@ const Popup = ({ handleClose }) => {
               md: 212*1.25,
               lg: 212*1.5,
             },
-            flex: 1,
-            verticalAlign: "text-top"
+            float: {
+              xs: "none",
+              md: "left"
+            },
+            verticalAlign: "text-top",
+            marginRight: "10px",
+            marginBottom: "10px",
           }}
           src={require("../../../../images/Imagem_Texto_Introdutorio.png")}
         />
-        <Typography>
+        <Typography
+          sx={{
+            textAlign: "distribute",
+            fontSize: 20,
+          }}
+        >
           <Trans i18nKey="popupText">Lorem Ipsum</Trans>
         </Typography>
+        </div>
+        
       </div>
     </div>
   );
