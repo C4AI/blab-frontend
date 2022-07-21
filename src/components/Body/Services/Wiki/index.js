@@ -38,7 +38,7 @@ const Wiki = ({ setService }) => {
         }
         {isMobile
           ? <iframe src="https://c2dt02.duckdns.org/w/" className="wiki-iframe" onLoad={onLoad} frameBorder="0"/>
-          : <iframe src="hhttps://c2dt02.duckdns.org/w/" className="wiki-iframe" onLoad={onLoad} frameBorder="0"/>
+          : <iframe src="https://c2dt02.duckdns.org/w/" className="wiki-iframe" onLoad={onLoad} frameBorder="0"/>
         }
       </>
     </ServiceContainer>
