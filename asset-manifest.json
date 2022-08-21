@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/blab-frontend/static/css/main.94da3cc2.css",
-    "main.js": "/blab-frontend/static/js/main.9bab88a1.js",
+    "main.css": "/blab-frontend/static/css/main.5a7e2e7e.css",
+    "main.js": "/blab-frontend/static/js/main.6802c344.js",
     "static/js/377.79331280.chunk.js": "/blab-frontend/static/js/377.79331280.chunk.js",
     "static/media/image_3.jpg": "/blab-frontend/static/media/image_3.3b3ffc67620437a6aa71.jpg",
     "static/media/image_2.jpg": "/blab-frontend/static/media/image_2.560f676a6bfb5709e4ce.jpg",
@@ -24,12 +24,12 @@
     "static/media/roboto-greek-ext-400-normal.woff2": "/blab-frontend/static/media/roboto-greek-ext-400-normal.bb723e8458c9c653e505.woff2",
     "index.html": "/blab-frontend/index.html",
     "static/media/getFetch.cjs": "/blab-frontend/static/media/getFetch.c780682470504fffbd04.cjs",
-    "main.94da3cc2.css.map": "/blab-frontend/static/css/main.94da3cc2.css.map",
-    "main.9bab88a1.js.map": "/blab-frontend/static/js/main.9bab88a1.js.map",
+    "main.5a7e2e7e.css.map": "/blab-frontend/static/css/main.5a7e2e7e.css.map",
+    "main.6802c344.js.map": "/blab-frontend/static/js/main.6802c344.js.map",
     "377.79331280.chunk.js.map": "/blab-frontend/static/js/377.79331280.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.94da3cc2.css",
-    "static/js/main.9bab88a1.js"
+    "static/css/main.5a7e2e7e.css",
+    "static/js/main.6802c344.js"
   ]
 }
