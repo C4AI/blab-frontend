@@ -157,6 +157,7 @@ const Initial = ({ setService }) => {
               color: "red",
               cursor: "pointer",
             }}
+            tabIndex={0}
           >
             <Trans i18nKey="popupLink">Read more!</Trans>
           </Link>
