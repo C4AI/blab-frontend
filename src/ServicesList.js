@@ -11,7 +11,7 @@ const GetServicesList = () => {
       ),
       active: true,
       image: "Chatbot.jpg",
-      imageAlt: <Trans i18nKey="chatBotImageAlt">Illustration of chatbot</Trans>,
+      imageAltKey: "chatBotImageAlt",
     },
     {
       name: "Reporter",
@@ -23,9 +23,7 @@ const GetServicesList = () => {
       ),
       active: true,
       image: "RoboJornalista.jpeg",
-      imageAlt: (
-        <Trans i18nKey="reporterImageAlt">Illustration of a journalist bot</Trans>
-      ),
+      imageAltKey: "reporterImageAlt",
     },
     {
       name: "Wiki",
@@ -33,7 +31,7 @@ const GetServicesList = () => {
       text: <Trans i18nKey="wikiText">A wiki focused on the Blue Amazon</Trans>,
       active: true,
       image: "Wiki.png",
-      imageAlt: <Trans i18nKey="wikiImageAlt">Illustration of a wiki</Trans>,
+      imageAltKey: "wikiImageAlt",
     },
     {
       name: "quarto",
@@ -41,7 +39,7 @@ const GetServicesList = () => {
       text: "exemplo",
       active: false,
       image: "Wiki.png",
-      imageAlt: "a",
+      imageAltKey: "a",
     },
     {
       name: "quinte",
@@ -49,7 +47,7 @@ const GetServicesList = () => {
       text: "exemplo",
       active: false,
       image: "Wiki.png",
-      imageAlt: "a",
+      imageAltKey: "a",
     },
   ];
 }

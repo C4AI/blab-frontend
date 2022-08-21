@@ -101,7 +101,7 @@ export const CardService = ({ setService, info }) => {
               }}
               component="img"
               image={require("../../../../images/" + info.image)}
-              alt={info.imageAlt}
+              alt={""} // empty to avoid violating WCAG 2.1 guideline: 1.1.1 Text Alternatives
             />
             <CardContent
               sx={{
