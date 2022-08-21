@@ -152,10 +152,13 @@ const Initial = ({ setService }) => {
           {" "}
           <Link
             onClick={() => setPopupOpen(true)}
-            underline="hover"
+            underline="always"
+            bold="hover"
             sx={{
               color: "red",
               cursor: "pointer",
+              textDecorationThickness: "3px",
+              textDecorationColor: "red",
             }}
             tabIndex={0}
           >
