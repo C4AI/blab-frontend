@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import i18n from "i18next";
 import { Box, InputLabel, FormControl, NativeSelect, Collapse, CardActionArea } from '@mui/material';
 import { ArrowLeft, ArrowRight } from '@mui/icons-material';
-import { Trans } from "react-i18next";
+import { useTranslation, Trans } from "react-i18next";
 
 /**
  *  Manual language selection.
@@ -21,6 +21,9 @@ function LanguageSwitch() {
         setChecked((prev) => !prev);
     };
 
+    const { t } = useTranslation();
+    const show_label = t("langSwitchShowLabel");
+    const hide_label = t("langSwitchHideLabel");
 
     return (
         <Box
@@ -35,12 +38,15 @@ function LanguageSwitch() {
                 display: "inline-flex"
             }}>
             <Box sx={{ width: "30px", display: "inline-flex" }}>
-                <CardActionArea onClick={handleChange} sx={{borderRadius: "20px 0px 0px 20px"}}>
-                    {checked ? (
-                        <ArrowRight sx={{ fontSize: 30 }} />
-                    ) : (
-                        <ArrowLeft sx={{ fontSize: 30 }} />
-                    )}
+                <CardActionArea 
+                    onClick={handleChange} 
+                    sx={{borderRadius: "20px 0px 0px 20px"}}
+                    aria-label={checked ? (show_label) : (hide_label)}>
+                        {checked ? (
+                            <ArrowRight sx={{ fontSize: 30 }} />
+                        ) : (
+                            <ArrowLeft sx={{ fontSize: 30 }} />
+                        )}
                 </CardActionArea>
             </Box>
             <Collapse in={checked} orientation="horizontal">
