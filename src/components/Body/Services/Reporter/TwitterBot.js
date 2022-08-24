@@ -5,7 +5,7 @@ import ServiceLoading from "../../ServiceLoading";
 import { TwitterFollowButton } from "react-twitter-embed";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
 import i18n from "../../../../i18n";
-import { Trans } from "react-i18next";
+import { useTranslation, Trans } from "react-i18next";
 import { Alert } from "@mui/material";
 
 import "./Reporter.css";
@@ -40,6 +40,10 @@ const TwitterBot = ({ username }) => {
   useEffect(async () => {
     setAdBlockEnabled(await detectAdBlock());
   }, [])
+
+  const { t } = useTranslation();
+  const followLabel = t("followLabel");
+
   return (
     <>
       {adBlockEnabled
@@ -54,6 +58,7 @@ const TwitterBot = ({ username }) => {
             <TwitterFollowButton
               className="twitter-follow-button"
               screenName={username}
+              aria-label={followLabel}
             />
             <TwitterTimelineEmbed
               className="twitter-timeline"

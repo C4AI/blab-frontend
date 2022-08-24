@@ -15,7 +15,7 @@ import {
   TextField,
   Tooltip,
 } from "@mui/material";
-import { Trans } from "react-i18next";
+import { useTranslation, Trans } from "react-i18next";
 import MicIcon from "@mui/icons-material/Mic";
 import { Message, MessageConditions, MessageTypes } from "./data-structures";
 import PermMediaIcon from "@mui/icons-material/PermMedia";
@@ -167,10 +167,11 @@ const MessageInputArea = forwardRef(({ onSendMessage, limits = {} }, ref) => {
     onSendMessage(message);
   }
 
-  const sendLbl = <Trans i18nKey="sendMessage">Send</Trans>;
-  const insertMediaLbl = <Trans i18nKey="insertMedia">Insert media</Trans>;
-  const insertFileLbl = <Trans i18nKey="insertAttachment">Insert file</Trans>;
-  const insertVoiceLbl = <Trans i18nKey="recordVoice">Record voice</Trans>;
+  const { t } = useTranslation();
+  const sendLbl = t("sendMessage");
+  const insertMediaLbl = t("insertMedia");
+  const insertFileLbl = t("insertAttachment");
+  const insertVoiceLbl = t("recordVoice");
 
   const enableAudio =
     !attachedFile &&

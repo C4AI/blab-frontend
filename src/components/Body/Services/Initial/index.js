@@ -100,7 +100,7 @@ const Initial = ({ setService }) => {
       }
       <Container className="title">
         <Typography
-          variant="h6"
+          variant="h1"
           sx={{
             textTransform: "uppercase",
             fontSize: "1rem",
@@ -129,7 +129,7 @@ const Initial = ({ setService }) => {
           BLAB
         </Typography>
         <Typography
-          variant="h6"
+          variant="h3"
           sx={{
             marginTop: {
               xs: "25px", //mobile
