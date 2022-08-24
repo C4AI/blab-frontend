@@ -53,5 +53,9 @@
   "messageTypeAttachment": "Attachment",
   "messageTypeSystem": "System message",
   "messageTypeImage": "Image",
-  "fileTooLarge": "Files larger than <1>{{maxSize}}</1> are not accepted."
+  "fileTooLarge": "Files larger than <1>{{maxSize}}</1> are not accepted.",
+  "facebookLabel": "C4AI Facebook",
+  "linkedinLabel": "C4AI LinkedIn",
+  "youtubeLabel": "C4AI Youtube",
+  "twitterLabel": "C4AI Twitter"
 }
