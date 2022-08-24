@@ -55,7 +55,7 @@
   "messageTypeImage": "Imagem",
   "fileTooLarge": "Arquivos com mais de <1>{{maxSize}}</1> não são aceitos.",
   "facebookLabel": "Facebook do C4AI",
-  "linkedinLabel": "LinkedIn do C4AI",
+  "linkedInLabel": "LinkedIn do C4AI",
   "youtubeLabel": "Youtube do C4AI",
   "twitterLabel": "Twitter do C4AI"
 }
