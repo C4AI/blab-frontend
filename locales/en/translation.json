@@ -39,6 +39,8 @@
   "404message": "This page does not exist or something went wrong.",
   "404redirectButton": "Back to the start",
   "languageSwitch": "Language",
+  "langSwitchShowLabel": "Show language menu",
+  "langSwitchHideLabel": "Hide language menu",
   "startVoiceRecording": "Start recording",
   "stopVoiceRecording": "Stop recording",
   "cancelVoiceRecording": "Cancel recording",
