@@ -57,5 +57,7 @@
   "facebookLabel": "C4AI Facebook",
   "linkedInLabel": "C4AI LinkedIn",
   "youtubeLabel": "C4AI Youtube",
-  "twitterLabel": "C4AI Twitter"
+  "twitterLabel": "C4AI Twitter",
+  "returnLabel": "Return",
+  "rightMenuButtonLabel": "Chat Options"
 }
