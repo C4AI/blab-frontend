@@ -12,6 +12,8 @@ import logo_usp from "../../images/logo_usp.png";
 import logo_ibm from "../../images/logo_ibm.png";
 import logo_fapesp from "../../images/logo_fapesp.png";
 
+import { useTranslation } from "react-i18next";
+
 /**
  * Global website footer.
  *
@@ -19,6 +21,11 @@ import logo_fapesp from "../../images/logo_fapesp.png";
  * @component
  */
 const Footer = () => {
+  const { t } = useTranslation();
+  const fbLabel = t("facebookLabel");
+  const liLabel = t("linkedInLabel");
+  const ytLabel = t("youtubeLabel");
+  const ttLabel = t("twitterLabel");
   return (
     <footer className="footer">
       <Divider />
@@ -28,16 +35,16 @@ const Footer = () => {
             <span>&copy; C4AI - Center for Artificial Intelligence 2021</span>
           </Grid>
           <Grid item>
-            <IconButton href="https://www.facebook.com/groups/C4AI.USP">
+            <IconButton href="https://www.facebook.com/groups/C4AI.USP" aria-label={fbLabel}>
               <FacebookIcon className="footer.icon" fontSize="large" />
             </IconButton>
-            <IconButton href="https://www.linkedin.com/groups/8980226/">
+            <IconButton href="https://www.linkedin.com/groups/8980226/" aria-label={liLabel}>
               <LinkedInIcon className="footer.icon" fontSize="large" />
             </IconButton>
-            <IconButton href="https://www.youtube.com/channel/UCBg_eunUlxU5b95vyg_mxww">
+            <IconButton href="https://www.youtube.com/channel/UCBg_eunUlxU5b95vyg_mxww" aria-label={ytLabel}>
               <YouTubeIcon className="footer.icon" fontSize="large" />
             </IconButton>
-            <IconButton href="https://twitter.com/C4AI1">
+            <IconButton href="https://twitter.com/C4AI1" aria-label={ttLabel}>
               <TwitterIcon className="footer.icon" fontSize="large" />
             </IconButton>
           </Grid>

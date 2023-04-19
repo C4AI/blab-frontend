@@ -5,10 +5,16 @@ import { Container } from "@mui/material";
 import { Button } from "@material-ui/core";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 
-import { Trans } from "react-i18next";
+import { useTranslation, Trans } from "react-i18next";
 
 import "./ServiceContainer.css";
 
+/**
+ *  Container to wrap services. It has a Return button and a ReadMore button.
+ *
+ *  @category Basic
+ *  @component
+ */
 const ServiceContainer = (props) => {
   const returnClicked = () => {
     props.setService("Initial");
@@ -18,10 +24,13 @@ const ServiceContainer = (props) => {
     window.open("https://c4ai.inova.usp.br/research/#KEML");
   };
 
+  const { t } = useTranslation();
+  const returnLabel = t("returnLabel");
+  const readMoreLabel = t("readMoreLabel");
+
   return(
     <Container
       className="service-container"
-      component="main"
       maxWidth="xs"
       sx={props.sx}
     >
@@ -30,21 +39,27 @@ const ServiceContainer = (props) => {
           <Button
             onClick={returnClicked}
             startIcon={<KeyboardBackspaceIcon style={{ fontSize: 50, color: "white" }} />}
+            aria-label={returnLabel}
           />
         </div>
-        <div className="readmore-button">
+        <div
+          className="readmore-button"
+        >
           <Button
             onClick={readMoreClicked}
             variant="contained"
             style={{
               backgroundColor: "white",
             }}
+            aria-label={readMoreLabel}
           >
             <Trans i18nKey="readMore">Read More</Trans>
           </Button>
         </div>
       </div>
-      {props.children}
+      <div role="main">
+        {props.children}
+      </div>
     </Container>
   );
 }

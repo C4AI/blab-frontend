@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 import Background from "./Background";
 import Initial from "./Services/Initial";
@@ -9,7 +10,7 @@ import Wiki from "./Services/Wiki";
 import "./Body.css";
 
 /**
- *  Global website body.
+ *  Manual language selector.
  *
  *  @category Basic
  *  @component
@@ -56,6 +57,10 @@ function Body() {
       </div>
     </>
   );
+}
+
+Body.propTypes = {
+  initialLanguage: PropTypes.string,
 }
 
 export default Body;

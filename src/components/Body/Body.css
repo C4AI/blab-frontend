@@ -4,4 +4,5 @@
   display: flex;
   overflow: hidden;
   font-size: calc(10px + 2vmin);
+  background-color: black;
 }

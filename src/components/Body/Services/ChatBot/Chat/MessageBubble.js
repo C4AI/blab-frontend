@@ -3,9 +3,17 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useTheme } from "@emotion/react";
 import QuotedMessage from "./QuotedMessage";
-import { Message, MessageConditions } from "./data-structures";
+import { Message, MessageConditions, MessageTypes } from "./data-structures";
+import {
+  ImageDisplay,
+  AudioDisplay,
+  VideoDisplay,
+  AttachmentDisplay,
+} from "./Media";
 import { Participant } from "../Lobby/data-structures";
 import BottomRightTimestamp from "./BottomRightTimestamp";
+import MessageOption from "./MessageOption";
+import MessageText from "./MessageText";
 
 /**
  * Display a bubble with the contents of a message.
@@ -14,7 +22,12 @@ import BottomRightTimestamp from "./BottomRightTimestamp";
  * @subcategory ChatBot
  * @component
  */
-const MessageBubble = ({ message, participants, quotedMessage = null }) => {
+const MessageBubble = ({
+  message,
+  participants,
+  quotedMessage = null,
+  handleSelectOption = null,
+}) => {
   const theme = useTheme();
   const received = message.condition === MessageConditions.RECEIVED;
   const s = {
@@ -23,6 +36,20 @@ const MessageBubble = ({ message, participants, quotedMessage = null }) => {
       : theme.palette.primary.dark,
     color: received ? "black" : "white",
   };
+
+  const [fileUrl, fileName, fileSize] = message.rawFile
+    ? [
+        URL.createObjectURL(message.rawFile),
+        message.rawFile.name,
+        message.rawFile.size,
+      ]
+    : [
+        message.fileUrl && message.fileUrl.startsWith("/")
+          ? process.env.REACT_APP_CHAT_URL + message.fileUrl
+          : message.fileUrl,
+        message.fileName,
+        message.fileSize,
+      ];
 
   return (
     <div data-msg-id={"msg_" + message.id} className="message-bubble" style={s}>
@@ -36,8 +63,36 @@ const MessageBubble = ({ message, participants, quotedMessage = null }) => {
       {/* quoted message */}
       <QuotedMessage message={quotedMessage} participants={participants} />
 
+      {/* image */}
+      {message.type == MessageTypes.IMAGE && <ImageDisplay url={fileUrl} />}
+
+      {/* audio */}
+      {(message.type == MessageTypes.AUDIO ||
+        message.type == MessageTypes.VOICE) && <AudioDisplay url={fileUrl} />}
+
+      {/* video */}
+      {message.type == MessageTypes.VIDEO && <VideoDisplay url={fileUrl} />}
+
+      {/* attachment */}
+      {message.type == MessageTypes.ATTACHMENT && (
+        <AttachmentDisplay url={fileUrl} fileName={fileName} size={fileSize} />
+      )}
+
       {/* message text */}
-      {message.text && <div className="message-text">{message.text}</div>}
+      {message.text && <MessageText text={message.text} createLinks={true} />}
+
+      {/* options */}
+      {Boolean(message.options && message.options.length) && (
+        <div>
+          {message.options.map((o, i) => (
+            <MessageOption
+              option={o}
+              key={"opt_" + i}
+              handleClick={handleSelectOption}
+            />
+          ))}
+        </div>
+      )}
 
       {/* timestamp */}
       <BottomRightTimestamp time={message.time} />
@@ -55,6 +110,11 @@ MessageBubble.propTypes = {
 
   /** the quoted message, if any */
   quotedMessage: PropTypes.instanceOf(Message),
+
+  /** function to be called when the user chooses one of the options
+   * given by this message (or null to disable the button)
+   */
+  handleSelectOption: PropTypes.func,
 };
 
 export default MessageBubble;
