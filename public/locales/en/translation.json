@@ -11,6 +11,7 @@
   "youJoinedConversation": "You joined the conversation",
   "leftConversation": "<0>{{name}}</0> left the conversation",
   "youLeftConversation": "You left the conversation",
+  "endedConversation": "The conversation has ended",
   "typeMessage": "Type a message",
   "leaveConversation": "Leave",
   "senderYou": "You",

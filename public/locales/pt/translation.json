@@ -11,6 +11,7 @@
   "youJoinedConversation": "Você entrou na conversa",
   "leftConversation": "<0>{{name}}</0> saiu da conversa",
   "youLeftConversation": "Você saiu da conversa",
+  "endedConversation": "A conversa foi encerrada",
   "typeMessage": "Digite uma mensagem",
   "leaveConversation": "Sair",
   "senderYou": "Você",

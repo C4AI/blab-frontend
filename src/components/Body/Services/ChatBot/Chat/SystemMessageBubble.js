@@ -47,6 +47,11 @@ const SystemMessageBubble = ({ message, participants, myParticipantId }) => {
     case "conversation-created":
       text = <Trans i18nKey="createdConversation">Conversation created</Trans>;
       break;
+    case "conversation-ended":
+      text = (
+        <Trans i18nKey="endedConversation">The conversation has ended</Trans>
+      );
+      break;
     default:
       text = JSON.stringify(message);
   }
